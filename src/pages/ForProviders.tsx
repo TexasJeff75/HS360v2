@@ -1,101 +1,60 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Building, Shield, Award, Users, TrendingUp, CheckCircle, Star, Heart, Microscope } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Building } from 'lucide-react';
 import CalendlySection from '../components/CalendlySection';
 
-const ForProviders = () => {
+const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     phone: '',
-    practiceName: '',
-    practiceType: '',
-    licenseType: '',
-    licenseNumber: '',
-    state: '',
-    npiNumber: '',
-    address: '',
-    city: '',
-    zipCode: '',
-    website: '',
-    yearsInPractice: '',
-    currentPatientVolume: '',
-    specialties: '',
-    servicesOfInterest: [],
-    currentLabPartner: '',
-    reasonForChange: '',
-    businessLicense: null,
-    medicalLicense: null,
-    additionalCertifications: null,
-    referralSource: '',
-    additionalComments: ''
+    organization: '',
+    subject: '',
+    message: '',
+    inquiryType: ''
   });
 
-  const benefits = [
+  const contactInfo = [
     {
-      icon: <Shield className="h-8 w-8" />,
-      title: "Compliance First",
-      description: "Full regulatory support and documentation for all services",
-      features: ["CLIA & CAP certified", "Complete audit trail", "Regulatory updates"]
+      icon: <Phone className="h-6 w-6" />,
+      title: "Phone Support",
+      content: "1-800-HEALTHSPAN",
+      subContent: "24/7 Provider Support",
+      link: "tel:1-800-HEALTHSPAN"
     },
     {
-      icon: <TrendingUp className="h-8 w-8" />,
-      title: "Revenue Growth",
-      description: "Expand your practice offerings with high-margin services",
-      features: ["Competitive pricing", "Marketing support", "Training included"]
+      icon: <Mail className="h-6 w-6" />,
+      title: "Email",
+      content: "info@healthspan360.com",
+      subContent: "Response within 24 hours",
+      link: "mailto:info@hs360.co"
     },
     {
-      icon: <Users className="h-8 w-8" />,
-      title: "Dedicated Support",
-      description: "24/7 medical and technical support for your practice",
-      features: ["Account manager", "Clinical consultation", "Technical helpdesk"]
+      icon: <Building className="h-6 w-6" />,
+      title: "Provider Support",
+      content: "providers@hs360.co",
+      subContent: "Dedicated provider assistance",
+      link: "mailto:providers@hs360.co"
     },
     {
-      icon: <Award className="h-8 w-8" />,
-      title: "Quality Assurance",
-      description: "99.9% accuracy with fastest turnaround times",
-      features: ["Quality guarantee", "Rush processing", "Result validation"]
+      icon: <MapPin className="h-6 w-6" />,
+      title: "Corporate Office",
+      content: "Available upon request",
+      subContent: "Licensed facilities nationwide",
+      link: null
     }
   ];
 
-  const practiceTypes = [
-    "Family Medicine",
-    "Internal Medicine", 
-    "Functional Medicine",
-    "Integrative Medicine",
-    "Anti-Aging/Longevity",
-    "Wellness Center",
-    "Concierge Medicine",
-    "Naturopathic Medicine",
-    "Chiropractic",
-    "Pharmacy",
-    "Other"
-  ];
-
-  const licenseTypes = [
-    "MD - Doctor of Medicine",
-    "DO - Doctor of Osteopathic Medicine",
-    "NP - Nurse Practitioner", 
-    "PA - Physician Assistant",
-    "PharmD - Doctor of Pharmacy",
-    "ND - Naturopathic Doctor",
-    "DC - Doctor of Chiropractic",
-    "Other Healthcare License"
-  ];
-
-  const servicesOptions = [
-    "Genetic Testing",
-    "Micronutrient Testing",
-    "Peptide Therapy",
-    "Clinical Lab Services",
-    "Hormone Testing",
-    "Toxicology Testing"
+  const businessHours = [
+    { day: "Monday - Friday", hours: "8:00 AM - 8:00 PM EST" },
+    { day: "Saturday", hours: "9:00 AM - 5:00 PM EST" },
+    { day: "Sunday", hours: "Emergency support only" }
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Provider application submitted:', formData);
+    // Handle form submission here
+    console.log('Contact form submitted:', formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -105,165 +64,121 @@ const ForProviders = () => {
     });
   };
 
-  const handleCheckboxChange = (service: string) => {
-    const updatedServices = formData.servicesOfInterest.includes(service)
-      ? formData.servicesOfInterest.filter(s => s !== service)
-      : [...formData.servicesOfInterest, service];
-    
-    setFormData({
-      ...formData,
-      servicesOfInterest: updatedServices
-    });
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    if (files && files.length > 0) {
-      setFormData({
-        ...formData,
-        [name]: files[0]
-      });
-    }
-  };
-
   return (
     <>
-      <div className="pt-20">
-        {/* Hero Section */}
-        <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-10 w-64 h-64 bg-magenta-500 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
-          </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-4xl mx-auto text-center"
-            >
-              <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
-                Partner with <span className="bg-gradient-primary bg-clip-text text-transparent">HealthSpan360</span>
-              </h1>
-              <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed mb-8">
-                Join our network of forward-thinking healthcare providers and unlock the power of personalized diagnostics for your practice
-              </p>
-              <div className="bg-gradient-to-br from-blue-900/50 to-purple-900/50 backdrop-blur p-8 rounded-2xl max-w-3xl mx-auto border border-white/20">
-                <p className="text-lg text-white font-inter">
-                  <strong>Licensed practitioners only:</strong> MD, DO, NP, PharmD, Chiropractors, and certified wellness providers welcome
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+    <div className="pt-20">
+      {/* Hero Section */}
+      <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-magenta-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
+              Contact <span className="bg-gradient-primary bg-clip-text text-transparent">HealthSpan360</span>
+            </h1>
+            <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed">
+              Ready to transform your practice with personalized diagnostics? 
+              Get in touch with our expert team today.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Provider Benefits */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
-                Provider <span className="bg-gradient-primary bg-clip-text text-transparent">Benefits</span>
-              </h2>
-              <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
-                Enhance your practice with cutting-edge diagnostics and comprehensive support
-              </p>
-            </motion.div>
+      {/* Contact Information Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Contact Info */}
+            <div className="lg:col-span-1">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-8">Get in Touch</h2>
+                <div className="space-y-6">
+                  {contactInfo.map((info, index) => (
+                    <div key={index} className="flex items-start space-x-4">
+                      <div className="bg-gradient-primary text-white p-3 rounded-lg flex-shrink-0">
+                        {info.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-poppins font-semibold text-gray-900 mb-1">{info.title}</h3>
+                        {info.link ? (
+                          <a
+                            href={info.link}
+                            className="text-magenta-500 hover:text-magenta-600 font-inter font-medium"
+                          >
+                            {info.content}
+                          </a>
+                        ) : (
+                          <p className="text-gray-700 font-inter font-medium">{info.content}</p>
+                        )}
+                        <p className="text-gray-500 text-sm font-inter">{info.subContent}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={benefit.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-3xl hover:shadow-lg transition-shadow"
-                >
-                  <div className="bg-gradient-primary text-white p-4 rounded-xl mb-6 w-fit">
-                    {benefit.icon}
-                  </div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">{benefit.title}</h3>
-                  <p className="text-gray-600 font-inter mb-6">{benefit.description}</p>
-                  <ul className="space-y-2">
-                    {benefit.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700 font-inter">{feature}</span>
-                      </li>
+                {/* Business Hours */}
+                <div className="mt-12 bg-gradient-to-br from-gray-50 to-orange-50/20 p-6 rounded-2xl">
+                  <h3 className="font-poppins font-bold text-gray-900 mb-4 flex items-center">
+                    <Clock className="h-5 w-5 mr-2 text-magenta-500" />
+                    Business Hours
+                  </h3>
+                  <div className="space-y-2">
+                    {businessHours.map((hours, index) => (
+                      <div key={index} className="flex justify-between text-sm font-inter">
+                        <span className="text-gray-700 font-inter">{hours.day}</span>
+                        <span className="text-gray-900 font-inter font-medium">{hours.hours}</span>
+                      </div>
                     ))}
-                  </ul>
-                </motion.div>
-              ))}
+                  </div>
+                </div>
+              </motion.div>
             </div>
-          </div>
-        </section>
 
-        {/* Provider Application Form */}
-        <section className="py-24 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-6">Provider Application</h2>
-              <p className="text-xl text-gray-600 font-inter">
-                Complete the application below to join our network of healthcare providers
-              </p>
-            </motion.div>
+            {/* Contact Form */}
+            <div className="lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 lg:p-12 rounded-3xl"
+              >
+                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-8 flex items-center">
+                  <MessageSquare className="h-8 w-8 mr-3 text-magenta-500" />
+                  Send us a Message
+                </h2>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-white p-8 lg:p-12 rounded-3xl shadow-lg"
-            >
-              <form onSubmit={handleSubmit} className="space-y-8" name="provider-application" method="POST" data-netlify="true" encType="multipart/form-data">
-                <input type="hidden" name="form-name" value="provider-application" />
-                
-                {/* Personal Information */}
-                <div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Personal Information</h3>
+                <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
+                  <input type="hidden" name="form-name" value="contact" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="firstName" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        First Name *
+                      <label htmlFor="name" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
+                        Full Name *
                       </label>
                       <input
                         type="text"
-                        id="firstName"
-                        name="firstName"
-                        value={formData.firstName}
+                        id="name"
+                        name="name"
+                        value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="lastName" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Last Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -272,13 +187,16 @@ const ForProviders = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
                         required
                       />
                     </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Phone Number *
+                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Phone Number
                       </label>
                       <input
                         type="tel"
@@ -286,68 +204,129 @@ const ForProviders = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
                       />
                     </div>
-                  </div>
-                </div>
-
-                {/* Practice Information */}
-                <div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Practice Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="practiceName" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Practice Name *
+                      <label htmlFor="organization" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Organization/Practice
                       </label>
                       <input
                         type="text"
-                        id="practiceName"
-                        name="practiceName"
-                        value={formData.practiceName}
+                        id="organization"
+                        name="organization"
+                        value={formData.organization}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="inquiryType" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Inquiry Type *
+                      </label>
+                      <select
+                        id="inquiryType"
+                        name="inquiryType"
+                        value={formData.inquiryType}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
+                        required
+                      >
+                        <option value="">Select inquiry type</option>
+                        <option value="provider">Provider Partnership</option>
+                        <option value="testing">Testing Services</option>
+                        <option value="peptides">Peptide Information</option>
+                        <option value="support">Technical Support</option>
+                        <option value="general">General Information</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Subject *
+                      </label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
                         required
                       />
                     </div>
-                    <div>
-                      <label htmlFor="practiceType" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Practice Type *
-                      </label>
-                      <select
-                        id="practiceType"
-                        name="practiceType"
-                        value={formData.practiceType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      >
-                        <option value="">Select practice type</option>
-                        {practiceTypes.map((type) => (
-                          <option key={type} value={type}>{type}</option>
-                        ))}
-                      </select>
-                    </div>
                   </div>
-                </div>
 
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center"
-                >
-                  Submit Application
-                  <Send className="ml-2 h-5 w-5" />
-                </button>
-              </form>
-            </motion.div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={6}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
+                      placeholder="Please provide details about your inquiry..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
+                    <p>
+                      <strong>Privacy Notice:</strong> Your information will be used solely to respond to your inquiry. 
+                      We do not share personal information with third parties. For medical questions, please consult 
+                      with a licensed healthcare provider.
+                    </p>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center"
+                  >
+                    Send Message
+                    <Send className="ml-2 h-5 w-5" />
+                  </button>
+                </form>
+              </motion.div>
+            </div>
           </div>
-        </section>
-      </div>
-      <CalendlySection />
+        </div>
+      </section>
+
+      {/* Emergency Contact Section */}
+      <section className="py-16 bg-gradient-secondary text-white">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-poppins font-bold mb-4">
+              24/7 Emergency Support for Providers
+            </h2>
+            <p className="text-xl text-white/80 font-inter mb-6">
+              Critical patient care questions? Our medical team is available around the clock.
+            </p>
+            <a
+              href="tel:1-800-HEALTHSPAN"
+              className="inline-flex items-center bg-white text-magenta-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-colors"
+            >
+              <Phone className="mr-2 h-5 w-5" />
+              Emergency Line: 1-800-HEALTHSPAN
+            </a>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+    {/* Calendly Section */}
+    <CalendlySection />
     </>
   );
 };
 
-export default ForProviders;
+export default Contact;
