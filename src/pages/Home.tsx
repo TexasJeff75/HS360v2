@@ -200,10 +200,10 @@ const Home = () => {
                 {/* Enhanced pulse ring */}
                 <motion.div 
                   className="absolute inset-0 rounded-full border-2 border-magenta-500/20" 
-                     style={{ animationDuration: '2s' }}></div>
+                  style={{ animationDuration: '2s' }}
                   variants={pulseVariants}
                   animate="animate"
-                ></motion.div>
+                />
                 
                 <motion.img 
                   src="/logo.png" 
