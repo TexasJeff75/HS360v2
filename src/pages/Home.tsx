@@ -191,9 +191,10 @@ const Home = () => {
                 {/* Enhanced animated light trace border */}
                 <motion.div 
                   className="absolute inset-0 rounded-full bg-gradient-to-r from-magenta-500 via-orange-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
-                     style={{ padding: '2px', animationDuration: '3s' }}>
+                  style={{ padding: '2px', animationDuration: '3s' }}
                   animate={{ rotate: 360 }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                >
                   <div className="w-full h-full rounded-full bg-charcoal-500"></div>
                 </motion.div>
                 
