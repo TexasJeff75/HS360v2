@@ -367,15 +367,9 @@ const ForProviders = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
                       'Genetic Testing',
-                      'Micronutrient Testing',
                       'Peptide Therapy',
-                      'Weight Management',
-                      'Anti-Aging/Longevity',
-                      'Hormone Optimization',
-                      'Cardiovascular Health',
-                      'Cognitive Enhancement',
-                      'Sports Performance',
-                      'Metabolic Health'
+                      'Micronutrient Testing',
+                      'Clinical Lab Services'
                     ].map((interest) => (
                       <label key={interest} className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-gray-200 hover:border-magenta-300 transition-colors cursor-pointer">
                         <input
