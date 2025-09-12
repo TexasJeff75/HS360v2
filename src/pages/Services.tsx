@@ -157,7 +157,7 @@ const Services = () => {
                   )}
 
                   <Link
-                    to="/contact"
+                   to={service.link}
                     className="inline-flex items-center bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-poppins font-semibold transition-all transform hover:scale-105"
                   >
                     Learn More
