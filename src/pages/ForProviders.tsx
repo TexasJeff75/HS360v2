@@ -180,7 +180,7 @@ const ForProviders = () => {
           >
             <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
-                Provider Application
+                Contact Information
               </h2>
               <p className="text-xl text-gray-600 font-inter">
                 Join our network of healthcare professionals committed to personalized medicine
@@ -189,36 +189,58 @@ const ForProviders = () => {
 
             <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-12">
               <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                      required
-                    />
+                {/* Contact Information Section */}
+                <div className="border-b border-gray-200 pb-8">
+                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Contact Information</h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div className="md:col-span-2">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label htmlFor="firstName" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
+                            First Name *
+                          </label>
+                          <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="lastName" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
+                            Last Name *
+                          </label>
+                          <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <label htmlFor="suffix" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
+                        Suffix
+                      </label>
+                      <input
+                        type="text"
+                        id="suffix"
+                        name="suffix"
+                        value={formData.suffix}
+                        onChange={handleChange}
+                        placeholder="MD, DO, NP, etc."
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label htmlFor="practice" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                      Practice/Organization Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="practice"
-                      name="practice"
-                      value={formData.practice}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                      required
-                    />
-                  </div>
-                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -231,7 +253,7 @@ const ForProviders = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
                       required
                     />
                   </div>
@@ -239,13 +261,88 @@ const ForProviders = () => {
                     <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
                       Phone Number *
                     </label>
+                    <p className="text-sm text-gray-500 mb-2">US-based mobile number</p>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                      required
+                    />
+                  </div>
+                </div>
+                </div>
+
+                {/* Business Profile Section */}
+                <div className="border-b border-gray-200 pb-8">
+                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Business Profile</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="companyName" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Company Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="companyName"
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="businessType" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Business Type *
+                    </label>
+                    <select
+                      id="businessType"
+                      name="businessType"
+                      value={formData.businessType}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                      required
+                    >
+                      <option value="">Select Business Type</option>
+                      <option value="provider">Provider</option>
+                      <option value="clinic">Clinic</option>
+                      <option value="pharmacy">Pharmacy</option>
+                      <option value="wellness-center">Wellness Center</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="website" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Website *
+                    </label>
+                    <input
+                      type="url"
+                      id="website"
+                      name="website"
+                      value={formData.website}
+                      onChange={handleChange}
+                      placeholder="https://example.com"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="taxId" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Tax ID / EIN *
+                    </label>
+                    <input
+                      type="text"
+                      id="taxId"
+                      name="taxId"
+                      value={formData.taxId}
+                      onChange={handleChange}
+                      placeholder="XX-XXXXXXX"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
                       required
                     />
                   </div>
@@ -253,56 +350,236 @@ const ForProviders = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="license" className="block text-sm font-semibold text-gray-700 mb-2">
-                      License Number *
+                    <label htmlFor="npiNumber" className="block text-sm font-semibold text-gray-700 mb-2">
+                      NPI Number *
                     </label>
                     <input
                       type="text"
-                      id="license"
-                      name="license"
-                      value={formData.license}
+                      id="npiNumber"
+                      name="npiNumber"
+                      value={formData.npiNumber}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      placeholder="10-digit NPI number"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
                       required
                     />
                   </div>
+                </div>
+
+                {/* Reseller's License Section */}
+                <div className="space-y-4">
                   <div>
-                    <label htmlFor="specialty" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Specialty/Practice Type *
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Does your business have a reseller's license? *
                     </label>
-                    <select
-                      id="specialty"
-                      name="specialty"
-                      value={formData.specialty}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                      required
-                    >
-                      <option value="">Select Specialty</option>
-                      <option value="md">Medical Doctor (MD)</option>
-                      <option value="do">Doctor of Osteopathy (DO)</option>
-                      <option value="np">Nurse Practitioner (NP)</option>
-                      <option value="pharmd">Doctor of Pharmacy (PharmD)</option>
-                      <option value="dc">Doctor of Chiropractic (DC)</option>
-                      <option value="wellness">Wellness Provider</option>
-                      <option value="other">Other Licensed Provider</option>
-                    </select>
+                    <p className="text-sm text-gray-500 mb-4">Helps determine your eligibility for sales tax exemption.</p>
+                    <div className="flex space-x-6">
+                      {['Yes', 'No', 'Not sure'].map((option) => (
+                        <label key={option} className="flex items-center">
+                          <input
+                            type="radio"
+                            name="resellerLicense"
+                            value={option}
+                            checked={formData.resellerLicense === option}
+                            onChange={handleChange}
+                            className="h-4 w-4 text-magenta-500 border-gray-300 focus:ring-magenta-500"
+                            required
+                          />
+                          <span className="ml-2 text-gray-700">{option}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Conditional Reseller Fields */}
+                  {formData.resellerLicense === 'Yes' && (
+                    <>
+                      <div>
+                        <label htmlFor="resellerPermitNumber" className="block text-sm font-semibold text-gray-700 mb-2">
+                          Reseller's Permit Number *
+                        </label>
+                        <input
+                          type="text"
+                          id="resellerPermitNumber"
+                          name="resellerPermitNumber"
+                          value={formData.resellerPermitNumber}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                          Upload Reseller's Certificate *
+                        </label>
+                        <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-magenta-400 transition-colors">
+                          <div className="space-y-1 text-center">
+                            <FileText className="mx-auto h-12 w-12 text-gray-400" />
+                            <div className="flex text-sm text-gray-600">
+                              <label htmlFor="resellerCertificate" className="relative cursor-pointer bg-white rounded-md font-medium text-magenta-500 hover:text-magenta-600 focus-within:outline-none">
+                                <span>Upload</span>
+                                <input
+                                  id="resellerCertificate"
+                                  type="file"
+                                  className="sr-only"
+                                  onChange={handleFileChange('resellerCertificate')}
+                                  accept=".pdf,.jpg,.jpeg,.png"
+                                  required
+                                />
+                              </label>
+                              <p className="pl-1">or drag files here</p>
+                            </div>
+                            <p className="text-xs text-gray-500">PDF, PNG, JPG up to 10MB</p>
+                            {files.resellerCertificate && (
+                              <p className="text-sm text-green-600">Selected: {files.resellerCertificate.name}</p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+                </div>
+
+                {/* Business Address Section */}
+                <div className="border-b border-gray-200 pb-8">
+                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-2">Business Address</h3>
+                  <p className="text-sm text-gray-500 mb-6">If not applicable, use your main operating address</p>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <label htmlFor="addressLine1" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Address *
+                      </label>
+                      <input
+                        type="text"
+                        id="addressLine1"
+                        name="addressLine1"
+                        value={formData.addressLine1}
+                        onChange={handleChange}
+                        placeholder="Address Line 1"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                        required
+                      />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div>
+                        <label htmlFor="city" className="block text-sm font-semibold text-gray-700 mb-2">
+                          City *
+                        </label>
+                        <input
+                          type="text"
+                          id="city"
+                          name="city"
+                          value={formData.city}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="state" className="block text-sm font-semibold text-gray-700 mb-2">
+                          State *
+                        </label>
+                        <input
+                          type="text"
+                          id="state"
+                          name="state"
+                          value={formData.state}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="zipCode" className="block text-sm font-semibold text-gray-700 mb-2">
+                          Zip Code *
+                        </label>
+                        <input
+                          type="text"
+                          id="zipCode"
+                          name="zipCode"
+                          value={formData.zipCode}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-500">All fields are required</p>
                   </div>
                 </div>
 
+                {/* Verification & Referral Section */}
+                <div className="border-b border-gray-200 pb-8">
+                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Verification & Referral</h3>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Upload Proof of Business or Professional License
+                      </label>
+                      <p className="text-sm text-gray-500 mb-4">Optional at this stage. Clinics may upload a business permit; individual providers may upload a license or valid ID. Required later to complete your application.</p>
+                      <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-magenta-400 transition-colors">
+                        <div className="space-y-1 text-center">
+                          <FileText className="mx-auto h-12 w-12 text-gray-400" />
+                          <div className="flex text-sm text-gray-600">
+                            <label htmlFor="businessLicense" className="relative cursor-pointer bg-white rounded-md font-medium text-magenta-500 hover:text-magenta-600 focus-within:outline-none">
+                              <span>Upload</span>
+                              <input
+                                id="businessLicense"
+                                type="file"
+                                className="sr-only"
+                                onChange={handleFileChange('businessLicense')}
+                                accept=".pdf,.jpg,.jpeg,.png"
+                              />
+                            </label>
+                            <p className="pl-1">or drag files here</p>
+                          </div>
+                          <p className="text-xs text-gray-500">PDF, PNG, JPG up to 10MB</p>
+                          {files.businessLicense && (
+                            <p className="text-sm text-green-600">Selected: {files.businessLicense.name}</p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="referredBy" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Referred by someone? Let us know!
+                      </label>
+                      <p className="text-sm text-gray-500 mb-4">Name or code of the person who referred you</p>
+                      <p className="text-sm text-gray-500 mb-4">Optional—but filling this in may give you priority approval if applicable!</p>
+                      <input
+                        type="text"
+                        id="referredBy"
+                        name="referredBy"
+                        value={formData.referredBy}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional Notes Section */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Tell us about your practice and interest in our services
+                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Additional Notes</h3>
+                <div>
+                  <label htmlFor="comments" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Comments
                   </label>
                   <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
+                    id="comments"
+                    name="comments"
+                    value={formData.comments}
                     onChange={handleChange}
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                    placeholder="Describe your practice, patient demographics, and how you plan to integrate our services..."
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors"
                   ></textarea>
+                </div>
                 </div>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
