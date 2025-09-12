@@ -44,7 +44,6 @@ const Services = () => {
         "Personalized nutrition planning",
         "Optimal peptide selection",
         "Drug interaction screening"
-      ]
       ],
       link: "/services/genetic-testing"
     },
@@ -65,7 +64,6 @@ const Services = () => {
         "Wellness optimization protocols",
         "Athletic performance enhancement",
         "Chronic disease management"
-      ]
       ],
       link: "/services/micronutrient-testing"
     },
@@ -86,7 +84,6 @@ const Services = () => {
         "Patient monitoring protocols",
         "Treatment efficacy tracking",
         "Preventive health screening"
-      ]
       ],
       link: "/services/clinical-lab-services"
     }
