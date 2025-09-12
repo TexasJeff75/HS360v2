@@ -160,23 +160,11 @@ const Contact = () => {
                   Send us a Message
                 </h2>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
                   <input type="hidden" name="form-name" value="contact" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-          </div>
-          
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Provider-Ordered Testing Only</h4>
-            <p>All diagnostic testing must be ordered and interpreted by a licensed healthcare provider. We do not offer direct-to-consumer testing services.</p>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Not a Substitute for Standard Care</h4>
-            <p>Test results are intended for educational purposes and professional support only. They are not intended to replace physical examinations, patient interviews, or other standard diagnostic evaluations. Results should never be used as the sole basis for diagnosis or treatment.</p>
                         Full Name *
                       </label>
                       <input
@@ -309,7 +297,38 @@ const Contact = () => {
         </div>
       </section>
 
-            <p>Do not use test results for self-diagnosis, self-treatment, or as a substitute for medical care from a qualified provider.</p>
+      {/* Important Disclaimers */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-white p-8 rounded-2xl shadow-lg"
+          >
+            <h2 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Important Medical Disclaimers</h2>
+            <div className="space-y-4 text-gray-700">
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-2">Provider-Ordered Testing Only</h4>
+                <p>All diagnostic testing must be ordered and interpreted by a licensed healthcare provider. We do not offer direct-to-consumer testing services.</p>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-2">Not a Substitute for Standard Care</h4>
+                <p>Test results are intended for educational purposes and professional support only. They are not intended to replace physical examinations, patient interviews, or other standard diagnostic evaluations. Results should never be used as the sole basis for diagnosis or treatment.</p>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-gray-900 mb-2">Consult Your Healthcare Provider</h4>
+                <p>Do not use test results for self-diagnosis, self-treatment, or as a substitute for medical care from a qualified provider.</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Emergency Support Section */}
       <section className="py-16 bg-gradient-secondary text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
