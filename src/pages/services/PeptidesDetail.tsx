@@ -144,14 +144,14 @@ const PeptidesDetail = () => {
               <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed mb-8">
                 High-quality peptides for research purposes, available exclusively to licensed healthcare practitioners and pharmacists
               </p>
-              <div className="bg-red-600/90 border-2 border-red-400 backdrop-blur p-8 rounded-2xl max-w-4xl mx-auto shadow-2xl animate-pulse">
+              <div className="bg-red-600/90 border-2 border-red-400 backdrop-blur p-8 rounded-2xl max-w-4xl mx-auto shadow-2xl">
                 <div className="flex items-start space-x-4">
                   <div className="bg-red-100 p-2 rounded-full">
                     <Shield className="h-8 w-8 text-red-600 flex-shrink-0" />
                   </div>
                   <div className="text-left">
-                    <p className="text-2xl font-poppins font-bold text-white mb-3 flex items-center">
-                      🚨 COMPLIANCE NOTICE 🚨
+                    <p className="text-2xl font-poppins font-bold text-white mb-3">
+                      COMPLIANCE NOTICE
                     </p>
                     <p className="text-lg text-red-100 font-inter leading-relaxed">
                       <strong className="text-white">RESEARCH USE ONLY:</strong> All peptide products are for research purposes only and are not intended for human consumption. 
