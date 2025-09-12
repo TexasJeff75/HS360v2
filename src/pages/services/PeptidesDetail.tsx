@@ -141,9 +141,6 @@ const PeptidesDetail = () => {
               <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
                 Research <span className="bg-gradient-primary bg-clip-text text-transparent">Peptides</span>
               </h1>
-              <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed mb-8">
-                High-quality peptides for research purposes, available exclusively to licensed healthcare practitioners and pharmacists
-              </p>
               <div className="bg-red-600/90 border-2 border-red-400 backdrop-blur p-8 rounded-2xl max-w-4xl mx-auto shadow-2xl">
                 <div className="flex items-start space-x-4">
                   <div className="bg-red-100 p-2 rounded-full">
