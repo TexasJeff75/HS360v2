@@ -177,9 +177,6 @@ const PeptidesDetail = () => {
               <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
                 Complete Peptide <span className="bg-gradient-primary bg-clip-text text-transparent">Catalog</span>
               </h2>
-              <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
-                Our comprehensive inventory of research-grade peptides available to licensed practitioners
-              </p>
             </motion.div>
 
             <motion.div
