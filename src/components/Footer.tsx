@@ -164,3 +164,12 @@ const Footer = () => {
                 <Phone className="h-4 w-4 mr-2" />
                 1-800-HEALTHSPAN
               </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
