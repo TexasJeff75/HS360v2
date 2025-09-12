@@ -5,13 +5,29 @@ import CalendlySection from '../components/CalendlySection';
 
 const ForProviders = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    practice: '',
+    firstName: '',
+    lastName: '',
+    suffix: '',
     email: '',
     phone: '',
-    license: '',
-    specialty: '',
-    message: ''
+    companyName: '',
+    businessType: '',
+    website: '',
+    taxId: '',
+    npiNumber: '',
+    resellerLicense: '',
+    resellerPermitNumber: '',
+    addressLine1: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    referredBy: '',
+    comments: ''
+  });
+
+  const [files, setFiles] = useState({
+    resellerCertificate: null as File | null,
+    businessLicense: null as File | null
   });
 
   const benefits = [
@@ -44,7 +60,7 @@ const ForProviders = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
-    console.log('Provider application submitted:', formData);
+    console.log('Provider application submitted:', formData, files);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -52,6 +68,14 @@ const ForProviders = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleFileChange = (fieldName: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    setFiles(prev => ({
+      ...prev,
+      [fieldName]: file
+    }));
   };
 
   return (
