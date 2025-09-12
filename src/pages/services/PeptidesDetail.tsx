@@ -238,53 +238,85 @@ const PeptidesDetail = () => {
               className="text-center mb-16"
             >
               <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
-                Quality & <span className="bg-gradient-primary bg-clip-text text-transparent">Compliance</span>
+                Product <span className="bg-gradient-primary bg-clip-text text-transparent">Disclaimer</span>
               </h2>
-              <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
-                Rigorous standards ensure the highest quality and regulatory compliance
-              </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-3xl font-poppins font-bold text-gray-900 mb-6">Compliance Standards</h3>
-                <ul className="space-y-4">
-                  {compliancePoints.map((point, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
-                      <span className="text-gray-700 font-inter">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="bg-red-50 border border-red-200 p-8 rounded-2xl"
-              >
-                <div className="flex items-start space-x-4 mb-6">
-                  <AlertTriangle className="h-8 w-8 text-red-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="text-xl font-poppins font-bold text-red-900 mb-3">Important Disclaimers</h4>
-                    <div className="space-y-3 text-red-800 font-inter">
-                      <p>• Peptides are for research use only</p>
-                      <p>• Not intended for human or animal consumption</p>
-                      <p>• Available only to licensed healthcare practitioners</p>
-                      <p>• Proper storage and handling required</p>
-                      <p>• Not evaluated by the FDA</p>
-                    </div>
-                  </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="max-w-4xl mx-auto bg-white p-8 lg:p-12 rounded-2xl shadow-lg border border-gray-200"
+            >
+              <div className="space-y-8">
+                {/* For Research Use Only */}
+                <div>
+                  <h3 className="text-2xl font-poppins font-bold text-red-600 mb-4">
+                    For Research Use Only – Not for Human or Animal Consumption
+                  </h3>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    This product is sold strictly for in-vitro laboratory research purposes only. It is not a drug, food, medical device, or cosmetic, and must not be used for any form of human or veterinary application. Products are not intended for the diagnosis, treatment, cure, or prevention of any disease.
+                  </p>
                 </div>
-              </motion.div>
-            </div>
+
+                {/* Regulatory Status */}
+                <div>
+                  <h4 className="text-lg font-poppins font-bold text-gray-900 mb-3">Regulatory Status:</h4>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    These compounds have not been evaluated by the U.S. Food and Drug Administration (FDA) or any other regulatory agency. They are not approved for medical use, compounding, or clinical applications.
+                  </p>
+                </div>
+
+                {/* Intended Users */}
+                <div>
+                  <h4 className="text-lg font-poppins font-bold text-gray-900 mb-3">Intended Users:</h4>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    Purchasers must be 21 years of age or older, qualified, and properly trained research professionals capable of handling potentially hazardous materials.
+                  </p>
+                </div>
+
+                {/* Safety & Handling */}
+                <div>
+                  <h4 className="text-lg font-poppins font-bold text-gray-900 mb-3">Safety & Handling:</h4>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    These products have not been sterilized or tested by HealthSpan360 LLC for safety or efficacy in food, drug, cosmetic, medical, or household use. Proper laboratory procedures, protective equipment, and handling protocols are required.
+                  </p>
+                </div>
+
+                {/* Compliance */}
+                <div>
+                  <h4 className="text-lg font-poppins font-bold text-gray-900 mb-3">Compliance:</h4>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    It is the responsibility of the purchaser to ensure compliance with all applicable local, state, and federal laws and regulations regarding research chemicals.
+                  </p>
+                </div>
+
+                {/* No Warranty */}
+                <div>
+                  <h4 className="text-lg font-poppins font-bold text-gray-900 mb-3">No Warranty:</h4>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    Products are provided "as is" without warranty of merchantability or fitness for any purpose. HealthSpan360 LLC makes no representations or guarantees regarding the use, results, or suitability of these products for any purpose other than research.
+                  </p>
+                </div>
+
+                {/* Liability & Indemnification */}
+                <div>
+                  <h4 className="text-lg font-poppins font-bold text-gray-900 mb-3">Liability & Indemnification:</h4>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    By purchasing, the buyer assumes all responsibility and liability for handling, storage, and use of the product(s). Buyer agrees to indemnify and hold harmless HealthSpan360 LLC, its owners, employees, and affiliates from any claims, losses, or damages arising from misuse or unlawful use of the products.
+                  </p>
+                </div>
+
+                {/* Final Sale Policy */}
+                <div>
+                  <h4 className="text-lg font-poppins font-bold text-gray-900 mb-3">Final Sale Policy:</h4>
+                  <p className="text-gray-700 font-inter leading-relaxed">
+                    All sales are final. No returns or refunds will be accepted once an order has been fulfilled and shipped.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
