@@ -249,161 +249,17 @@ const Home = () => {
                 
                 <p className="text-gray-600 font-inter mb-6 leading-relaxed">
                   {service.description}
-                </p>
-                
-                <div className="space-y-2 mb-8">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center space-x-2">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span className="text-gray-700 font-inter">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <Link
-                  to={service.href}
-                  className="inline-flex items-center text-magenta-600 hover:text-magenta-700 font-poppins font-semibold transition-colors"
-                >
-                  Learn More
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
-              Why Choose{' '}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                HealthSpan360?
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto leading-relaxed">
-              We understand the unique challenges healthcare providers face. Our platform is designed 
-              to streamline your workflow while delivering exceptional patient outcomes.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center p-8 bg-gradient-to-br from-gray-50 to-orange-50/20 rounded-2xl hover:shadow-lg transition-all group"
-              >
-                <div className="text-magenta-500 mb-4 flex justify-center group-hover:scale-110 transition-transform">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-poppins font-bold text-gray-900 mb-4">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 font-inter leading-relaxed">
-                  {benefit.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-24 bg-gradient-dark text-off-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-poppins font-bold mb-6">
-              Trusted by{' '}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Healthcare Leaders
-              </span>
-            </h2>
-            <p className="text-xl text-cool-gray font-inter max-w-3xl mx-auto leading-relaxed">
-              See what medical professionals are saying about their experience with HealthSpan360.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all"
-              >
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                
-                <p className="text-white/90 font-inter mb-6 leading-relaxed italic">
-                  "{testimonial.content}"
-                </p>
-                
-                <div>
-                  <div className="font-poppins font-semibold text-white">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-cool-gray font-inter text-sm">
-                    {testimonial.role}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-magenta-600 to-orange-600 text-white">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl lg:text-5xl font-poppins font-bold mb-6">
-              Ready to Transform Your Practice?
-            </h2>
-            <p className="text-xl text-white/90 font-inter mb-8 leading-relaxed">
-              Join thousands of healthcare providers who trust HealthSpan360 for their diagnostic and therapeutic needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link
-                to="/providers"
-                className="bg-white text-magenta-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
-              >
-                Become a Provider
-              </Link>
-              <Link
-                to="/contact"
-                className="border-2 border-white text-white hover:bg-white hover:text-magenta-600 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all"
-              >
-                Contact Us
-              </Link>
-            </div>
+                transition: { duration: 0.6 }
+              }}
+              className="relative"
+            >
+              <source srcSet="/logo.webp" type="image/webp" />
+              <motion.img 
+                src="/logo.png" 
+                alt="HealthSpan360 Logo" 
+                className="h-64 w-auto drop-shadow-2xl"
+              />
+            </motion.picture>
           </motion.div>
         </div>
       </section>
