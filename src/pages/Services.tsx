@@ -151,23 +151,60 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
+                className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:-translate-y-2"
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
+                  transition: { type: "spring", stiffness: 300 }
+                }}
               >
                 {/* Card Header */}
                 <div className={`bg-gradient-to-r ${service.gradient} p-8 text-white relative`}>
+                  <motion.div
+                    className="absolute inset-0 opacity-20"
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    style={{
+                      background: "linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)",
+                      backgroundSize: "200% 100%",
+                    }}
+                  />
                   <div className="flex items-start justify-between">
                     <div className="flex items-start space-x-4">
-                      <div className="bg-white/20 backdrop-blur p-3 rounded-xl">
+                      <motion.div 
+                        className="bg-white/20 backdrop-blur p-3 rounded-xl"
+                        whileHover={{ 
+                          rotate: [0, -15, 15, 0],
+                          scale: 1.1,
+                          transition: { duration: 0.5 }
+                        }}
+                      >
                         {service.icon}
-                      </div>
+                      </motion.div>
                       <div>
                         <h3 className="text-2xl font-poppins font-bold mb-1">{service.title}</h3>
                         <p className="text-white/90 font-inter">{service.subtitle}</p>
                       </div>
                     </div>
-                    <div className={`${service.badgeColor} px-3 py-1 rounded-full text-xs font-poppins font-semibold`}>
+                    <motion.div 
+                      className={`${service.badgeColor} px-3 py-1 rounded-full text-xs font-poppins font-semibold`}
+                      animate={{
+                        scale: [1, 1.05, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.3
+                      }}
+                    >
                       {service.badge}
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
 
@@ -180,21 +217,43 @@ const Services = () => {
                   {/* Key Features */}
                   <div className="space-y-3 mb-8">
                     {service.keyFeatures.map((feature, idx) => (
-                      <div key={idx} className="flex items-center space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                      <motion.div 
+                        key={idx} 
+                        className="flex items-center space-x-3"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        viewport={{ once: true }}
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.2, rotate: 360 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                        </motion.div>
                         <span className="text-gray-700 font-inter">{feature}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
 
                   {/* CTA Button */}
-                  <Link
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Link
                     to={service.link}
                     className={`group/btn inline-flex items-center bg-gradient-to-r ${service.gradient} hover:shadow-lg text-white px-6 py-3 rounded-lg font-poppins font-semibold transition-all duration-300 transform group-hover:scale-105`}
                   >
                     Learn More
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                    <motion.div
+                      animate={{ x: [0, 3, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                    </motion.div>
                   </Link>
+                  </motion.div>
                 </div>
 
                 {/* Special Notice for Peptides */}

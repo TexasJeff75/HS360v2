@@ -170,11 +170,22 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group"
+                whileHover={{ 
+                  y: -5,
+                  transition: { type: "spring", stiffness: 300 }
+                }}
               >
-                <div className="bg-gradient-primary text-white p-4 rounded-xl mb-6">
+                <motion.div 
+                  className="bg-gradient-primary text-white p-4 rounded-xl mb-6"
+                  whileHover={{ 
+                    rotate: [0, -5, 5, 0],
+                    scale: 1.05,
+                    transition: { duration: 0.5 }
+                  }}
+                >
                   {value.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-poppins font-bold text-gray-900 mb-4">{value.title}</h3>
                 <p className="text-gray-600 font-inter">{value.description}</p>
               </motion.div>
@@ -211,10 +222,34 @@ const About = () => {
                 viewport={{ once: true }}
                 className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl"
                 className="bg-gradient-to-br from-gray-50 to-orange-50 p-8 rounded-2xl"
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                  transition: { type: "spring", stiffness: 300 }
+                }}
               >
-                <div className="bg-gradient-primary text-white w-16 h-16 rounded-full flex items-center justify-center mb-6 text-2xl font-poppins font-bold">
+                <motion.div 
+                  className="bg-gradient-primary text-white w-16 h-16 rounded-full flex items-center justify-center mb-6 text-2xl font-poppins font-bold"
+                  whileHover={{ 
+                    scale: 1.1,
+                    rotate: 360,
+                    transition: { duration: 0.6 }
+                  }}
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 rgba(214, 0, 164, 0)",
+                      "0 0 20px rgba(214, 0, 164, 0.3)",
+                      "0 0 0 rgba(214, 0, 164, 0)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.5
+                  }}
+                >
                   {leader.name.split(' ').map(n => n[0]).join('')}
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-poppins font-bold text-gray-900 mb-2">{leader.name}</h3>
                 <div className="text-magenta-500 font-poppins font-semibold mb-4">{leader.role}</div>
                 <p className="text-gray-600 font-inter">{leader.background}</p>

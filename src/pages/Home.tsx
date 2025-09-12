@@ -38,16 +38,87 @@ const Home = () => {
     { number: "100%", label: "Actionable" }
   ];
 
+  // Animation variants for enhanced movement
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  };
+
+  const floatingVariants = {
+    animate: {
+      y: [-10, 10, -10],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const pulseVariants = {
+    animate: {
+      scale: [1, 1.05, 1],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
   return (
     <>
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section className="relative bg-gradient-dark text-off-white">
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-500/90 to-transparent"></div>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-magenta-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
-        </div>
+        <motion.div 
+          className="absolute inset-0 opacity-10"
+          variants={floatingVariants}
+          animate="animate"
+        >
+          <motion.div 
+            className="absolute top-20 left-10 w-64 h-64 bg-magenta-500 rounded-full blur-3xl"
+            animate={{
+              x: [0, 50, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          ></motion.div>
+          <motion.div 
+            className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"
+            animate={{
+              x: [0, -40, 0],
+              y: [0, 20, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          ></motion.div>
+        </motion.div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -57,32 +128,57 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               className="max-w-4xl"
             >
-              <h1 className="text-5xl lg:text-7xl font-poppins font-bold mb-6 leading-tight">
+              <motion.h1 
+                className="text-5xl lg:text-7xl font-poppins font-bold mb-6 leading-tight"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2 }}
+              >
                 Turning <span className="bg-gradient-primary bg-clip-text text-transparent">Insight</span>
                 <br />
                 Into <span className="bg-gradient-primary bg-clip-text text-transparent">Impact</span>
-              </h1>
-              <p className="text-xl lg:text-2xl text-cool-gray font-inter mb-8 leading-relaxed">
+              </motion.h1>
+              <motion.p 
+                className="text-xl lg:text-2xl text-cool-gray font-inter mb-8 leading-relaxed"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
                 Integrating peptide science, genetic insights, and advanced laboratory testing 
                 to help providers and patients achieve better health outcomes.
-              </p>
+              </motion.p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link 
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link 
                   to="/providers"
                   className="group bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-105 flex items-center justify-center"
                 >
                   For Providers
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
-                <Link 
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link 
                   to="/patients"
                   className="group bg-white/10 backdrop-blur hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all flex items-center justify-center"
                 >
                   For Patients
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
-              </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
 
             <motion.div
@@ -92,20 +188,32 @@ const Home = () => {
               className="flex justify-center lg:justify-end"
             >
               <div className="relative group">
-                {/* Animated light trace border */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-magenta-500 via-orange-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-spin" 
+                {/* Enhanced animated light trace border */}
+                <motion.div 
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-magenta-500 via-orange-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
                      style={{ padding: '2px', animationDuration: '3s' }}>
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                   <div className="w-full h-full rounded-full bg-charcoal-500"></div>
-                </div>
+                </motion.div>
                 
-                {/* Subtle pulse ring */}
-                <div className="absolute inset-0 rounded-full border-2 border-magenta-500/20 animate-ping" 
+                {/* Enhanced pulse ring */}
+                <motion.div 
+                  className="absolute inset-0 rounded-full border-2 border-magenta-500/20" 
                      style={{ animationDuration: '2s' }}></div>
+                  variants={pulseVariants}
+                  animate="animate"
+                ></motion.div>
                 
-                <img 
+                <motion.img 
                   src="/logo.png" 
                   alt="HealthSpan360 Logo" 
                   className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 object-contain transform transition-transform duration-500 group-hover:scale-105"
+                  whileHover={{ 
+                    scale: 1.1,
+                    rotate: [0, -5, 5, 0],
+                    transition: { duration: 0.5 }
+                  }}
                 />
               </div>
             </motion.div>
@@ -131,53 +239,94 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                variants={itemVariants}
+                whileHover={{ 
+                  y: -10,
+                  transition: { type: "spring", stiffness: 300 }
+                }}
                 className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-cyan-200"
                 className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-orange-200"
               >
-                <div className="bg-gradient-primary text-white p-4 rounded-xl mb-6 group-hover:scale-110 transition-transform">
+                <motion.div 
+                  className="bg-gradient-primary text-white p-4 rounded-xl mb-6 group-hover:scale-110 transition-transform"
+                  whileHover={{ 
+                    rotate: [0, -10, 10, 0],
+                    transition: { duration: 0.5 }
+                  }}
+                >
                   {service.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-poppins font-bold text-gray-900 mb-4">{service.title}</h3>
                 <p className="text-gray-600 font-inter mb-6">{service.description}</p>
-                <Link
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Link
                   to={service.link}
                   className="inline-flex items-center text-magenta-500 hover:text-orange-500 font-inter font-semibold group-hover:translate-x-1 transition-all"
                 >
                   Learn More
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
+                </motion.div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Stats Section */}
       <section className="py-16 bg-gradient-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.1,
+                  transition: { type: "spring", stiffness: 400 }
+                }}
                 className="text-center text-white"
               >
-                <div className="text-4xl lg:text-5xl font-poppins font-bold mb-2">{stat.number}</div>
+                <motion.div 
+                  className="text-4xl lg:text-5xl font-poppins font-bold mb-2"
+                  animate={{ 
+                    textShadow: [
+                      "0 0 5px rgba(255,255,255,0.5)",
+                      "0 0 20px rgba(255,255,255,0.8)",
+                      "0 0 5px rgba(255,255,255,0.5)"
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    delay: index * 0.2
+                  }}
+                >
+                  {stat.number}
+                </motion.div>
                 <div className="text-white/80 text-sm lg:text-base font-inter">{stat.label}</div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
