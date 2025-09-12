@@ -144,13 +144,17 @@ const PeptidesDetail = () => {
               <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed mb-8">
                 High-quality peptides for research purposes, available exclusively to licensed healthcare practitioners and pharmacists
               </p>
-              <div className="bg-amber-50/10 border border-amber-200/20 backdrop-blur p-6 rounded-2xl max-w-3xl mx-auto">
-                <div className="flex items-start space-x-3">
-                  <Shield className="h-6 w-6 text-gold-300 mt-1 flex-shrink-0" />
+              <div className="bg-red-600/90 border-2 border-red-400 backdrop-blur p-8 rounded-2xl max-w-4xl mx-auto shadow-2xl animate-pulse">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-red-100 p-2 rounded-full">
+                    <Shield className="h-8 w-8 text-red-600 flex-shrink-0" />
+                  </div>
                   <div className="text-left">
-                    <p className="text-lg font-poppins font-semibold text-gold-300 mb-2">Compliance Notice</p>
-                    <p className="text-off-white font-inter">
-                      All peptide products are for research use only and are not intended for human consumption. 
+                    <p className="text-2xl font-poppins font-bold text-white mb-3 flex items-center">
+                      🚨 COMPLIANCE NOTICE 🚨
+                    </p>
+                    <p className="text-lg text-red-100 font-inter leading-relaxed">
+                      <strong className="text-white">RESEARCH USE ONLY:</strong> All peptide products are for research purposes only and are not intended for human consumption. 
                       Available exclusively to licensed healthcare practitioners and pharmacists.
                     </p>
                   </div>
@@ -222,19 +226,6 @@ const PeptidesDetail = () => {
                     </div>
                   </motion.div>
                 ))}
-              </div>
-              
-              <div className="mt-8 bg-red-50 border border-red-200 rounded-lg p-6">
-                <div className="flex items-start space-x-3">
-                  <AlertTriangle className="h-6 w-6 text-red-600 flex-shrink-0 mt-1" />
-                  <div className="text-red-800">
-                    <h4 className="font-poppins font-bold mb-2">Research Use Only</h4>
-                    <p className="text-sm font-inter">
-                      All peptides listed above are for research purposes only and are not intended for human consumption. 
-                      Available exclusively to licensed healthcare practitioners and pharmacists who meet our verification requirements.
-                    </p>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
