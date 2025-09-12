@@ -54,20 +54,16 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <motion.picture
+            <motion.img 
+              src="/logo.png" 
+              alt="HealthSpan360 Logo" 
+              className="h-10 w-auto"
               whileHover={{ 
                 scale: 1.1,
                 rotate: [0, -5, 5, 0],
                 transition: { duration: 0.5 }
               }}
-            >
-              <source srcSet="/logo.webp" type="image/webp" />
-              <motion.img 
-                src="/logo.png" 
-                alt="HealthSpan360 Logo" 
-                className="h-10 w-auto"
-              />
-            </motion.picture>
+            />
           </Link>
 
           {/* Desktop Navigation */}

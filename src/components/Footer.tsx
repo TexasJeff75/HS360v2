@@ -66,19 +66,15 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center">
-              <motion.picture
+              <motion.img 
+                src="/logo.png" 
+                alt="HealthSpan360 Logo" 
+                className="h-10 w-auto"
                 whileHover={{ 
                   scale: 1.05,
                   transition: { duration: 0.3 }
                 }}
-              >
-                <source srcSet="/logo.webp" type="image/webp" />
-                <motion.img 
-                  src="/logo.png" 
-                  alt="HealthSpan360 Logo" 
-                  className="h-10 w-auto"
-                />
-              </motion.picture>
+              />
             </Link>
             <p className="text-gray-300 font-inter leading-relaxed">
               Advancing personalized medicine through cutting-edge diagnostics and therapeutic solutions.

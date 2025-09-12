@@ -159,21 +159,16 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex justify-center lg:justify-end"
             >
-              <motion.picture
+              <motion.img 
+                src="/logo.png" 
+                alt="HealthSpan360 Logo" 
+                className="h-64 w-auto drop-shadow-2xl"
                 whileHover={{ 
                   scale: 1.05,
                   rotate: [0, -2, 2, 0],
                   transition: { duration: 0.6 }
                 }}
-                className="relative"
-              >
-                <source srcSet="/logo.webp" type="image/webp" />
-                <motion.img 
-                  src="/logo.png" 
-                  alt="HealthSpan360 Logo" 
-                  className="h-64 w-auto drop-shadow-2xl"
-                />
-              </motion.picture>
+              />
             </motion.div>
           </div>
         </div>
