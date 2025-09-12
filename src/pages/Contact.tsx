@@ -162,6 +162,9 @@ const Contact = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
                         Full Name *
