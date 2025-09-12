@@ -5,93 +5,92 @@ import { Link } from 'react-router-dom';
 import CalendlySection from '../../components/CalendlySection';
 
 const PeptidesDetail = () => {
-  const fullPeptideList = [
-    { name: "2X Blend (CJC NO DAC 5mg/Ipamorelin 5mg)", amount: "10mg" },
-    { name: "2X Blend (Tesamorelin 5mg/Ipamorelin 5mg)", amount: "10mg" },
-    { name: "2X Blend (Tesamorelin 10mg/Ipamorelin 5mg)", amount: "15mg" },
-    { name: "3X Blend (Tesamorelin 5mg/Ipamorelin 2.5mg/MGF 500mcg)", amount: "8mg" },
-    { name: "4X Blend (Tesamorelin 5mg/Ipamorelin 2.5mg/GHRP-2.5mg/MGF 500mcg)", amount: "13mg" },
-    { name: "AOD-9604", amount: "6mg" },
-    { name: "ARA-290", amount: "16mg" },
-    { name: "BDNF", amount: "10mg" },
-    { name: "BPC-157", amount: "15mg" },
-    { name: "Cagrilintide", amount: "5mg" },
-    { name: "Cagrilintide", amount: "10mg" },
-    { name: "Cardiogen", amount: "25mg" },
-    { name: "Cartalax", amount: "25mg" },
-    { name: "Curcumin", amount: "600mg" },
-    { name: "DSIP", amount: "5mg" },
-    { name: "Follistatin 344", amount: "1mg" },
-    { name: "GLP-1 R", amount: "12mg" },
-    { name: "GLP-1 R", amount: "24mg" },
-    { name: "GLP-1 R", amount: "60mg" },
-    { name: "GLP-1 S", amount: "5mg" },
-    { name: "GLP-1 S", amount: "10mg" },
-    { name: "GLP-1 S", amount: "20mg" },
-    { name: "GLP-1 S", amount: "50mg" },
-    { name: "GLP-1 S", amount: "300mg" },
-    { name: "GLP-1 S", amount: "90mg" },
-    { name: "GLP-1 S / SLU-PP-332", amount: "180mg" },
-    { name: "GLP-1 T", amount: "10mg" },
-    { name: "GLP-1 T", amount: "20mg" },
-    { name: "GLP-1 T", amount: "50mg" },
-    { name: "GLP-1 T", amount: "60mg" },
-    { name: "GLP-1 T", amount: "75mg" },
-    { name: "GLP-1 T", amount: "100mg" },
-    { name: "GLP-1 T", amount: "120mg" },
-    { name: "GLP-1 (5mg x30 tablets)", amount: "150mg" },
-    { name: "Glow 42", amount: "42mg" },
-    { name: "Glow 65", amount: "65mg" },
-    { name: "Hexarelin", amount: "5mg" },
-    { name: "IGF-1 LR3", amount: "1mg" },
-    { name: "Ipamorelin", amount: "10mg" },
-    { name: "KLOW", amount: "80mg" },
-    { name: "KPV", amount: "5mg" },
-    { name: "Kisspeptin", amount: "5mg" },
-    { name: "Kisspeptin", amount: "10mg" },
-    { name: "LL-37", amount: "5mg" },
-    { name: "LL-37 Complex", amount: "5mg" },
-    { name: "MGF", amount: "5mg" },
-    { name: "MK-677", amount: "1500mg" },
-    { name: "MOTS-c", amount: "10mg" },
-    { name: "Melanotan II", amount: "10mg" },
-    { name: "NAD+ (Biofermented)", amount: "1000mg" },
-    { name: "NAD+ (Synthetic)", amount: "1000mg" },
-    { name: "Oxytocin", amount: "5mg" },
-    { name: "Oxytocin", amount: "10mg" },
-    { name: "PE-22-28", amount: "10mg" },
-    { name: "PT-141", amount: "5mg" },
-    { name: "PT-141", amount: "10mg" },
-    { name: "SLU-PP-332", amount: "15mg" },
-    { name: "SLU-PP-332", amount: "60mg" },
-    { name: "SS-31", amount: "10mg" },
-    { name: "SS-31", amount: "15mg" },
-    { name: "Selank", amount: "5mg" },
-    { name: "Selank", amount: "10mg" },
-    { name: "Semax", amount: "5mg" },
-    { name: "Semax", amount: "30mg" },
-    { name: "Sermorelin", amount: "5mg" },
-    { name: "Sermorelin", amount: "10mg" },
-    { name: "Survodutide", amount: "6mg" },
-    { name: "TA-1", amount: "10mg" },
-    { name: "TA-1 Complex", amount: "16.4mg" },
-    { name: "TB-500", amount: "5mg" },
-    { name: "TB-500", amount: "10mg" },
-    { name: "Tesamorelin", amount: "8mg" },
-    { name: "Tesamorelin", amount: "10mg" },
-    { name: "Tesofensine", amount: "15mg" },
-    { name: "Tesofensine", amount: "50mg" },
-    { name: "Tesofensine 250mcg/ Dihexa 5mg", amount: "315mg" },
-    { name: "Thymagen", amount: "10mg" },
-    { name: "Thymalin", amount: "20mg" },
-    { name: "VIP 2mg/ BPC-157 500mcg", amount: "75mg" },
-    { name: "Weight Loss Blend", amount: "203.75mg" },
-    { name: "Wolverine Blend", amount: "20mg" },
-    { name: "Brain Blend - Dihexa 10mg / Tesofensine 250mcg / BPC-157 125mcg", amount: "622.5mg" },
-    { name: "5-Amino-1MQ (5mg)", amount: "3600mg" }
+  const peptideCategories = [
+    {
+      title: "Weight Loss & Metabolism",
+      peptides: [
+        { name: "2X Blend (CJC NO DAC 5mg/Ipamorelin 5mg)", amount: "10mg" },
+        { name: "2X Blend (Tesamorelin 5mg/Ipamorelin 5mg)", amount: "10mg" },
+        { name: "2X Blend (Tesamorelin 10mg/Ipamorelin 5mg)", amount: "15mg" },
+        { name: "3X Blend (Tesamorelin 5mg/Ipamorelin 2.5mg/MGF 500mcg)", amount: "8mg" },
+        { name: "4X Blend (Tesamorelin 5mg/Ipamorelin 2.5mg/GHRP-2 5mg/MGF 500mcg)", amount: "13mg" },
+        { name: "AOD-9604", amount: "6mg" },
+        { name: "Cagrilintide", amount: "5mg / 10mg" },
+        { name: "GLP-1 (R, S, T variants, tablets)", amount: "5mg – 300mg" },
+        { name: "Survodutide", amount: "6mg" },
+        { name: "Tesamorelin", amount: "8mg / 10mg" },
+        { name: "Tesofensine", amount: "15mg / 50mg" },
+        { name: "Tesofensine/Dihexa combo", amount: "315mg" },
+        { name: "Weight Loss Blend", amount: "2283.75mg" },
+        { name: "Brain Blend (Dihexa, Tesofensine, BPC-157)", amount: "622.5mg" },
+        { name: "5-Amino-1MQ", amount: "3600mg" },
+        { name: "Wolverine Blend", amount: "20mg" }
+      ]
+    },
+    {
+      title: "Cognitive & Neuroprotection",
+      peptides: [
+        { name: "BDNF", amount: "10mg" },
+        { name: "Curcumin", amount: "600mg" },
+        { name: "DSIP", amount: "5mg" },
+        { name: "KLOW", amount: "80mg" },
+        { name: "MOTS-c", amount: "10mg" },
+        { name: "NAD+ (Biofermented/Synthetic)", amount: "1000mg" },
+        { name: "PE-22-28", amount: "10mg" },
+        { name: "Semax", amount: "5mg / 30mg" },
+        { name: "Selank", amount: "5mg / 10mg" },
+        { name: "SS-31", amount: "10mg / 15mg" },
+        { name: "SLU-PP-332", amount: "15mg / 60mg" },
+        { name: "Glow 42", amount: "42mg" },
+        { name: "Glow 65", amount: "65mg" }
+      ]
+    },
+    {
+      title: "Muscle Growth, Repair & Recovery",
+      peptides: [
+        { name: "BPC-157", amount: "15mg" },
+        { name: "IGF-1 LR3", amount: "1mg" },
+        { name: "Follistatin 344", amount: "1mg" },
+        { name: "Hexarelin", amount: "5mg" },
+        { name: "Ipamorelin", amount: "10mg" },
+        { name: "MGF", amount: "5mg" },
+        { name: "MK-677", amount: "1500mg" },
+        { name: "TB-500", amount: "5mg / 10mg" },
+        { name: "Sermorelin", amount: "5mg / 10mg" },
+        { name: "Thymagen", amount: "10mg" },
+        { name: "Thymalin", amount: "20mg" },
+        { name: "VIP 2mg / BPC-157 500mcg", amount: "75mg" }
+      ]
+    },
+    {
+      title: "Cardio & Organ Support",
+      peptides: [
+        { name: "Cardiogen", amount: "25mg" },
+        { name: "Cartalax", amount: "25mg" },
+        { name: "ARA-290", amount: "16mg" }
+      ]
+    },
+    {
+      title: "Immune & Anti-Inflammatory",
+      peptides: [
+        { name: "KPV", amount: "5mg" },
+        { name: "LL-37", amount: "5mg" },
+        { name: "LL-37 Complex", amount: "5mg" },
+        { name: "TA-1", amount: "10mg" },
+        { name: "TA-1 Complex", amount: "16.4mg" }
+      ]
+    },
+    {
+      title: "Sexual Function & Tanning",
+      peptides: [
+        { name: "PT-141", amount: "5mg / 10mg" },
+        { name: "Oxytocin", amount: "5mg / 10mg" },
+        { name: "Melanotan II", amount: "10mg" }
+      ]
+    }
   ];
 
-  const peptideCategories = [
+  const overviewCategories = [
     {
       title: "Growth Hormone Peptides",
       description: "Research peptides that may influence growth hormone pathways",
@@ -161,52 +160,6 @@ const PeptidesDetail = () => {
           </div>
         </section>
 
-        {/* Peptide Categories */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
-                Peptide <span className="bg-gradient-primary bg-clip-text text-transparent">Categories</span>
-              </h2>
-              <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
-                Research-grade peptides organized by therapeutic area of interest
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {peptideCategories.map((category, index) => (
-                <motion.div
-                  key={category.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-3xl hover:shadow-lg transition-shadow"
-                >
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">{category.title}</h3>
-                  <p className="text-gray-600 font-inter mb-6">{category.description}</p>
-                  <div className="space-y-2">
-                    <h4 className="font-poppins font-semibold text-gray-800 mb-3">Research Examples:</h4>
-                    <div className="grid grid-cols-2 gap-2">
-                      {category.examples.map((example, idx) => (
-                        <div key={idx} className="bg-white p-3 rounded-lg border border-gray-200">
-                          <span className="text-gray-700 font-inter text-sm">{example}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Complete Peptide Catalog */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -232,25 +185,40 @@ const PeptidesDetail = () => {
               viewport={{ once: true }}
               className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-3xl"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {fullPeptideList.map((peptide, index) => (
+              <div className="space-y-12">
+                {peptideCategories.map((category, categoryIndex) => (
                   <motion.div
-                    key={`${peptide.name}-${index}`}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.02 }}
+                    key={category.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                     viewport={{ once: true }}
-                    className="bg-white p-4 rounded-xl border border-gray-200 hover:shadow-md transition-shadow"
                   >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1 pr-3">
-                        <h4 className="font-poppins font-semibold text-gray-900 text-sm leading-tight mb-1">
-                          {peptide.name}
-                        </h4>
-                      </div>
-                      <div className="bg-magenta-100 text-magenta-700 px-2 py-1 rounded-full text-xs font-poppins font-bold flex-shrink-0">
-                        {peptide.amount}
-                      </div>
+                    <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6 pb-2 border-b-2 border-magenta-200">
+                      {category.title}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {category.peptides.map((peptide, index) => (
+                        <motion.div
+                          key={`${peptide.name}-${index}`}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.4, delay: index * 0.02 }}
+                          viewport={{ once: true }}
+                          className="bg-white p-4 rounded-xl border border-gray-200 hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex justify-between items-start">
+                            <div className="flex-1 pr-3">
+                              <h4 className="font-poppins font-semibold text-gray-900 text-sm leading-tight mb-1">
+                                {peptide.name}
+                              </h4>
+                            </div>
+                            <div className="bg-magenta-100 text-magenta-700 px-2 py-1 rounded-full text-xs font-poppins font-bold flex-shrink-0">
+                              {peptide.amount}
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
                     </div>
                   </motion.div>
                 ))}
@@ -269,6 +237,52 @@ const PeptidesDetail = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Overview Categories Section */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
+                Research <span className="bg-gradient-primary bg-clip-text text-transparent">Categories</span>
+              </h2>
+              <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
+                Research-grade peptides organized by therapeutic area of interest
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {overviewCategories.map((category, index) => (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-3xl hover:shadow-lg transition-shadow"
+                >
+                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">{category.title}</h3>
+                  <p className="text-gray-600 font-inter mb-6">{category.description}</p>
+                  <div className="space-y-2">
+                    <h4 className="font-poppins font-semibold text-gray-800 mb-3">Research Examples:</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {category.examples.map((example, idx) => (
+                        <div key={idx} className="bg-white p-3 rounded-lg border border-gray-200">
+                          <span className="text-gray-700 font-inter text-sm">{example}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
