@@ -5,6 +5,10 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
+import PeptidesDetail from './pages/services/PeptidesDetail';
+import GeneticTestingDetail from './pages/services/GeneticTestingDetail';
+import MicronutrientTestingDetail from './pages/services/MicronutrientTestingDetail';
+import ClinicalLabServicesDetail from './pages/services/ClinicalLabServicesDetail';
 import ForProviders from './pages/ForProviders';
 import ForPatients from './pages/ForPatients';
 import Resources from './pages/Resources';
@@ -24,6 +28,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/peptides" element={<PeptidesDetail />} />
+            <Route path="/services/genetic-testing" element={<GeneticTestingDetail />} />
+            <Route path="/services/micronutrient-testing" element={<MicronutrientTestingDetail />} />
+            <Route path="/services/clinical-lab-services" element={<ClinicalLabServicesDetail />} />
             <Route path="/providers" element={<ForProviders />} />
             <Route path="/patients" element={<ForPatients />} />
             <Route path="/resources" element={<Resources />} />

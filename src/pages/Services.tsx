@@ -7,6 +7,27 @@ import CalendlySection from '../components/CalendlySection';
 const Services = () => {
   const services = [
     {
+      icon: <Activity className="h-8 w-8" />,
+      title: "Peptides",
+      subtitle: "Research-Use Products for Licensed Practitioners",
+      description: "High-quality peptides for research purposes, available exclusively to licensed healthcare practitioners with full compliance support.",
+      features: [
+        "Research-grade peptide synthesis",
+        "Purity testing and certificates",
+        "Stability and storage guidance",
+        "Dosing protocol recommendations",
+        "Comprehensive compliance documentation"
+      ],
+      applications: [
+        "Clinical research studies",
+        "Therapeutic protocol development",
+        "Patient outcome optimization",
+        "Professional education programs"
+      ],
+      disclaimer: true,
+      link: "/services/peptides"
+    },
+    {
       icon: <Dna className="h-12 w-12" />,
       title: "Genetic Testing",
       subtitle: "Personalized SNP & Peptide-Response Panels",
@@ -24,6 +45,8 @@ const Services = () => {
         "Optimal peptide selection",
         "Drug interaction screening"
       ]
+      ],
+      link: "/services/genetic-testing"
     },
     {
       icon: <TestTube className="h-12 w-12" />,
@@ -43,26 +66,8 @@ const Services = () => {
         "Athletic performance enhancement",
         "Chronic disease management"
       ]
-    },
-    {
-      icon: <Activity className="h-12 w-12" />,
-      title: "Peptides",
-      subtitle: "Research-Use Products for Licensed Practitioners",
-      description: "High-quality peptides for research purposes, available exclusively to licensed healthcare practitioners with full compliance support.",
-      features: [
-        "Research-grade peptide synthesis",
-        "Purity testing and certificates",
-        "Stability and storage guidance",
-        "Dosing protocol recommendations",
-        "Comprehensive compliance documentation"
       ],
-      applications: [
-        "Clinical research studies",
-        "Therapeutic protocol development",
-        "Patient outcome optimization",
-        "Professional education programs"
-      ],
-      disclaimer: true
+      link: "/services/micronutrient-testing"
     },
     {
       icon: <Users className="h-12 w-12" />,
@@ -82,6 +87,8 @@ const Services = () => {
         "Treatment efficacy tracking",
         "Preventive health screening"
       ]
+      ],
+      link: "/services/clinical-lab-services"
     }
   ];
 

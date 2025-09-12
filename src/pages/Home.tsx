@@ -6,28 +6,28 @@ import { ChevronRight, Dna, TestTube, Activity, Users, Award, ArrowRight } from 
 const Home = () => {
   const services = [
     {
+      icon: <Activity className="h-8 w-8" />,
+      title: "Peptides",
+      description: "Research-use peptides for licensed practitioners with full compliance support.",
+      link: "/services/peptides"
+    },
+    {
       icon: <Dna className="h-8 w-8" />,
       title: "Genetic Testing",
       description: "Personalized SNP analysis and peptide-response panels for precision medicine.",
-      link: "/services"
+      link: "/services/genetic-testing"
     },
     {
       icon: <TestTube className="h-8 w-8" />,
       title: "Micronutrient Testing",
       description: "Advanced LC-MS/MS and ICP-MS-based testing for comprehensive wellness insights.",
-      link: "/services"
-    },
-    {
-      icon: <Activity className="h-8 w-8" />,
-      title: "Peptides",
-      description: "Research-use peptides for licensed practitioners with full compliance support.",
-      link: "/services"
+      link: "/services/micronutrient-testing"
     },
     {
       icon: <Users className="h-8 w-8" />,
       title: "Clinical Lab Services",
       description: "Molecular diagnostics, toxicology, and specialty testing for providers.",
-      link: "/services"
+      link: "/services/clinical-lab-services"
     }
   ];
 
