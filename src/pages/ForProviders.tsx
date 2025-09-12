@@ -97,13 +97,53 @@ const ForProviders = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="bg-white/10 backdrop-blur border border-white/20 p-6 rounded-2xl max-w-3xl mx-auto"
+                className="bg-gradient-to-r from-white/15 to-white/10 backdrop-blur-lg border border-white/30 p-8 rounded-3xl max-w-4xl mx-auto shadow-2xl relative overflow-hidden"
               >
+                {/* Background accent */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold-300/5 to-transparent rounded-3xl"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gold-300/10 rounded-full blur-2xl transform translate-x-16 -translate-y-16"></div>
+                
                 <div className="flex items-center justify-center space-x-3 text-off-white">
-                  <Shield className="h-6 w-6 text-gold-300" />
-                  <div className="text-center">
-                    <p className="font-poppins font-semibold text-lg mb-2">Licensed practitioners only:</p>
-                    <p className="font-inter">MD, DO, NP, PharmD, Chiropractors, and certified wellness providers welcome</p>
+                  <motion.div 
+                    className="bg-gold-300/20 p-4 rounded-2xl border border-gold-300/30"
+                    animate={{
+                      boxShadow: [
+                        "0 0 20px rgba(255, 195, 0, 0.2)",
+                        "0 0 30px rgba(255, 195, 0, 0.4)",
+                        "0 0 20px rgba(255, 195, 0, 0.2)"
+                      ]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <Shield className="h-8 w-8 text-gold-300" />
+                  </motion.div>
+                  <div className="text-center relative z-10">
+                    <motion.p 
+                      className="font-poppins font-bold text-2xl mb-3 text-white"
+                      animate={{
+                        textShadow: [
+                          "0 0 10px rgba(255,255,255,0.5)",
+                          "0 0 20px rgba(255,255,255,0.8)",
+                          "0 0 10px rgba(255,255,255,0.5)"
+                        ]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      Licensed practitioners only:
+                    </motion.p>
+                    <div className="bg-white/10 backdrop-blur px-6 py-3 rounded-xl border border-white/20">
+                      <p className="font-inter text-lg text-white/95 font-medium">
+                        MD, DO, NP, PharmD, Chiropractors, and certified wellness providers welcome
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
