@@ -1,175 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Building } from 'lucide-react';
-import CalendlySection from '../components/CalendlySection';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    organization: '',
-    subject: '',
-    message: '',
-    inquiryType: ''
-  });
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const location = useLocation();
 
-  const contactInfo = [
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navigation = [
+    { name: 'Home', href: '/', current: location.pathname === '/' },
+    { name: 'About', href: '/about', current: location.pathname === '/about' },
     {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Phone Support",
-      content: "1-800-HEALTHSPAN",
-      subContent: "24/7 Provider Support",
-      link: "tel:1-800-HEALTHSPAN"
+      name: 'Services',
+      href: '#',
+      current: location.pathname.startsWith('/services'),
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Genetic Testing', href: '/services/genetic-testing' },
+        { name: 'Clinical Lab Services', href: '/services/clinical-lab-services' },
+        { name: 'Micronutrient Testing', href: '/services/micronutrient-testing' },
+        { name: 'Peptides', href: '/services/peptides' },
+      ]
     },
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "Email",
-      content: "info@healthspan360.com",
-      subContent: "Response within 24 hours",
-      link: "mailto:info@hs360.co"
-    },
-    {
-      icon: <Building className="h-6 w-6" />,
-      title: "Provider Support",
-      content: "providers@hs360.co",
-      subContent: "Dedicated provider assistance",
-      link: "mailto:providers@hs360.co"
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: "Corporate Office",
-      content: "Available upon request",
-      subContent: "Licensed facilities nationwide",
-      link: null
-    }
+    { name: 'For Providers', href: '/providers', current: location.pathname === '/providers' },
+    { name: 'For Patients', href: '/patients', current: location.pathname === '/patients' },
+    { name: 'Resources', href: '/resources', current: location.pathname === '/resources' },
+    { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
   ];
 
-  const businessHours = [
-    { day: "Monday - Friday", hours: "8:00 AM - 8:00 PM EST" },
-    { day: "Saturday", hours: "9:00 AM - 5:00 PM EST" },
-    { day: "Sunday", hours: "Emergency support only" }
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleServicesClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Contact form submitted:', formData);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setServicesOpen(!servicesOpen);
   };
 
   return (
-    <>
-    <div className="pt-20">
-      {/* Hero Section */}
-      <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-magenta-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
-              Contact <span className="bg-gradient-primary bg-clip-text text-transparent">HealthSpan360</span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed">
-              Ready to transform your practice with personalized diagnostics? 
-              Get in touch with our expert team today.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Information Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Info */}
-            <div className="lg:col-span-1">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-8">Get in Touch</h2>
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-start space-x-4">
-                      <div className="bg-gradient-primary text-white p-3 rounded-lg flex-shrink-0">
-                        {info.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-poppins font-semibold text-gray-900 mb-1">{info.title}</h3>
-                        {info.link ? (
-                          <a
-                            href={info.link}
-                            className="text-magenta-500 hover:text-magenta-600 font-inter font-medium"
-                          >
-                            {info.content}
-                          </a>
-                        ) : (
-                          <p className="text-gray-700 font-inter font-medium">{info.content}</p>
-                        )}
-                        <p className="text-gray-500 text-sm font-inter">{info.subContent}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Business Hours */}
-                <div className="mt-12 bg-gradient-to-br from-gray-50 to-orange-50/20 p-6 rounded-2xl">
-                  <h3 className="font-poppins font-bold text-gray-900 mb-4 flex items-center">
-                    <Clock className="h-5 w-5 mr-2 text-magenta-500" />
-                    Business Hours
-                  </h3>
-                  <div className="space-y-2">
-                    {businessHours.map((hours, index) => (
-                      <div key={index} className="flex justify-between text-sm font-inter">
-                        <span className="text-gray-700 font-inter">{hours.day}</span>
-                        <span className="text-gray-900 font-inter font-medium">{hours.hours}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 lg:p-12 rounded-3xl"
-              >
-                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-8 flex items-center">
-                  <MessageSquare className="h-8 w-8 mr-3 text-magenta-500" />
-                  Send us a Message
-                </h2>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
-                  <input type="hidden" name="form-name" value="contact" />
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
-                  <input type="hidden" name="form-name" value="contact" />
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
+    <header className={`fixed w-full z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100' 
+        : 'bg-transparent'
+    }`}>
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <motion.picture
+              whileHover={{ 
+                scale: 1.1,
+                rotate: [0, -5, 5, 0],
                 transition: { duration: 0.5 }
               }}
             >
@@ -180,168 +68,138 @@ const Contact = () => {
                 className="h-10 w-auto"
               />
             </motion.picture>
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                  </div>
+          </Link>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="organization" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Organization/Practice
-                      </label>
-                      <input
-                        type="text"
-                        id="organization"
-                        name="organization"
-                        value={formData.organization}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="inquiryType" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Inquiry Type *
-                      </label>
-                      <select
-                        id="inquiryType"
-                        name="inquiryType"
-                        value={formData.inquiryType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                        required
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
+            {navigation.map((item) => (
+              <div key={item.name} className="relative">
+                {item.hasDropdown ? (
+                  <div className="relative">
+                    <button
+                      onClick={handleServicesClick}
+                      className={`flex items-center space-x-1 px-3 py-2 text-sm font-medium transition-colors ${
+                        item.current
+                          ? 'text-magenta-600'
+                          : isScrolled
+                          ? 'text-gray-700 hover:text-magenta-600'
+                          : 'text-white hover:text-magenta-200'
+                      }`}
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {servicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50"
                       >
-                        <option value="">Select inquiry type</option>
-                        <option value="provider">Provider Partnership</option>
-                        <option value="testing">Testing Services</option>
-                        <option value="peptides">Peptide Information</option>
-                        <option value="support">Technical Support</option>
-                        <option value="general">General Information</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Subject *
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
+                        {item.dropdownItems?.map((dropdownItem) => (
+                          <Link
+                            key={dropdownItem.name}
+                            to={dropdownItem.href}
+                            className="block px-4 py-3 text-sm text-gray-700 hover:bg-magenta-50 hover:text-magenta-600 transition-colors"
+                            onClick={() => setServicesOpen(false)}
+                          >
+                            {dropdownItem.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
                   </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                      placeholder="Please provide details about your inquiry..."
-                      required
-                    ></textarea>
-                  </div>
-
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
-                    <p>
-                      <strong>Privacy Notice:</strong> Your information will be used solely to respond to your inquiry. 
-                      We do not share personal information with third parties. For medical questions, please consult 
-                      with a licensed healthcare provider.
-                    </p>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center"
+                ) : (
+                  <Link
+                    to={item.href}
+                    className={`px-3 py-2 text-sm font-medium transition-colors ${
+                      item.current
+                        ? 'text-magenta-600'
+                        : isScrolled
+                        ? 'text-gray-700 hover:text-magenta-600'
+                        : 'text-white hover:text-magenta-200'
+                    }`}
                   >
-                    Send Message
-                    <Send className="ml-2 h-5 w-5" />
-                  </button>
-                </form>
-              </motion.div>
-            </div>
+                    {item.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`p-2 rounded-md ${
+                isScrolled ? 'text-gray-700' : 'text-white'
+              }`}
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
-      </section>
 
-      {/* Emergency Contact Section */}
-      <section className="py-16 bg-gradient-secondary text-white">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        {/* Mobile Navigation */}
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden"
           >
-            <h2 className="text-3xl font-poppins font-bold mb-4">
-              24/7 Emergency Support for Providers
-            </h2>
-            <p className="text-xl text-white/80 font-inter mb-6">
-              Critical patient care questions? Our medical team is available around the clock.
-            </p>
-            <a
-              href="tel:1-800-HEALTHSPAN"
-              className="inline-flex items-center bg-white text-magenta-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-colors"
-            >
-              <Phone className="mr-2 h-5 w-5" />
-              Emergency Line: 1-800-HEALTHSPAN
-            </a>
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg border border-gray-100 mt-2">
+              {navigation.map((item) => (
+                <div key={item.name}>
+                  {item.hasDropdown ? (
+                    <>
+                      <button
+                        onClick={handleServicesClick}
+                        className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:bg-magenta-50 hover:text-magenta-600 rounded-md text-sm font-medium transition-colors"
+                      >
+                        <span>{item.name}</span>
+                        <ChevronDown className={`h-4 w-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {servicesOpen && (
+                        <div className="ml-4 space-y-1">
+                          {item.dropdownItems?.map((dropdownItem) => (
+                            <Link
+                              key={dropdownItem.name}
+                              to={dropdownItem.href}
+                              className="block px-3 py-2 text-sm text-gray-600 hover:bg-magenta-50 hover:text-magenta-600 rounded-md transition-colors"
+                              onClick={() => {
+                                setIsOpen(false);
+                                setServicesOpen(false);
+                              }}
+                            >
+                              {dropdownItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                        item.current
+                          ? 'text-magenta-600 bg-magenta-50'
+                          : 'text-gray-700 hover:bg-magenta-50 hover:text-magenta-600'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
           </motion.div>
-        </div>
-      </section>
-    </div>
-    {/* Calendly Section */}
-    <CalendlySection />
-    </>
+        )}
+      </nav>
+    </header>
   );
 };
 
-export default Contact;
+export default Header;

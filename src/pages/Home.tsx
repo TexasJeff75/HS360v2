@@ -1,342 +1,414 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Building } from 'lucide-react';
-import CalendlySection from '../components/CalendlySection';
+import { 
+  ArrowRight, 
+  Shield, 
+  Users, 
+  Award, 
+  Clock,
+  CheckCircle,
+  Star,
+  TrendingUp,
+  Heart,
+  Microscope,
+  Dna,
+  Activity
+} from 'lucide-react';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    organization: '',
-    subject: '',
-    message: '',
-    inquiryType: ''
-  });
-
-  const contactInfo = [
-    {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Phone Support",
-      content: "1-800-HEALTHSPAN",
-      subContent: "24/7 Provider Support",
-      link: "tel:1-800-HEALTHSPAN"
-    },
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "Email",
-      content: "info@healthspan360.com",
-      subContent: "Response within 24 hours",
-      link: "mailto:info@hs360.co"
-    },
-    {
-      icon: <Building className="h-6 w-6" />,
-      title: "Provider Support",
-      content: "providers@hs360.co",
-      subContent: "Dedicated provider assistance",
-      link: "mailto:providers@hs360.co"
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: "Corporate Office",
-      content: "Available upon request",
-      subContent: "Licensed facilities nationwide",
-      link: null
-    }
+const Home = () => {
+  const stats = [
+    { number: '10,000+', label: 'Healthcare Providers', icon: <Users className="h-8 w-8" /> },
+    { number: '500K+', label: 'Tests Processed', icon: <Microscope className="h-8 w-8" /> },
+    { number: '99.9%', label: 'Accuracy Rate', icon: <Award className="h-8 w-8" /> },
+    { number: '24/7', label: 'Support Available', icon: <Clock className="h-8 w-8" /> },
   ];
 
-  const businessHours = [
-    { day: "Monday - Friday", hours: "8:00 AM - 8:00 PM EST" },
-    { day: "Saturday", hours: "9:00 AM - 5:00 PM EST" },
-    { day: "Sunday", hours: "Emergency support only" }
+  const services = [
+    {
+      title: 'Genetic Testing',
+      description: 'Advanced genomic analysis for personalized treatment strategies and risk assessment.',
+      icon: <Dna className="h-12 w-12" />,
+      features: ['Pharmacogenomics', 'Disease Risk Analysis', 'Ancestry & Wellness', 'Cancer Genetics'],
+      href: '/services/genetic-testing'
+    },
+    {
+      title: 'Clinical Lab Services',
+      description: 'Comprehensive laboratory testing with rapid turnaround times and precise results.',
+      icon: <Microscope className="h-12 w-12" />,
+      features: ['Blood Chemistry', 'Hormone Testing', 'Infectious Disease', 'Toxicology'],
+      href: '/services/clinical-lab-services'
+    },
+    {
+      title: 'Micronutrient Testing',
+      description: 'Detailed analysis of vitamin, mineral, and nutrient levels for optimal health.',
+      icon: <Activity className="h-12 w-12" />,
+      features: ['Vitamin Panels', 'Mineral Analysis', 'Antioxidant Levels', 'Metabolic Health'],
+      href: '/services/micronutrient-testing'
+    },
+    {
+      title: 'Peptide Therapy',
+      description: 'Cutting-edge peptide solutions for regenerative medicine and wellness optimization.',
+      icon: <Heart className="h-12 w-12" />,
+      features: ['Anti-Aging', 'Recovery & Repair', 'Cognitive Enhancement', 'Metabolic Support'],
+      href: '/services/peptides'
+    },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Contact form submitted:', formData);
-  };
+  const testimonials = [
+    {
+      name: 'Dr. Sarah Johnson',
+      role: 'Internal Medicine Physician',
+      content: 'HealthSpan360 has revolutionized how I approach patient care. The genetic insights have been game-changing for my practice.',
+      rating: 5
+    },
+    {
+      name: 'Dr. Michael Chen',
+      role: 'Functional Medicine Practitioner',
+      content: 'The comprehensive micronutrient testing provides invaluable data that helps me create truly personalized treatment plans.',
+      rating: 5
+    },
+    {
+      name: 'Dr. Lisa Rodriguez',
+      role: 'Integrative Medicine Specialist',
+      content: 'Fast turnaround times, accurate results, and excellent customer support. HealthSpan360 is my go-to laboratory partner.',
+      rating: 5
+    },
+  ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const benefits = [
+    {
+      title: 'Provider-First Approach',
+      description: 'Built by healthcare professionals, for healthcare professionals',
+      icon: <Shield className="h-8 w-8" />
+    },
+    {
+      title: 'Rapid Results',
+      description: '24-48 hour turnaround on most standard tests',
+      icon: <TrendingUp className="h-8 w-8" />
+    },
+    {
+      title: '24/7 Support',
+      description: 'Round-the-clock medical and technical support',
+      icon: <Clock className="h-8 w-8" />
+    },
+    {
+      title: 'CLIA Certified',
+      description: 'Highest standards of laboratory quality and compliance',
+      icon: <Award className="h-8 w-8" />
+    },
+  ];
 
   return (
     <>
-    <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">
+      <section className="relative min-h-screen bg-gradient-dark text-off-white overflow-hidden flex items-center">
+        {/* Background Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-magenta-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-10 w-96 h-96 bg-magenta-500 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-orange-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
-              Contact <span className="bg-gradient-primary bg-clip-text text-transparent">HealthSpan360</span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed">
-              Ready to transform your practice with personalized diagnostics? 
-              Get in touch with our expert team today.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-5xl lg:text-7xl font-poppins font-bold leading-tight mb-8">
+                Advanced{' '}
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  Diagnostics
+                </span>{' '}
+                for{' '}
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  Personalized
+                </span>{' '}
+                Medicine
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed mb-12">
+                Empowering healthcare providers with cutting-edge genetic testing, comprehensive lab services, 
+                and innovative peptide therapies to deliver truly personalized patient care.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Link
+                  to="/providers"
+                  className="bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-105 shadow-lg flex items-center justify-center"
+                >
+                  Partner with Us
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                
+                <Link
+                  to="/patients"
+                  className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all hover:bg-white/10 flex items-center justify-center"
+                >
+                  Patient Information
+                </Link>
+              </div>
+            </motion.div>
 
-      {/* Contact Information Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Info */}
-            <div className="lg:col-span-1">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+            {/* Logo/Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center lg:justify-end"
+            >
+              <motion.picture
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: [0, -2, 2, 0],
+                  transition: { duration: 0.6 }
+                }}
+                className="relative"
               >
-                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-8">Get in Touch</h2>
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-start space-x-4">
-                      <div className="bg-gradient-primary text-white p-3 rounded-lg flex-shrink-0">
-                        {info.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-poppins font-semibold text-gray-900 mb-1">{info.title}</h3>
-                        {info.link ? (
-                          <a
-                            href={info.link}
-                            className="text-magenta-500 hover:text-magenta-600 font-inter font-medium"
-                          >
-                            {info.content}
-                          </a>
-                        ) : (
-                          <p className="text-gray-700 font-inter font-medium">{info.content}</p>
-                        )}
-                        <p className="text-gray-500 text-sm font-inter">{info.subContent}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Business Hours */}
-                <div className="mt-12 bg-gradient-to-br from-gray-50 to-orange-50/20 p-6 rounded-2xl">
-                  <h3 className="font-poppins font-bold text-gray-900 mb-4 flex items-center">
-                    <Clock className="h-5 w-5 mr-2 text-magenta-500" />
-                    Business Hours
-                  </h3>
-                  <div className="space-y-2">
-                    {businessHours.map((hours, index) => (
-                      <div key={index} className="flex justify-between text-sm font-inter">
-                        <span className="text-gray-700 font-inter">{hours.day}</span>
-                        <span className="text-gray-900 font-inter font-medium">{hours.hours}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 lg:p-12 rounded-3xl"
-              >
-                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-8 flex items-center">
-                  <MessageSquare className="h-8 w-8 mr-3 text-magenta-500" />
-                  Send us a Message
-                </h2>
-
-                <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
-                  <input type="hidden" name="form-name" value="contact" />
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
-                  <input type="hidden" name="form-name" value="contact" />
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: [0, -5, 5, 0],
-                      transition: { duration: 0.5 }
-                    }}
-                  />
-                </motion.picture>
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="organization" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Organization/Practice
-                      </label>
-                      <input
-                        type="text"
-                        id="organization"
-                        name="organization"
-                        value={formData.organization}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="inquiryType" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Inquiry Type *
-                      </label>
-                      <select
-                        id="inquiryType"
-                        name="inquiryType"
-                        value={formData.inquiryType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      >
-                        <option value="">Select inquiry type</option>
-                        <option value="provider">Provider Partnership</option>
-                        <option value="testing">Testing Services</option>
-                        <option value="peptides">Peptide Information</option>
-                        <option value="support">Technical Support</option>
-                        <option value="general">General Information</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Subject *
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
-                      placeholder="Please provide details about your inquiry..."
-                      required
-                    ></textarea>
-                  </div>
-
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
-                    <p>
-                      <strong>Privacy Notice:</strong> Your information will be used solely to respond to your inquiry. 
-                      We do not share personal information with third parties. For medical questions, please consult 
-                      with a licensed healthcare provider.
-                    </p>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center"
-                  >
-                    Send Message
-                    <Send className="ml-2 h-5 w-5" />
-                  </button>
-                </form>
-              </motion.div>
-            </div>
+                <source srcSet="/logo.webp" type="image/webp" />
+                <motion.img 
+                  src="/logo.png" 
+                  alt="HealthSpan360 Logo" 
+                  className="h-64 w-auto drop-shadow-2xl"
+                />
+              </motion.picture>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Emergency Contact Section */}
-      <section className="py-16 bg-gradient-secondary text-white">
+      {/* Stats Section */}
+      <section className="py-16 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="text-magenta-500 flex justify-center mb-4">
+                  {stat.icon}
+                </div>
+                <div className="text-3xl lg:text-4xl font-poppins font-bold text-gray-900 mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-gray-600 font-inter font-medium">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-orange-50/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
+              Comprehensive{' '}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                Testing Solutions
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto leading-relaxed">
+              From genetic analysis to advanced peptide therapies, we provide the tools and insights 
+              healthcare providers need to deliver personalized, effective treatments.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all group"
+              >
+                <div className="text-magenta-500 mb-6 group-hover:scale-110 transition-transform">
+                  {service.icon}
+                </div>
+                
+                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">
+                  {service.title}
+                </h3>
+                
+                <p className="text-gray-600 font-inter mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                
+                <div className="space-y-2 mb-8">
+                  {service.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center space-x-2">
+                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <span className="text-gray-700 font-inter">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <Link
+                  to={service.href}
+                  className="inline-flex items-center text-magenta-600 hover:text-magenta-700 font-poppins font-semibold transition-colors"
+                >
+                  Learn More
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
+              Why Choose{' '}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                HealthSpan360?
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto leading-relaxed">
+              We understand the unique challenges healthcare providers face. Our platform is designed 
+              to streamline your workflow while delivering exceptional patient outcomes.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center p-8 bg-gradient-to-br from-gray-50 to-orange-50/20 rounded-2xl hover:shadow-lg transition-all group"
+              >
+                <div className="text-magenta-500 mb-4 flex justify-center group-hover:scale-110 transition-transform">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-poppins font-bold text-gray-900 mb-4">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 font-inter leading-relaxed">
+                  {benefit.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-gradient-dark text-off-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-poppins font-bold mb-6">
+              Trusted by{' '}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                Healthcare Leaders
+              </span>
+            </h2>
+            <p className="text-xl text-cool-gray font-inter max-w-3xl mx-auto leading-relaxed">
+              See what medical professionals are saying about their experience with HealthSpan360.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all"
+              >
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                
+                <p className="text-white/90 font-inter mb-6 leading-relaxed italic">
+                  "{testimonial.content}"
+                </p>
+                
+                <div>
+                  <div className="font-poppins font-semibold text-white">
+                    {testimonial.name}
+                  </div>
+                  <div className="text-cool-gray font-inter text-sm">
+                    {testimonial.role}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-r from-magenta-600 to-orange-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-poppins font-bold mb-4">
-              24/7 Emergency Support for Providers
+            <h2 className="text-4xl lg:text-5xl font-poppins font-bold mb-6">
+              Ready to Transform Your Practice?
             </h2>
-            <p className="text-xl text-white/80 font-inter mb-6">
-              Critical patient care questions? Our medical team is available around the clock.
+            <p className="text-xl text-white/90 font-inter mb-8 leading-relaxed">
+              Join thousands of healthcare providers who trust HealthSpan360 for their diagnostic and therapeutic needs.
             </p>
-            <a
-              href="tel:1-800-HEALTHSPAN"
-              className="inline-flex items-center bg-white text-magenta-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-colors"
-            >
-              <Phone className="mr-2 h-5 w-5" />
-              Emergency Line: 1-800-HEALTHSPAN
-            </a>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link
+                to="/providers"
+                className="bg-white text-magenta-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-105 shadow-lg"
+              >
+                Become a Provider
+              </Link>
+              <Link
+                to="/contact"
+                className="border-2 border-white text-white hover:bg-white hover:text-magenta-600 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
-    </div>
-    {/* Calendly Section */}
-    <CalendlySection />
     </>
   );
 };
 
-export default Contact;
+export default Home;
