@@ -92,7 +92,7 @@ const Services = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
+        <section className="py-24 bg-gradient-dark text-white">
           >
             <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
               Our <span className="bg-gradient-primary bg-clip-text text-transparent">Services</span>
