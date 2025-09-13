@@ -195,69 +195,6 @@ const About = () => {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
-              Leadership <span className="bg-gradient-primary bg-clip-text text-transparent">Team</span>
-            </h2>
-            <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
-              Industry experts committed to advancing personalized medicine
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {leadership.map((leader, index) => (
-              <motion.div
-                key={leader.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl"
-                className="bg-gradient-to-br from-gray-50 to-orange-50 p-8 rounded-2xl"
-                whileHover={{ 
-                  y: -8,
-                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
-                  transition: { type: "spring", stiffness: 300 }
-                }}
-              >
-                <motion.div 
-                  className="bg-gradient-primary text-white w-16 h-16 rounded-full flex items-center justify-center mb-6 text-2xl font-poppins font-bold"
-                  whileHover={{ 
-                    scale: 1.1,
-                    rotate: 360,
-                    transition: { duration: 0.6 }
-                  }}
-                  animate={{
-                    boxShadow: [
-                      "0 0 0 rgba(214, 0, 164, 0)",
-                      "0 0 20px rgba(214, 0, 164, 0.3)",
-                      "0 0 0 rgba(214, 0, 164, 0)"
-                    ]
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.5
-                  }}
-                >
-                  {leader.name.split(' ').map(n => n[0]).join('')}
-                </motion.div>
-                <h3 className="text-xl font-poppins font-bold text-gray-900 mb-2">{leader.name}</h3>
-                <div className="text-magenta-500 font-poppins font-semibold mb-4">{leader.role}</div>
-                <p className="text-gray-600 font-inter">{leader.background}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Compliance Section */}
       <section className="py-24 bg-gradient-primary text-white">
