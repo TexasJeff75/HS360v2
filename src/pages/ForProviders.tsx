@@ -99,11 +99,11 @@ const ForProviders = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="bg-white/95 backdrop-blur-sm border border-gray-200 p-6 rounded-2xl max-w-3xl mx-auto shadow-lg"
               >
-                <div className="flex items-center justify-center space-x-4 text-gray-800">
+                <div className="flex items-center justify-start space-x-4 text-gray-800">
                   <div className="bg-magenta-500 p-3 rounded-lg flex-shrink-0">
                     <Shield className="h-6 w-6 text-white" />
                   </div>
-                  <div className="text-center">
+                  <div className="text-left">
                     <p className="font-poppins font-bold text-xl mb-2 text-gray-900">
                       Licensed practitioners only:
                     </p>
