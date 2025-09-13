@@ -170,7 +170,7 @@ const ForPatients = () => {
         </section>
 
         {/* How It Works */}
-        <section className="py-24 bg-gradient-secondary text-white">
+        <section className="py-24 bg-gradient-dark text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
