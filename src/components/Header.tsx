@@ -30,7 +30,7 @@ const Header = () => {
           >
             <Link to="/" className="flex items-center space-x-3">
             <motion.img 
-              src="/logo.png" 
+              src="/Logo_web.webp" 
               alt="HealthSpan360 Logo" 
               className="h-10 w-auto"
               whileHover={{ 

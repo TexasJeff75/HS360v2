@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">
               <img 
-                src="/logo.png" 
+                src="/Logo_web.webp" 
                 alt="HealthSpan360 Logo" 
                 className="h-8 w-auto"
               />

@@ -207,7 +207,7 @@ const Home = () => {
                 />
                 
                 <motion.img 
-                  src="/logo.png" 
+                  src="/Logo_web.webp" 
                   alt="HealthSpan360 Logo" 
                   className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 object-contain transform transition-transform duration-500 group-hover:scale-105"
                   whileHover={{ 
