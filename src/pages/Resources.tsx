@@ -265,7 +265,7 @@ const Resources = () => {
               Need Additional Support?
             </h2>
             <p className="text-xl text-white/80 font-inter mb-8">
-              Our support team is available 24/7 to assist healthcare providers 
+              Our support team is available to assist healthcare providers 
               and answer any questions about our services
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
