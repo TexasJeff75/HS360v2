@@ -366,7 +366,7 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-gradient-secondary p-8 rounded-3xl text-white"
+              className="bg-gradient-dark p-8 rounded-3xl text-white"
             >
               <h3 className="text-2xl font-poppins font-bold mb-6">Why Choose HealthSpan360?</h3>
               <ul className="space-y-4">
