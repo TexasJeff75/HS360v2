@@ -92,7 +92,6 @@ const Services = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-        <section className="py-24 bg-gradient-dark text-white">
           >
             <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
               Our <span className="bg-gradient-primary bg-clip-text text-transparent">Services</span>
@@ -241,17 +240,17 @@ const Services = () => {
                     whileTap={{ scale: 0.98 }}
                   >
                     <Link
-                    to={service.link}
-                    className={`group/btn inline-flex items-center bg-gradient-to-r ${service.gradient} hover:shadow-lg text-white px-6 py-3 rounded-lg font-poppins font-semibold transition-all duration-300 transform group-hover:scale-105`}
-                  >
-                    Learn More
-                    <motion.div
-                      animate={{ x: [0, 3, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
+                      to={service.link}
+                      className={`group/btn inline-flex items-center bg-gradient-to-r ${service.gradient} hover:shadow-lg text-white px-6 py-3 rounded-lg font-poppins font-semibold transition-all duration-300 transform group-hover:scale-105`}
                     >
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
-                    </motion.div>
-                  </Link>
+                      Learn More
+                      <motion.div
+                        animate={{ x: [0, 3, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                      </motion.div>
+                    </Link>
                   </motion.div>
                 </div>
 
