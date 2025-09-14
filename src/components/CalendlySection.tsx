@@ -81,7 +81,7 @@ const CalendlySection = () => {
           
           <div className="space-y-4">
             <motion.a
-              href="https://calendly.com/healthspan360/consultation"
+              href="https://calendly.com/robert-castaneda-proximitylabservices"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-magenta-600 hover:bg-off-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-colors shadow-lg"
