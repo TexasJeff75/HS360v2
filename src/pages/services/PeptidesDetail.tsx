@@ -306,6 +306,9 @@ const PeptidesDetail = () => {
                   <p className="text-gray-700 font-inter leading-relaxed">
                     By purchasing, the buyer assumes all responsibility and liability for handling, storage, and use of the product(s). Buyer agrees to indemnify and hold harmless HealthSpan360 LLC, its owners, employees, and affiliates from any claims, losses, or damages arising from misuse or unlawful use of the products.
                   </p>
+                  <p className="text-gray-700 font-inter leading-relaxed mt-4">
+                    HealthSpan360 LLC is a chemical supplier. HealthSpan360 LLC is not a compounding pharmacy, chemical compounding facility or outsourcing facility as defined under 503A or 503B of the Federal Food, Drug, and Cosmetic act.
+                  </p>
                 </div>
 
                 {/* Final Sale Policy */}
