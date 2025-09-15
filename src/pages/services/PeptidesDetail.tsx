@@ -221,6 +221,24 @@ const PeptidesDetail = () => {
                 ))}
               </div>
             </motion.div>
+
+            {/* Additional Disclaimer */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mt-12 bg-gray-100 border border-gray-300 p-6 rounded-lg"
+            >
+              <div className="space-y-4 text-gray-700 font-inter text-sm leading-relaxed">
+                <p>
+                  HealthSpan360 LLC is a chemical supplier. HealthSpan360 LLC is not a compounding pharmacy or chemical compounding facility as defined under 503A of the Federal Food, Drug, and Cosmetic act. HealthSpan360 LLC is not an outsourcing facility as defined under 503B of the Federal Food, Drug, and Cosmetic act.
+                </p>
+                <p>
+                  The statements made within this website have not been evaluated by the US Food and Drug Administration. The products we offer are not intended to diagnose, treat, cure or prevent any disease.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
