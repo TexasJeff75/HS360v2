@@ -270,7 +270,7 @@ const PeptidesDetail = () => {
                 {/* For Research Use Only */}
                 <div>
                   <h3 className="text-2xl font-poppins font-bold text-red-600 mb-4">
-                    For Research Use Only – Not for Human or Animal Consumption
+                    For Research Use Only
                   </h3>
                   <p className="text-gray-700 font-inter leading-relaxed">
                     This product is sold strictly for in-vitro laboratory research purposes only. It is not a drug, food, medical device, or cosmetic, and must not be used for any form of human or veterinary application. Products are not intended for the diagnosis, treatment, cure, or prevention of any disease.
