@@ -151,8 +151,7 @@ const PeptidesDetail = () => {
                       COMPLIANCE NOTICE
                     </p>
                     <p className="text-lg text-red-100 font-inter leading-relaxed">
-                      <strong className="text-white">RESEARCH USE ONLY:</strong> All peptide products are for research purposes only and are not intended for human consumption. 
-                      Available exclusively to licensed healthcare practitioners and pharmacists.
+                      <strong className="text-white">RESEARCH USE ONLY:</strong> All peptide products are for research purposes only and are only available exclusively to licensed healthcare practitioners and pharmacists.
                     </p>
                   </div>
                 </div>
