@@ -141,16 +141,16 @@ const PeptidesDetail = () => {
               <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
                 Research <span className="bg-gradient-primary bg-clip-text text-transparent">Peptides</span>
               </h1>
-              <div className="bg-red-600/90 border-2 border-red-400 backdrop-blur p-8 rounded-2xl max-w-4xl mx-auto shadow-2xl">
+              <div className="bg-red-600/90 border-2 border-red-400 backdrop-blur p-4 rounded-xl max-w-2xl mx-auto shadow-lg">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-red-100 p-2 rounded-full">
-                    <Shield className="h-8 w-8 text-red-600 flex-shrink-0" />
+                  <div className="bg-red-100 p-1.5 rounded-full">
+                    <Shield className="h-5 w-5 text-red-600 flex-shrink-0" />
                   </div>
                   <div className="text-left">
-                    <p className="text-2xl font-poppins font-bold text-white mb-3">
+                    <p className="text-lg font-poppins font-bold text-white mb-2">
                       COMPLIANCE NOTICE
                     </p>
-                    <p className="text-lg text-red-100 font-inter leading-relaxed">
+                    <p className="text-sm text-red-100 font-inter leading-relaxed">
                       <strong className="text-white">RESEARCH USE ONLY:</strong> All peptide products are for research purposes only and are only available exclusively to licensed healthcare practitioners and pharmacists.
                     </p>
                   </div>
