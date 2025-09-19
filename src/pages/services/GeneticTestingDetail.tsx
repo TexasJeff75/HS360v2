@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Dna, Brain, Heart, Activity, Shield, CheckCircle, ArrowRight } from 'lucide-react';
+import { Dna, Brain, Heart, Activity, Shield, CheckCircle, ArrowRight, X, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CalendlySection from '../../components/CalendlySection';
 
 const GeneticTestingDetail = () => {
+  const [isProxiGeneModalOpen, setIsProxiGeneModalOpen] = useState(false);
+
   const testingPanels = [
     {
       icon: <Brain className="h-8 w-8" />,
@@ -136,6 +138,17 @@ const GeneticTestingDetail = () => {
                       ))}
                     </ul>
                   </div>
+                  {panel.title === 'ProxiGene' && (
+                    <div className="mt-6">
+                      <button
+                        onClick={() => setIsProxiGeneModalOpen(true)}
+                        className="inline-flex items-center bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-4 py-2 rounded-lg font-poppins font-semibold text-sm transition-all"
+                      >
+                        Learn More
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </button>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -258,6 +271,130 @@ const GeneticTestingDetail = () => {
           </div>
         </section>
       </div>
+
+      {/* ProxiGene Modal */}
+      {isProxiGeneModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl"
+          >
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center rounded-t-2xl">
+              <h2 className="text-3xl font-poppins font-bold text-gray-900">ProxiGene - Foundational Panel</h2>
+              <button
+                onClick={() => setIsProxiGeneModalOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="h-6 w-6 text-gray-500" />
+              </button>
+            </div>
+            
+            <div className="p-6 space-y-8">
+              {/* Overview */}
+              <div className="bg-gradient-to-br from-magenta-50 to-orange-50/20 p-6 rounded-xl">
+                <p className="text-gray-700 font-inter leading-relaxed">
+                  The Foundational Panel is a one-time genetic assessment analyzing <strong>140+ SNPs</strong> to reveal predispositions across metabolism, cognition, emotional resilience, inflammation, nutrient absorption, aging, and food sensitivities. It provides personalized, actionable guidance on nutrition, lifestyle, labs, and supplementation for long-term health optimization.
+                </p>
+              </div>
+
+              {/* Key Categories */}
+              <div>
+                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Key Categories Assessed</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                  {/* Cognitive Degeneration */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <h4 className="text-lg font-poppins font-bold text-magenta-600 mb-3">Cognitive Degeneration</h4>
+                    <p className="text-gray-600 font-inter text-sm">Cognitive Decline: memory, neuroinflammation, age-related deterioration</p>
+                  </div>
+
+                  {/* Longevity */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <h4 className="text-lg font-poppins font-bold text-orange-600 mb-3">Longevity</h4>
+                    <div className="space-y-2 text-gray-600 font-inter text-sm">
+                      <p>• Inflammatory Response Regulation</p>
+                      <p>• Telomerase Gene Susceptibility (cellular aging)</p>
+                      <p>• Cellular Longevity (repair, mitochondrial health, lifespan regulation)</p>
+                    </div>
+                  </div>
+
+                  {/* Psychological Resilience */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <h4 className="text-lg font-poppins font-bold text-purple-600 mb-3">Psychological Resilience</h4>
+                    <div className="space-y-2 text-gray-600 font-inter text-sm">
+                      <p>• Brain Fog (neurotransmitter regulation, fatigue)</p>
+                      <p>• Optimism (dopamine, serotonin pathways)</p>
+                      <p>• Generalized Anxiety Disorder (stress response, regulation)</p>
+                      <p>• Stress Sensitivity Profile (cortisol, environmental reactivity)</p>
+                    </div>
+                  </div>
+
+                  {/* Micronutrient Metabolism */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <h4 className="text-lg font-poppins font-bold text-green-600 mb-3">Micronutrient Metabolism</h4>
+                    <div className="space-y-2 text-gray-600 font-inter text-sm">
+                      <p>• Vitamin B9 (Folate) Deficiency Susceptibility</p>
+                      <p>• Vitamin B12 Deficiency Susceptibility</p>
+                    </div>
+                  </div>
+
+                  {/* Metabolism & Energy */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <h4 className="text-lg font-poppins font-bold text-blue-600 mb-3">Metabolism & Energy</h4>
+                    <div className="space-y-2 text-gray-600 font-inter text-sm">
+                      <p>• LDL & HDL Cholesterol Regulation</p>
+                      <p>• Triglyceride Metabolism</p>
+                      <p>• Blood Glucose Regulation</p>
+                    </div>
+                  </div>
+
+                  {/* Food Sensitivity Response */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6">
+                    <h4 className="text-lg font-poppins font-bold text-red-600 mb-3">Food Sensitivity Response</h4>
+                    <div className="space-y-2 text-gray-600 font-inter text-sm">
+                      <p>• Lactose Intolerance</p>
+                      <p>• Gluten Sensitivity</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Report Components */}
+              <div>
+                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Report Components</h3>
+                <div className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-6 rounded-xl">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      "Gene & SNP Information (with rsIDs and allele impact)",
+                      "Risk & Propensity Scores (High, Medium, Low)",
+                      "Nutritional & Lifestyle Insights (science-based recommendations)",
+                      "Peptides & Supplements (physician-guided suggestions)",
+                      "Labs to Consider (follow-up testing for validation)"
+                    ].map((component, idx) => (
+                      <div key={idx} className="flex items-start space-x-3">
+                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700 font-inter text-sm">{component}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Close Button */}
+              <div className="flex justify-end pt-4 border-t border-gray-200">
+                <button
+                  onClick={() => setIsProxiGeneModalOpen(false)}
+                  className="bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-6 py-3 rounded-lg font-poppins font-semibold transition-all"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
       <CalendlySection />
     </>
   );
