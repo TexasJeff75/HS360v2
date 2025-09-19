@@ -9,20 +9,6 @@ const GeneticTestingDetail = () => {
 
   const testingPanels = [
     {
-      icon: <Brain className="h-8 w-8" />,
-      title: "Pharmacogenomics Panel",
-      description: "Analyze how genetic variations affect medication metabolism and response",
-      markers: "45+ genetic variants",
-      applications: ["Medication selection", "Dosing optimization", "Adverse reaction prediction"]
-    },
-    {
-      icon: <Heart className="h-8 w-8" />,
-      title: "Nutrigenomics Panel",
-      description: "Understand genetic factors influencing nutrition and metabolism",
-      markers: "60+ genetic variants",
-      applications: ["Personalized nutrition", "Supplement recommendations", "Weight management"]
-    },
-    {
       icon: (
         <svg className="h-8 w-8" viewBox="0 0 376.54 346.23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -46,6 +32,20 @@ const GeneticTestingDetail = () => {
       description: "Genetic factors affecting peptide efficacy and safety",
       markers: "140+ genetic variants",
       applications: ["Peptide selection", "Supplement selection", "Lifestyle and Nutritional Insights"]
+    },
+    {
+      icon: <Brain className="h-8 w-8" />,
+      title: "Pharmacogenomics Panel",
+      description: "Analyze how genetic variations affect medication metabolism and response",
+      markers: "45+ genetic variants",
+      applications: ["Medication selection", "Dosing optimization", "Adverse reaction prediction"]
+    },
+    {
+      icon: <Heart className="h-8 w-8" />,
+      title: "Nutrigenomics Panel",
+      description: "Understand genetic factors influencing nutrition and metabolism",
+      markers: "60+ genetic variants",
+      applications: ["Personalized nutrition", "Supplement recommendations", "Weight management"]
     },
     {
       icon: <Shield className="h-8 w-8" />,
