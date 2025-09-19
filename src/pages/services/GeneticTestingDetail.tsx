@@ -44,7 +44,7 @@ const GeneticTestingDetail = () => {
       ),
       title: "ProxiGene",
       description: "Genetic factors affecting peptide efficacy and safety",
-      markers: "35+ genetic variants",
+      markers: "140+ genetic variants",
       applications: ["Peptide selection", "Response prediction", "Optimization protocols"]
     },
     {
