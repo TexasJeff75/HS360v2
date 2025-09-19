@@ -282,7 +282,7 @@ const GeneticTestingDetail = () => {
             className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl"
           >
             <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center rounded-t-2xl">
-              <h2 className="text-3xl font-poppins font-bold text-gray-900">ProxiGene - Foundational Panel</h2>
+              <h2 className="text-3xl font-poppins font-bold text-gray-900">ProxiGene</h2>
               <button
                 onClick={() => setIsProxiGeneModalOpen(false)}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
