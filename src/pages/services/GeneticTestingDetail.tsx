@@ -295,7 +295,7 @@ const GeneticTestingDetail = () => {
               {/* Overview */}
               <div className="bg-gradient-to-br from-magenta-50 to-orange-50/20 p-6 rounded-xl">
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  The Foundational Panel is a one-time genetic assessment analyzing <strong>140+ SNPs</strong> to reveal predispositions across metabolism, cognition, emotional resilience, inflammation, nutrient absorption, aging, and food sensitivities. It provides personalized, actionable guidance on nutrition, lifestyle, labs, and supplementation for long-term health optimization.
+                  The ProxiGene panel is a one-time genetic assessment analyzing <strong>140+ SNPs</strong> to reveal predispositions across metabolism, cognition, emotional resilience, inflammation, nutrient absorption, aging, and food sensitivities. It provides personalized, actionable guidance on nutrition, lifestyle, labs, and supplementation for long-term health optimization.
                 </p>
               </div>
 
