@@ -117,7 +117,7 @@ const GeneticTestingDetail = () => {
                   viewport={{ once: true }}
                   className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-3xl hover:shadow-lg transition-shadow"
                 >
-                  <div className="bg-gradient-primary text-white p-4 rounded-xl mb-6 w-fit">
+                  <div className="bg-transparent border-2 border-magenta-500 p-4 rounded-xl mb-6 w-fit">
                     {panel.icon}
                   </div>
                   <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">{panel.title}</h3>
