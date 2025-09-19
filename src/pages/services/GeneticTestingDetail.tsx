@@ -119,36 +119,38 @@ const GeneticTestingDetail = () => {
                   viewport={{ once: true }}
                   className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-3xl hover:shadow-lg transition-shadow"
                 >
-                  <div className="bg-transparent border-2 border-magenta-500 p-4 rounded-xl mb-6 w-fit">
+                  <div className="bg-transparent border-2 border-magenta-500 p-4 rounded-xl mb-6 w-fit float-left mr-4">
                     {panel.icon}
                   </div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">{panel.title}</h3>
-                  <p className="text-gray-600 font-inter mb-4">{panel.description}</p>
-                  <div className="bg-magenta-50 border border-magenta-200 rounded-lg p-4 mb-6">
-                    <p className="text-magenta-700 font-poppins font-semibold text-sm">{panel.markers}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-poppins font-semibold text-gray-800 mb-3">Clinical Applications:</h4>
-                    <ul className="space-y-2">
-                      {panel.applications.map((app, idx) => (
-                        <li key={idx} className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-green-500" />
-                          <span className="text-gray-600 font-inter text-sm">{app}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  {panel.title === 'ProxiGene' && (
-                    <div className="mt-6">
-                      <button
-                        onClick={() => setIsProxiGeneModalOpen(true)}
-                        className="inline-flex items-center bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-4 py-2 rounded-lg font-poppins font-semibold text-sm transition-all"
-                      >
-                        Learn More
-                        <ExternalLink className="ml-2 h-4 w-4" />
-                      </button>
+                  <div className="overflow-hidden">
+                    <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">{panel.title}</h3>
+                    <p className="text-gray-600 font-inter mb-4">{panel.description}</p>
+                    <div className="bg-magenta-50 border border-magenta-200 rounded-lg p-4 mb-6">
+                      <p className="text-magenta-700 font-poppins font-semibold text-sm">{panel.markers}</p>
                     </div>
-                  )}
+                    <div>
+                      <h4 className="font-poppins font-semibold text-gray-800 mb-3">Clinical Applications:</h4>
+                      <ul className="space-y-2">
+                        {panel.applications.map((app, idx) => (
+                          <li key={idx} className="flex items-center space-x-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            <span className="text-gray-600 font-inter text-sm">{app}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {panel.title === 'ProxiGene' && (
+                      <div className="mt-6">
+                        <button
+                          onClick={() => setIsProxiGeneModalOpen(true)}
+                          className="inline-flex items-center bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-4 py-2 rounded-lg font-poppins font-semibold text-sm transition-all"
+                        >
+                          Learn More
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </motion.div>
               ))}
             </div>
