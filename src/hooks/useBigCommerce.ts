@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client/react/hooks';
+import { useQuery } from '@apollo/client';
 import { getProducts, getProduct, getCategories, Product, Category } from '../lib/bigcommerce';
 import { GET_PRODUCTS, GET_PRODUCT, GET_CATEGORIES } from '../lib/graphql/queries';
 
