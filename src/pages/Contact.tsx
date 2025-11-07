@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Building } from 'lucide-react';
 import CalendlySection from '../components/CalendlySection';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -66,6 +67,11 @@ const Contact = () => {
 
   return (
     <>
+    <SEO
+      title="Contact Us - HealthSpan360"
+      description="Get in touch with HealthSpan360. Contact our expert team for personalized diagnostics, peptide therapy, genetic testing, and clinical laboratory services. 24/7 support available."
+      keywords="contact healthspan360, healthcare provider support, genetic testing inquiry, peptide therapy contact, laboratory services"
+    />
     <div className="pt-20">
       {/* Hero Section */}
       <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">

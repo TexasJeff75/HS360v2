@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Shield, Users, Target, Microscope, Heart } from 'lucide-react';
 import CalendlySection from '../components/CalendlySection';
+import SEO from '../components/SEO';
 
 const About = () => {
   const values = [
@@ -47,6 +48,11 @@ const About = () => {
 
   return (
     <>
+    <SEO
+      title="About Us - HealthSpan360"
+      description="Learn about HealthSpan360's mission to bridge cutting-edge science with practical, provider-driven solutions. Committed to compliance, accuracy, and innovation in personalized diagnostics."
+      keywords="about healthspan360, peptide science, genetic testing, laboratory services, healthcare innovation, functional medicine, precision medicine"
+    />
     <div className="pt-20">
       {/* Hero Section */}
       <section className="bg-gradient-dark text-off-white py-24">

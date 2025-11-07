@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Dna, TestTube, Activity, Users, ChevronRight, Shield, Award, Microscope, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CalendlySection from '../components/CalendlySection';
+import SEO from '../components/SEO';
 
 const Services = () => {
   const services = [
@@ -80,6 +81,11 @@ const Services = () => {
 
   return (
     <>
+    <SEO
+      title="Our Services - HealthSpan360"
+      description="Comprehensive wellness and diagnostic solutions: peptides, genetic testing, micronutrient testing, and clinical lab services. Professional-grade diagnostics for healthcare excellence."
+      keywords="peptides, genetic testing, micronutrient testing, clinical lab services, wellness diagnostics, CLIA certified, pharmacogenomics, nutrigenomics"
+    />
     <div className="pt-20">
       {/* Hero Section */}
       <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">

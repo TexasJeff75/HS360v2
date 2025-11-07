@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Dna, TestTube, Activity, Users, Clock, CheckCircle } from 'lucide-react';
 import CalendlySection from '../components/CalendlySection';
+import SEO from '../components/SEO';
 
 const ForPatients = () => {
   const benefits = [
@@ -40,6 +41,11 @@ const ForPatients = () => {
 
   return (
     <>
+      <SEO
+        title="For Patients - HealthSpan360"
+        description="Discover your unique health blueprint through advanced genetic testing and comprehensive micronutrient analysis. Personalized medicine for better health outcomes."
+        keywords="genetic testing, micronutrient testing, personalized medicine, pharmacogenomics, nutrigenomics, precision health, personalized health"
+      />
       <div className="pt-20">
         {/* Hero Section */}
         <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">

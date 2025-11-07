@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, Dna, TestTube, Activity, Users, Award, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Home = () => {
   const services = [
@@ -85,6 +86,11 @@ const Home = () => {
   };
   return (
     <>
+    <SEO
+      title="HealthSpan360 - Turning Insight Into Impact"
+      description="Integrating peptide science, genetic insights, and advanced laboratory testing to help providers and patients achieve better health outcomes. Professional wellness and diagnostics solutions."
+      keywords="peptides, genetic testing, micronutrient testing, wellness diagnostics, longevity lab, functional medicine, precision medicine, healthspan360"
+    />
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section className="relative bg-gradient-dark text-off-white">
@@ -206,11 +212,12 @@ const Home = () => {
                   animate="animate"
                 />
                 
-                <motion.img 
-                  src="/Logo_web.webp" 
-                  alt="HealthSpan360 Logo" 
+                <motion.img
+                  src="/Logo_web.webp"
+                  alt="HealthSpan360 Logo"
                   className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 object-contain transform transition-transform duration-500 group-hover:scale-105"
-                  whileHover={{ 
+                  loading="eager"
+                  whileHover={{
                     scale: 1.1,
                     rotate: [0, -5, 5, 0],
                     transition: { duration: 0.5 }

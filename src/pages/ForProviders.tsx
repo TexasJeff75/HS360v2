@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Shield, Users, Award, Microscope, Activity, CheckCircle, ArrowRight, Star, TrendingUp, Heart, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CalendlySection from '../components/CalendlySection';
+import SEO from '../components/SEO';
 
 const ForProviders = () => {
   const [formData, setFormData] = useState({
@@ -70,6 +71,11 @@ const ForProviders = () => {
 
   return (
     <>
+      <SEO
+        title="For Providers - HealthSpan360"
+        description="Join our network of forward-thinking healthcare providers. Access cutting-edge diagnostics, genetic testing, and peptide research. Partner with HealthSpan360 for advanced patient care."
+        keywords="healthcare providers, medical practitioners, peptide therapy, genetic testing for providers, practice growth, precision medicine, functional medicine"
+      />
       <div className="pt-20">
         {/* Hero Section */}
         <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">

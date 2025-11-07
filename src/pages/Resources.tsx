@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FileText, Download, Book, Shield, HelpCircle, ExternalLink } from 'lucide-react';
 import CalendlySection from '../components/CalendlySection';
+import SEO from '../components/SEO';
 
 const Resources = () => {
   const resources = [
@@ -85,6 +86,11 @@ const Resources = () => {
 
   return (
     <>
+    <SEO
+      title="Resources - HealthSpan360"
+      description="Access test menus, compliance documentation, educational materials, and FAQs. Comprehensive resources for healthcare providers using HealthSpan360 services."
+      keywords="healthcare resources, genetic testing protocols, peptide compliance, laboratory documentation, provider resources, medical testing guides"
+    />
     <div className="pt-20">
       {/* Hero Section */}
       <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">

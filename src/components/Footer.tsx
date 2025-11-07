@@ -10,10 +10,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">
-              <img 
-                src="/Logo_web.webp" 
-                alt="HealthSpan360 Logo" 
+              <img
+                src="/Logo_web.webp"
+                alt="HealthSpan360 Logo"
                 className="h-8 w-auto"
+                loading="lazy"
               />
               <div>
                 <span className="text-xl font-poppins font-bold bg-gradient-primary bg-clip-text text-transparent block">
