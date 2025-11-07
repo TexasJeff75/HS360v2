@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Activity } from 'lucide-react';
+import { Menu, X, Activity, ShoppingBag } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,6 +74,19 @@ const Header = () => {
               </Link>
               </motion.div>
             ))}
+
+            {/* Shop Button */}
+            <motion.a
+              href="https://store.hs360.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 px-6 py-2 rounded-lg font-semibold text-white bg-gradient-primary hover:shadow-lg hover:shadow-magenta-500/50 transition-all duration-300 flex items-center space-x-2"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ShoppingBag className="h-4 w-4" />
+              <span>Shop</span>
+            </motion.a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -125,6 +138,24 @@ const Header = () => {
                 </Link>
                 </motion.div>
               ))}
+
+              {/* Mobile Shop Button */}
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.1 }}
+              >
+                <a
+                  href="https://store.hs360.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-4 py-3 rounded-lg font-semibold text-white bg-gradient-primary hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  <span>Shop</span>
+                </a>
+              </motion.div>
             </nav>
           )}
         </motion.div>

@@ -251,12 +251,11 @@ const Home = () => {
               <motion.div
                 key={service.title}
                 variants={itemVariants}
-                whileHover={{ 
+                whileHover={{
                   y: -10,
                   transition: { type: "spring", stiffness: 300 }
                 }}
                 className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-cyan-200"
-                className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-orange-200"
               >
                 <motion.div 
                   className="bg-gradient-primary text-white p-4 rounded-xl mb-6 group-hover:scale-110 transition-transform"
