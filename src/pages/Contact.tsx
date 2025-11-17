@@ -26,7 +26,7 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
-      content: "info@healthspan360.com",
+      content: "info@hs360.co",
       subContent: "Response within 24 hours",
       link: "mailto:info@hs360.co"
     },
