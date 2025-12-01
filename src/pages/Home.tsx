@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronRight, Dna, TestTube, Activity, Users, Award, ArrowRight } from 'lucide-react';
+import { ChevronRight, Dna, TestTube, Activity, Users, Award, ArrowRight, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const Home = () => {
