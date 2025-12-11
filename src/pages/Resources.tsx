@@ -115,7 +115,7 @@ const Resources = () => {
         </div>
       </section>
 
-      {/* Downloadable Resources Section */}
+      {/* Compliance Framework Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -126,48 +126,159 @@ const Resources = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
-              Download <span className="bg-gradient-primary bg-clip-text text-transparent">Resources</span>
+              Compliance <span className="bg-gradient-primary bg-clip-text text-transparent">Framework</span>
             </h2>
             <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
-              Comprehensive documentation and educational materials for healthcare providers
+              Our commitment to regulatory compliance, quality standards, and ethical practices
             </p>
           </motion.div>
 
           <div className="space-y-12">
-            {resources.map((category, categoryIndex) => (
-              <motion.div
-                key={category.category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-8 flex items-center">
-                  <Book className="h-6 w-6 mr-3 text-magenta-500" />
-                  {category.category}
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {category.items.map((item, index) => (
-                    <div
-                      key={index}
-                      className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-6 rounded-2xl hover:shadow-lg transition-shadow border border-gray-100 group cursor-pointer"
-                    >
-                      <div className="flex items-start justify-between mb-4">
-                        <FileText className="h-8 w-8 text-magenta-500" />
-                        <Download className="h-5 w-5 text-gray-400 group-hover:text-magenta-500 transition-colors" />
-                      </div>
-                      <h4 className="font-poppins font-semibold text-gray-900 mb-2 group-hover:text-magenta-600 transition-colors">
-                        {item.title}
-                      </h4>
-                      <div className="flex justify-between items-center text-sm text-gray-500 font-inter">
-                        <span>{item.type}</span>
-                        <span>{item.size}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-2xl border border-gray-100"
+            >
+              <div className="flex items-center mb-6">
+                <Shield className="h-8 w-8 text-magenta-500 mr-3" />
+                <h3 className="text-2xl font-poppins font-bold text-gray-900">Laboratory Accreditation</h3>
+              </div>
+              <div className="space-y-4 text-gray-700 font-inter leading-relaxed">
+                <p>
+                  All HealthSpan360 laboratory services are performed in facilities that meet or exceed the highest industry standards for quality and compliance.
+                </p>
+                <ul className="space-y-2 ml-6 list-disc">
+                  <li><strong>CLIA Certified:</strong> Clinical Laboratory Improvement Amendments certification ensures our labs meet federal regulatory standards for laboratory testing</li>
+                  <li><strong>CAP Accredited:</strong> College of American Pathologists accreditation demonstrates our commitment to the highest standards of excellence in laboratory medicine</li>
+                  <li><strong>State Licensed:</strong> Fully licensed to operate in all applicable jurisdictions</li>
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-2xl border border-gray-100"
+            >
+              <div className="flex items-center mb-6">
+                <Shield className="h-8 w-8 text-magenta-500 mr-3" />
+                <h3 className="text-2xl font-poppins font-bold text-gray-900">Peptide Compliance</h3>
+              </div>
+              <div className="space-y-4 text-gray-700 font-inter leading-relaxed">
+                <p>
+                  Our peptide products adhere to strict regulatory guidelines and are distributed exclusively through licensed healthcare practitioners.
+                </p>
+                <ul className="space-y-2 ml-6 list-disc">
+                  <li><strong>Research Use Only:</strong> All peptides are clearly labeled for research use only and are not intended for human consumption</li>
+                  <li><strong>Licensed Practitioners Only:</strong> Products are available exclusively to licensed healthcare professionals</li>
+                  <li><strong>Quality Assurance:</strong> Every batch undergoes rigorous testing for purity, potency, and sterility</li>
+                  <li><strong>Proper Documentation:</strong> Complete chain of custody and documentation for all products</li>
+                  <li><strong>Regulatory Monitoring:</strong> Continuous monitoring of evolving FDA guidance and regulatory requirements</li>
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-2xl border border-gray-100"
+            >
+              <div className="flex items-center mb-6">
+                <Shield className="h-8 w-8 text-magenta-500 mr-3" />
+                <h3 className="text-2xl font-poppins font-bold text-gray-900">Data Privacy & Security</h3>
+              </div>
+              <div className="space-y-4 text-gray-700 font-inter leading-relaxed">
+                <p>
+                  We maintain the highest standards for protecting patient information and genetic data.
+                </p>
+                <ul className="space-y-2 ml-6 list-disc">
+                  <li><strong>HIPAA Compliance:</strong> Full compliance with Health Insurance Portability and Accountability Act requirements</li>
+                  <li><strong>Data Encryption:</strong> Industry-standard encryption for data in transit and at rest</li>
+                  <li><strong>Access Controls:</strong> Strict role-based access controls and authentication procedures</li>
+                  <li><strong>Secure Infrastructure:</strong> SOC 2 Type II compliant data centers and cloud infrastructure</li>
+                  <li><strong>Genetic Privacy:</strong> Adherence to GINA (Genetic Information Nondiscrimination Act) protections</li>
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-2xl border border-gray-100"
+            >
+              <div className="flex items-center mb-6">
+                <Shield className="h-8 w-8 text-magenta-500 mr-3" />
+                <h3 className="text-2xl font-poppins font-bold text-gray-900">Quality Management System</h3>
+              </div>
+              <div className="space-y-4 text-gray-700 font-inter leading-relaxed">
+                <p>
+                  Our quality management system ensures consistent, reliable results and continuous improvement.
+                </p>
+                <ul className="space-y-2 ml-6 list-disc">
+                  <li><strong>Standard Operating Procedures:</strong> Comprehensive SOPs for all testing and operational procedures</li>
+                  <li><strong>Proficiency Testing:</strong> Regular participation in external proficiency testing programs</li>
+                  <li><strong>Internal Audits:</strong> Scheduled internal quality audits and process reviews</li>
+                  <li><strong>Staff Training:</strong> Ongoing training and competency assessment for all laboratory personnel</li>
+                  <li><strong>Equipment Validation:</strong> Regular calibration, maintenance, and validation of all testing equipment</li>
+                  <li><strong>Document Control:</strong> Comprehensive documentation and version control systems</li>
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 rounded-2xl border border-gray-100"
+            >
+              <div className="flex items-center mb-6">
+                <Shield className="h-8 w-8 text-magenta-500 mr-3" />
+                <h3 className="text-2xl font-poppins font-bold text-gray-900">Ethical Standards</h3>
+              </div>
+              <div className="space-y-4 text-gray-700 font-inter leading-relaxed">
+                <p>
+                  We are committed to the highest ethical standards in all aspects of our business.
+                </p>
+                <ul className="space-y-2 ml-6 list-disc">
+                  <li><strong>Informed Consent:</strong> Requirement for informed consent from all patients undergoing testing</li>
+                  <li><strong>Transparent Communication:</strong> Clear, accurate communication about test capabilities and limitations</li>
+                  <li><strong>Result Integrity:</strong> Never altering or misrepresenting test results</li>
+                  <li><strong>Scientific Validity:</strong> Only offering tests with established scientific and clinical validity</li>
+                  <li><strong>Continuing Education:</strong> Supporting providers with ongoing education about appropriate test utilization</li>
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-gradient-dark text-white p-8 rounded-2xl"
+            >
+              <div className="text-center">
+                <h3 className="text-2xl font-poppins font-bold mb-4">Questions About Compliance?</h3>
+                <p className="text-white/80 font-inter mb-6 max-w-2xl mx-auto">
+                  Our compliance team is available to answer any questions about our quality standards,
+                  certifications, or regulatory framework.
+                </p>
+                <a
+                  href="mailto:compliance@hs360.co"
+                  className="inline-block bg-white text-magenta-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-poppins font-semibold transition-colors"
+                >
+                  Contact Compliance Team
+                </a>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
