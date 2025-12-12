@@ -75,12 +75,6 @@ const Resources = () => {
       description: "Terms and conditions for using our services",
       updated: "Last updated: January 2025",
       link: "/terms"
-    },
-    {
-      title: "Compliance Framework",
-      description: "Our commitment to regulatory compliance and quality standards",
-      updated: "Last updated: January 2025",
-      link: "/resources"
     }
   ];
 
@@ -342,7 +336,7 @@ const Resources = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {policies.map((policy, index) => (
               <motion.div
                 key={policy.title}
