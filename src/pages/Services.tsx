@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Dna, TestTube, Activity, Users, ChevronRight, Shield, Award, Microscope, ArrowRight, CheckCircle } from 'lucide-react';
+import { Dna, TestTube, Activity, Users, ChevronRight, Shield, Award, Microscope, ArrowRight, CheckCircle, TestTube2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CalendlySection from '../components/CalendlySection';
 import SEO from '../components/SEO';
@@ -70,6 +70,22 @@ const Services = () => {
       badgeColor: "bg-purple-500",
       link: "/services/clinical-lab-services",
       gradient: "from-purple-500 to-indigo-500"
+    },
+    {
+      icon: <TestTube2 className="h-12 w-12" />,
+      title: "Allergy Testing",
+      subtitle: "ALEX3 Comprehensive Panel",
+      description: "Advanced allergy testing with ALEX3 panel analyzing 295+ allergens using molecular and extract-based IgE antibody detection.",
+      keyFeatures: [
+        "295+ allergens tested",
+        "Molecular & extract analysis",
+        "IgE antibody detection",
+        "Comprehensive reporting"
+      ],
+      badge: "295+ Allergens",
+      badgeColor: "bg-amber-500",
+      link: "/services/allergy-testing",
+      gradient: "from-amber-500 to-yellow-500"
     }
   ];
 
@@ -83,8 +99,8 @@ const Services = () => {
     <>
     <SEO
       title="Our Services - HealthSpan360"
-      description="Comprehensive wellness and diagnostic solutions: peptides, genetic testing, micronutrient testing, and clinical lab services. Professional-grade diagnostics for healthcare excellence."
-      keywords="peptides, genetic testing, micronutrient testing, clinical lab services, wellness diagnostics, CLIA certified, pharmacogenomics, nutrigenomics"
+      description="Comprehensive wellness and diagnostic solutions: peptides, genetic testing, micronutrient testing, allergy testing, and clinical lab services. Professional-grade diagnostics for healthcare excellence."
+      keywords="peptides, genetic testing, micronutrient testing, allergy testing, ALEX3, clinical lab services, wellness diagnostics, CLIA certified, pharmacogenomics, nutrigenomics, allergen testing"
     />
     <div className="pt-20">
       {/* Hero Section */}

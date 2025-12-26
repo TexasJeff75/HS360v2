@@ -13,6 +13,7 @@ const PeptidesDetail = lazy(() => import('./pages/services/PeptidesDetail'));
 const GeneticTestingDetail = lazy(() => import('./pages/services/GeneticTestingDetail'));
 const MicronutrientTestingDetail = lazy(() => import('./pages/services/MicronutrientTestingDetail'));
 const ClinicalLabServicesDetail = lazy(() => import('./pages/services/ClinicalLabServicesDetail'));
+const AllergyTestingDetail = lazy(() => import('./pages/services/AllergyTestingDetail'));
 const ForProviders = lazy(() => import('./pages/ForProviders'));
 const ForPatients = lazy(() => import('./pages/ForPatients'));
 const Resources = lazy(() => import('./pages/Resources'));
@@ -37,6 +38,7 @@ function App() {
               <Route path="/services/genetic-testing" element={<GeneticTestingDetail />} />
               <Route path="/services/micronutrient-testing" element={<MicronutrientTestingDetail />} />
               <Route path="/services/clinical-lab-services" element={<ClinicalLabServicesDetail />} />
+              <Route path="/services/allergy-testing" element={<AllergyTestingDetail />} />
               <Route path="/providers" element={<ForProviders />} />
               <Route path="/patients" element={<ForPatients />} />
               <Route path="/resources" element={<Resources />} />
