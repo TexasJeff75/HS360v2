@@ -38,7 +38,7 @@ const AllergyTestingDetail = () => {
       gradient: "from-blue-500 to-cyan-500"
     },
     {
-      title: "Animal Dander & Epithelia",
+      title: "Animals",
       icon: "🐕",
       count: 25,
       examples: ["Cat", "Dog", "Horse", "Rabbit", "Mouse", "Guinea pig"],
@@ -77,7 +77,7 @@ const AllergyTestingDetail = () => {
       icon: "🥜",
       count: 18,
       examples: ["Peanut", "Soy", "Lentil", "Pea", "Chickpea"],
-      gradient: "from-brown-500 to-amber-700"
+      gradient: "from-amber-700 to-orange-700"
     },
     {
       title: "Nuts & Seeds",
