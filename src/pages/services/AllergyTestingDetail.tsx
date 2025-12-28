@@ -82,7 +82,7 @@ const AllergyTestingDetail = () => {
     {
       title: "Nuts & Seeds",
       icon: "🌰",
-      count: 36,
+      count: 35,
       examples: ["Hazelnut", "Walnut", "Cashew", "Almond", "Sesame", "Pistachio"],
       gradient: "from-stone-600 to-amber-800"
     },
@@ -96,7 +96,7 @@ const AllergyTestingDetail = () => {
     {
       title: "Vegetables",
       icon: "🥕",
-      count: 10,
+      count: 9,
       examples: ["Celery", "Tomato", "Potato", "Garlic", "Onion"],
       gradient: "from-green-600 to-lime-600"
     },
@@ -110,21 +110,21 @@ const AllergyTestingDetail = () => {
     {
       title: "Milk",
       icon: "🥛",
-      count: 13,
-      examples: ["Cow's milk", "Goat's milk", "Sheep's milk"],
+      count: 12,
+      examples: ["Cow's milk", "Goat's milk", "Sheep's milk", "Camel's milk"],
       gradient: "from-blue-200 to-cyan-300"
     },
     {
       title: "Seafood",
       icon: "🦐",
-      count: 29,
+      count: 30,
       examples: ["Shrimp", "Cod", "Salmon", "Tuna", "Crab", "Squid"],
       gradient: "from-blue-600 to-indigo-600"
     },
     {
       title: "Meat",
       icon: "🥩",
-      count: 14,
+      count: 13,
       examples: ["Beef", "Pork", "Chicken", "Lamb", "Turkey"],
       gradient: "from-red-700 to-rose-800"
     },
