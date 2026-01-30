@@ -23,17 +23,6 @@ const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
 const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://player.vimeo.com/api/player.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <Router>
       <ScrollToTop />
