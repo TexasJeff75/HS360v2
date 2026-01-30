@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Dna, Brain, Heart, Activity, Shield, CheckCircle, ArrowRight, X, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CalendlySection from '../../components/CalendlySection';
+import VimeoEmbed from '../../components/VimeoEmbed';
 
 const GeneticTestingDetail = () => {
   const [isProxiGeneModalOpen, setIsProxiGeneModalOpen] = useState(false);
@@ -294,6 +295,13 @@ const GeneticTestingDetail = () => {
             </div>
             
             <div className="p-6 space-y-8">
+              {/* Videos Section */}
+              <div className="space-y-4">
+                <h3 className="text-2xl font-poppins font-bold text-gray-900">Watch ProxiGene Overview</h3>
+                <VimeoEmbed videoId="1156923047" title="ProxiGene Overview" />
+                <VimeoEmbed videoId="1156956482" title="ProxiGene Features" />
+              </div>
+
               {/* Overview */}
               <div className="bg-gradient-to-br from-magenta-50 to-orange-50/20 p-6 rounded-xl">
                 <p className="text-gray-700 font-inter leading-relaxed">

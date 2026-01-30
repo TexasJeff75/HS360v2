@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, Dna, TestTube, Activity, Users, Award, ArrowRight, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
+import VimeoEmbed from '../components/VimeoEmbed';
 
 const Home = () => {
   const services = [
@@ -277,26 +278,10 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex justify-center lg:justify-end"
+              className="space-y-6"
             >
-              <div className="relative group">
-                <motion.div
-                  className="absolute inset-0 rounded-3xl bg-gradient-to-r from-magenta-500 via-orange-500 to-purple-500 opacity-20 group-hover:opacity-40 blur-2xl transition-opacity duration-500"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                />
-                <motion.div
-                  className="relative bg-white p-8 rounded-3xl shadow-2xl"
-                  whileHover={{ y: -10 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <img
-                    src="/ProxiGene_X.jpg"
-                    alt="ProxiGene Logo"
-                    className="h-64 w-64 lg:h-80 lg:w-80 object-contain"
-                  />
-                </motion.div>
-              </div>
+              <VimeoEmbed videoId="1156923047" title="ProxiGene Overview" />
+              <VimeoEmbed videoId="1156956482" title="ProxiGene Features" />
             </motion.div>
           </div>
         </div>
