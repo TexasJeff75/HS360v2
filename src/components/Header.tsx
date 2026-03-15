@@ -76,14 +76,17 @@ const Header = () => {
             ))}
 
             {/* Shop Button */}
-            <motion.button
-              disabled
-              className="ml-2 px-6 py-2 rounded-lg font-semibold text-white bg-gray-400 cursor-not-allowed transition-all duration-300 flex items-center space-x-2 relative group"
-              whileHover={{ scale: 1.02 }}
+            <motion.a
+              href="https://store.hs360.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 px-6 py-2 rounded-lg font-semibold text-white bg-gradient-primary hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <ShoppingBag className="h-4 w-4" />
-              <span>Store Coming Soon</span>
-            </motion.button>
+              <span>Shop</span>
+            </motion.a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -142,13 +145,16 @@ const Header = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
               >
-                <button
-                  disabled
-                  className="block w-full px-4 py-3 rounded-lg font-semibold text-white bg-gray-400 cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
+                <a
+                  href="https://store.hs360.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full px-4 py-3 rounded-lg font-semibold text-white bg-gradient-primary hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   <ShoppingBag className="h-5 w-5" />
-                  <span>Store Coming Soon</span>
-                </button>
+                  <span>Shop</span>
+                </a>
               </motion.div>
             </nav>
           )}
