@@ -76,20 +76,17 @@ const Header = () => {
             ))}
 
             {/* Shop Button */}
-            <motion.div
+            <motion.a
+              href="https://store.hs360.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 px-6 py-2 rounded-lg font-semibold text-white bg-gradient-primary hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link
-                to="/store"
-                className={`ml-2 px-6 py-2 rounded-lg font-semibold text-white bg-gradient-primary hover:shadow-lg transition-all duration-300 flex items-center space-x-2 ${
-                  isActive('/store') ? 'shadow-lg' : ''
-                }`}
-              >
-                <ShoppingBag className="h-4 w-4" />
-                <span>Store</span>
-              </Link>
-            </motion.div>
+              <ShoppingBag className="h-4 w-4" />
+              <span>Shop</span>
+            </motion.a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -148,16 +145,16 @@ const Header = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
               >
-                <Link
-                  to="/store"
-                  className={`block w-full px-4 py-3 rounded-lg font-semibold text-white bg-gradient-primary hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 ${
-                    isActive('/store') ? 'shadow-lg' : ''
-                  }`}
+                <a
+                  href="https://store.hs360.co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full px-4 py-3 rounded-lg font-semibold text-white bg-gradient-primary hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <ShoppingBag className="h-5 w-5" />
-                  <span>Store</span>
-                </Link>
+                  <span>Shop</span>
+                </a>
               </motion.div>
             </nav>
           )}
