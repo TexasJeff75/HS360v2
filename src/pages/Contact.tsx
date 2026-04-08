@@ -20,7 +20,7 @@ const Contact = () => {
       icon: <Phone className="h-6 w-6" />,
       title: "Phone Support",
       content: "1-877-GOHS360 (1-877-464-7360)",
-      subContent: "24/7 Provider Support",
+      subContent: "",
       link: "tel:18774647360"
     },
     {
