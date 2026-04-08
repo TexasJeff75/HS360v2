@@ -50,7 +50,7 @@ const SEO: React.FC<SEOProps> = ({
           description: description,
           url: siteUrl,
           logo: fullOgImage,
-          telephone: '1-800-HEALTHSPAN',
+          telephone: '1-877-464-7360',
           email: 'info@hs360.co',
           slogan: 'Turning Insight Into Impact',
           serviceType: [

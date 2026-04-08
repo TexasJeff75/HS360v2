@@ -96,7 +96,7 @@ const CalendlySection = () => {
             <p className="text-sm text-white/70 font-inter">
               Or call us directly at{' '}
               <motion.a 
-                href="tel:1-800-HEALTHSPAN" 
+                href="tel:18774647360"
                 className="text-gold-300 hover:text-gold-500 font-semibold"
                 whileHover={{ scale: 1.05 }}
                 animate={{
@@ -111,7 +111,7 @@ const CalendlySection = () => {
                   repeat: Infinity
                 }}
               >
-                1-800-HEALTHSPAN
+                1-877-GOHS360 (1-877-464-7360)
               </motion.a>
             </p>
           </div>

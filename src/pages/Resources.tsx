@@ -381,10 +381,10 @@ const Resources = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:1-800-HEALTHSPAN"
+                href="tel:18774647360"
                 className="bg-white text-magenta-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-colors"
               >
-                Call Support: 1-800-HEALTHSPAN
+                Call Support: 1-877-GOHS360 (1-877-464-7360)
               </a>
               <a
                 href="mailto:support@hs360.co"

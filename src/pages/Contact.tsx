@@ -19,9 +19,9 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Phone Support",
-      content: "1-800-HEALTHSPAN",
+      content: "1-877-GOHS360 (1-877-464-7360)",
       subContent: "24/7 Provider Support",
-      link: "tel:1-800-HEALTHSPAN"
+      link: "tel:18774647360"
     },
     {
       icon: <Mail className="h-6 w-6" />,
@@ -319,11 +319,11 @@ const Contact = () => {
               Critical patient care questions? Our medical team is available around the clock.
             </p>
             <a
-              href="tel:1-800-HEALTHSPAN"
+              href="tel:18774647360"
               className="inline-flex items-center bg-white text-magenta-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-colors"
             >
               <Phone className="mr-2 h-5 w-5" />
-              Emergency Line: 1-800-HEALTHSPAN
+              Emergency Line: 1-877-GOHS360 (1-877-464-7360)
             </a>
           </motion.div>
         </div>
