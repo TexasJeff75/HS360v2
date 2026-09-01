@@ -7,14 +7,12 @@ const Footer = () => {
     <footer className="bg-charcoal-500 text-off-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">
-              <img
-                src="/Logo_web.webp"
-                alt="HealthSpan360 Logo"
+              <img 
+                src="/logo.png" 
+                alt="HealthSpan360 Logo" 
                 className="h-8 w-auto"
-                loading="lazy"
               />
               <div>
                 <span className="text-xl font-poppins font-bold bg-gradient-primary bg-clip-text text-transparent block">
@@ -30,18 +28,15 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="font-poppins font-semibold mb-4 text-off-white">Services</h3>
             <ul className="space-y-2 text-sm">
               <li><Link to="/services" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Genetic Testing</Link></li>
               <li><Link to="/services" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Micronutrient Testing</Link></li>
-              <li><Link to="/services" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Peptides</Link></li>
               <li><Link to="/services" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Clinical Lab Services</Link></li>
             </ul>
           </div>
 
-          {/* For Professionals */}
           <div>
             <h3 className="font-poppins font-semibold mb-4 text-off-white">For Professionals</h3>
             <ul className="space-y-2 text-sm">
@@ -53,13 +48,12 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="font-poppins font-semibold mb-4 text-off-white">Contact</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-orange-500" />
-                <span className="text-cool-gray font-inter">1-877-GOHS360 (1-877-464-7360)</span>
+                <span className="text-cool-gray font-inter">1-800-HEALTHSPAN</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-orange-500" />
