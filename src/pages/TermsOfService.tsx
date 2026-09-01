@@ -168,8 +168,7 @@ const TermsOfService = () => {
                     Research Use / Licensed Practitioner Disclaimer
                   </h4>
                   <ul className="space-y-2 text-red-800 text-sm font-inter list-disc list-inside">
-                    <li>Peptides and related compounds are sold for research use only.</li>
-                    <li>They are not intended for human or animal consumption unless administered by a licensed medical professional where legally permitted.</li>
+                    <li>Genetic and micronutrient testing services are for informational purposes and are not diagnostic unless performed under a licensed provider's supervision.</li>
                     <li>Genetic and micronutrient testing services are for informational purposes and are not diagnostic unless performed under a licensed provider's supervision.</li>
                   </ul>
                 </div>

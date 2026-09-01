@@ -7,11 +7,6 @@ import CalendlySection from '../components/CalendlySection';
 const RefundPolicy = () => {
   const nonReturnableItems = [
     {
-      title: "Research-use-only peptides",
-      description: "Due to safety and compliance, peptides and related compounds cannot be returned or refunded once shipped.",
-      icon: <Shield className="h-6 w-6" />
-    },
-    {
       title: "Diagnostic test kits",
       description: "Genetic, micronutrient, and wellness kits are non-refundable once dispatched. If defective, a replacement kit may be issued.",
       icon: <Package className="h-6 w-6" />
@@ -111,7 +106,7 @@ const RefundPolicy = () => {
                     <div className="bg-magenta-100 text-magenta-600 rounded-full p-1 mt-1 flex-shrink-0">
                       <div className="w-2 h-2 rounded-full bg-current"></div>
                     </div>
-                    <span className="text-gray-700 font-inter">Certain items, such as research-use-only peptides and perishable lab kits, may not be eligible for return once shipped.</span>
+                    <span className="text-gray-700 font-inter">Certain items, such as perishable lab kits, may not be eligible for return once shipped.</span>
                   </li>
                 </ul>
               </div>
