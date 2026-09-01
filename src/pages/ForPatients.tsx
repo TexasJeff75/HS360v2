@@ -291,13 +291,15 @@ const ForPatients = () => {
               >
                 Find a Provider
               </Link>
-              <Link
-                to="/resources"
+              <a
+                href="https://store.hs360.co"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-white/10 backdrop-blur hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all flex items-center justify-center"
               >
                 <FileText className="mr-2 h-5 w-5" />
-                Download Resources
-              </Link>
+                Visit Our Store
+              </a>
             </div>
           </motion.div>
         </div>
