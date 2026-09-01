@@ -7,7 +7,6 @@ import About from './pages/About';
 import Services from './pages/Services';
 import ForProviders from './pages/ForProviders';
 import ForPatients from './pages/ForPatients';
-import Resources from './pages/Resources';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import RefundPolicy from './pages/RefundPolicy';
@@ -26,7 +25,6 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/providers" element={<ForProviders />} />
             <Route path="/patients" element={<ForPatients />} />
-            <Route path="/resources" element={<Resources />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />

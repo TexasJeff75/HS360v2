@@ -7,6 +7,7 @@ const Footer = () => {
     <footer className="bg-charcoal-500 text-off-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">
               <img 
@@ -28,6 +29,7 @@ const Footer = () => {
             </p>
           </div>
 
+          {/* Quick Links */}
           <div>
             <h3 className="font-poppins font-semibold mb-4 text-off-white">Services</h3>
             <ul className="space-y-2 text-sm">
@@ -37,17 +39,19 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* For Professionals */}
           <div>
             <h3 className="font-poppins font-semibold mb-4 text-off-white">For Professionals</h3>
             <ul className="space-y-2 text-sm">
               <li><Link to="/providers" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Provider Onboarding</Link></li>
               <li><Link to="/providers" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Partnership Programs</Link></li>
-              <li><Link to="/resources" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Test Menus</Link></li>
-              <li><Link to="/resources" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Compliance Resources</Link></li>
+              <li><Link to="/services" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Test Menus</Link></li>
+              <li><Link to="/services" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Compliance Resources</Link></li>
               <li><Link to="/refund-policy" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">Refund Policy</Link></li>
             </ul>
           </div>
 
+          {/* Contact Info */}
           <div>
             <h3 className="font-poppins font-semibold mb-4 text-off-white">Contact</h3>
             <div className="space-y-3 text-sm">
@@ -84,9 +88,9 @@ const Footer = () => {
               <Link to="/terms" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">
                 Terms of Service
               </Link>
-              <Link to="/resources" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">
-                Compliance
-              </Link>
+              <a href="https://store.hs360.co" target="_blank" rel="noopener noreferrer" className="text-cool-gray hover:text-orange-500 transition-colors font-inter">
+                Store
+              </a>
             </div>
           </div>
         </div>

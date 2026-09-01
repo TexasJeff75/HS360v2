@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Activity } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +14,6 @@ const Header = () => {
     { path: '/services', label: 'Services' },
     { path: '/providers', label: 'For Providers' },
     { path: '/patients', label: 'For Patients' },
-    { path: '/resources', label: 'Resources' },
     { path: '/contact', label: 'Contact' },
   ];
 
@@ -22,6 +21,7 @@ const Header = () => {
     <header className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
               src="/logo.png" 
@@ -38,6 +38,7 @@ const Header = () => {
             </div>
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <Link
@@ -52,8 +53,18 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="https://store.hs360.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 inline-flex items-center bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-all"
+            >
+              <ShoppingBag className="h-4 w-4 mr-2" />
+              Store
+            </a>
           </nav>
 
+          {/* Mobile Menu Button */}
           <button
             className="lg:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -62,6 +73,7 @@ const Header = () => {
           </button>
         </div>
 
+        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden border-t border-gray-200">
             <nav className="py-4 space-y-2">
@@ -79,6 +91,18 @@ const Header = () => {
                   {item.label}
                 </Link>
               ))}
+              <a
+                href="https://store.hs360.co"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 rounded-lg font-medium bg-gradient-primary text-white transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="inline-flex items-center">
+                  <ShoppingBag className="h-4 w-4 mr-2" />
+                  Store
+                </span>
+              </a>
             </nav>
           </div>
         )}
