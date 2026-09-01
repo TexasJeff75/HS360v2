@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Building } from 'lucide-react';
 import CalendlySection from '../components/CalendlySection';
-import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,14 +18,14 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Phone Support",
-      content: "1-877-GOHS360 (1-877-464-7360)",
-      subContent: "",
-      link: "tel:18774647360"
+      content: "1-800-HEALTHSPAN",
+      subContent: "24/7 Provider Support",
+      link: "tel:1-800-HEALTHSPAN"
     },
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
-      content: "info@hs360.co",
+      content: "info@healthspan360.com",
       subContent: "Response within 24 hours",
       link: "mailto:info@hs360.co"
     },
@@ -54,7 +53,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Contact form submitted:', formData);
   };
 
@@ -67,11 +65,6 @@ const Contact = () => {
 
   return (
     <>
-    <SEO
-      title="Contact Us - HealthSpan360"
-      description="Get in touch with HealthSpan360. Contact our expert team for personalized diagnostics, peptide therapy, genetic testing, and clinical laboratory services. 24/7 support available."
-      keywords="contact healthspan360, healthcare provider support, genetic testing inquiry, peptide therapy contact, laboratory services"
-    />
     <div className="pt-20">
       {/* Hero Section */}
       <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">
@@ -166,8 +159,7 @@ const Contact = () => {
                   Send us a Message
                 </h2>
 
-                <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
-                  <input type="hidden" name="form-name" value="contact" />
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
@@ -244,7 +236,6 @@ const Contact = () => {
                         <option value="">Select inquiry type</option>
                         <option value="provider">Provider Partnership</option>
                         <option value="testing">Testing Services</option>
-                        <option value="peptides">Peptide Information</option>
                         <option value="support">Technical Support</option>
                         <option value="general">General Information</option>
                       </select>
@@ -304,7 +295,7 @@ const Contact = () => {
       </section>
 
       {/* Emergency Contact Section */}
-      <section className="py-16 bg-gradient-dark text-white">
+      <section className="py-16 bg-gradient-secondary text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -319,11 +310,11 @@ const Contact = () => {
               Critical patient care questions? Our medical team is available around the clock.
             </p>
             <a
-              href="tel:18774647360"
+              href="tel:1-800-HEALTHSPAN"
               className="inline-flex items-center bg-white text-magenta-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-colors"
             >
               <Phone className="mr-2 h-5 w-5" />
-              Emergency Line: 1-877-GOHS360 (1-877-464-7360)
+              Emergency Line: 1-800-HEALTHSPAN
             </a>
           </motion.div>
         </div>
