@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        // HealthSpan360 Brand Colors
         magenta: {
           500: '#D600A4',
           600: '#B5008A',
