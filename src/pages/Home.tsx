@@ -1,17 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronRight, Dna, TestTube, Activity, Users, Award, ArrowRight, CheckCircle } from 'lucide-react';
+import { ChevronRight, Dna, TestTube, Users, Award, ArrowRight, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
+import { PROXIGENE_FIGURES, PROXIGENE_PANEL_NAME } from '../data/proxigene';
 
 const Home = () => {
   const services = [
-    {
-      icon: <Activity className="h-8 w-8" />,
-      title: "Peptides",
-      description: "Research-use peptides for licensed practitioners with full compliance support.",
-      link: "/services/peptides"
-    },
     {
       icon: <Dna className="h-8 w-8" />,
       title: "Genetic Testing",
@@ -33,7 +28,7 @@ const Home = () => {
   ];
 
   const stats = [
-    { number: "170", label: "Genetic Markers" },
+    { number: "171", label: "Genes Analyzed" },
     { number: "196", label: "Biomarkers" },
     { number: "500+", label: "Provider Partners" },
     { number: "100%", label: "Actionable" }
@@ -242,18 +237,28 @@ const Home = () => {
               <div className="bg-gradient-primary text-white px-4 py-2 rounded-full w-fit mb-6">
                 <span className="font-poppins font-semibold text-sm">Featured Panel</span>
               </div>
-              <h2 className="text-4xl lg:text-6xl font-poppins font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl lg:text-6xl font-poppins font-bold text-gray-900 mb-2">
                 ProxiGene
               </h2>
+              <p className="text-lg text-magenta-600 font-poppins font-semibold mb-6">{PROXIGENE_PANEL_NAME}</p>
               <p className="text-xl text-gray-600 font-inter mb-8 leading-relaxed">
-                Analyze <strong className="text-magenta-600">140+ genetic variants</strong> to reveal predispositions across metabolism, cognition, emotional resilience, inflammation, nutrient absorption, aging, and food sensitivities.
+                Analyze <strong className="text-magenta-600">198 unique SNP variants across 171 genes</strong> to reveal predispositions across metabolism, cognition, emotional resilience, inflammation, nutrient absorption, aging, and food sensitivities.
               </p>
+              <dl className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+                {PROXIGENE_FIGURES.map((figure) => (
+                  <div key={figure.label} className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+                    <dt className="sr-only">{figure.label}</dt>
+                    <dd className="text-2xl font-poppins font-bold bg-gradient-primary bg-clip-text text-transparent">{figure.value}</dd>
+                    <dd className="text-gray-600 font-inter text-sm leading-snug" aria-hidden="true">{figure.label}</dd>
+                  </div>
+                ))}
+              </dl>
               <div className="space-y-4 mb-8">
                 {[
-                  "Personalized peptide selection",
-                  "Supplement recommendations",
+                  "Peptide & supplement associations",
                   "Lifestyle and nutritional insights",
-                  "One-time genetic assessment"
+                  "Labs to consider",
+                  "Provider-reviewed, not prescribed"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center space-x-3">
                     <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
@@ -321,7 +326,7 @@ const Home = () => {
           </motion.div>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
