@@ -9,7 +9,6 @@ import './index.css';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
-const PeptidesDetail = lazy(() => import('./pages/services/PeptidesDetail'));
 const GeneticTestingDetail = lazy(() => import('./pages/services/GeneticTestingDetail'));
 const MicronutrientTestingDetail = lazy(() => import('./pages/services/MicronutrientTestingDetail'));
 const ClinicalLabServicesDetail = lazy(() => import('./pages/services/ClinicalLabServicesDetail'));
@@ -33,7 +32,6 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/services/peptides" element={<PeptidesDetail />} />
               <Route path="/services/genetic-testing" element={<GeneticTestingDetail />} />
               <Route path="/services/micronutrient-testing" element={<MicronutrientTestingDetail />} />
               <Route path="/services/clinical-lab-services" element={<ClinicalLabServicesDetail />} />
