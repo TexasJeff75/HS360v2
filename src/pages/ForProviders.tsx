@@ -1,508 +1,402 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Shield, Users, Award, Microscope, Activity, CheckCircle, ArrowRight, Star, TrendingUp, Heart, Clock } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ArrowRight,
+  Dna,
+  TestTube,
+  TestTube2,
+  Microscope,
+  Compass,
+  Handshake,
+  Sprout,
+  ClipboardCheck,
+  GraduationCap,
+  PackageCheck,
+  MessagesSquare,
+  Plus,
+  Sparkles,
+  ShieldCheck,
+  Quote,
+} from 'lucide-react';
 import CalendlySection from '../components/CalendlySection';
 import SEO from '../components/SEO';
+import ProviderApplicationForm from '../components/providers/ProviderApplicationForm';
+import { fadeUp } from '../lib/motion';
 
-const ForProviders = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    practiceType: '',
-    licenseType: '',
-    licenseNumber: '',
-    practiceAddress: '',
-    patientsPerMonth: '',
-    interests: [],
-    experience: '',
-    message: ''
-  });
+const OFFERINGS = [
+  {
+    icon: Dna,
+    title: 'Genetic Testing',
+    pitch: 'Show patients why their body responds the way it does, and build a plan around their own DNA.',
+    link: '/services/genetic-testing',
+  },
+  {
+    icon: TestTube,
+    title: 'Micronutrient Testing',
+    pitch: 'Find the hidden deficiencies behind fatigue, brain fog and slow recovery, then track the fix.',
+    link: '/services/micronutrient-testing',
+  },
+  {
+    icon: TestTube2,
+    title: 'Allergy Testing',
+    pitch: 'Give patients clear answers on what triggers their symptoms, from a single convenient draw.',
+    link: '/services/allergy-testing',
+  },
+  {
+    icon: Microscope,
+    title: 'Clinical Lab Services',
+    pitch: 'Bring molecular diagnostics and specialty testing under one trusted partner.',
+    link: '/services/clinical-lab-services',
+  },
+];
 
-  const benefits = [
-    {
-      icon: <Award className="h-8 w-8" />,
-      title: "Advanced Diagnostics",
-      description: "Access to cutting-edge genetic testing, micronutrient analysis, and peptide research",
-      features: ["198 SNPs across 171 genes", "196 biomarkers analyzed", "Research-grade peptides", "CLIA-certified labs"]
-    },
-    {
-      icon: <Users className="h-8 w-8" />,
-      title: "Dedicated Support",
-      description: "Comprehensive training and ongoing support for seamless integration into your practice",
-      features: ["24/7 technical support", "Clinical interpretation", "Training programs", "Marketing materials"]
-    },
-    {
-      icon: <TrendingUp className="h-8 w-8" />,
-      title: "Practice Growth",
-      description: "Expand your service offerings and increase patient satisfaction with personalized medicine",
-      features: ["New revenue streams", "Patient retention", "Competitive advantage", "Referral opportunities"]
-    },
-    {
-      icon: <Heart className="h-8 w-8" />,
-      title: "Better Outcomes",
-      description: "Help patients achieve optimal health through precision diagnostics and targeted interventions",
-      features: ["Personalized protocols", "Evidence-based insights", "Improved compliance", "Measurable results"]
-    }
-  ];
+const PILLARS = [
+  {
+    icon: Compass,
+    title: 'Clarity your patients can feel',
+    copy:
+      'Reports are written to be shared across the exam table. Patients see what is happening, why it matters, and what comes next, so recommendations actually stick.',
+  },
+  {
+    icon: Handshake,
+    title: 'A partner, not a portal',
+    copy:
+      'You get a real team behind you: onboarding, clinical interpretation support and a direct line when a result raises questions.',
+  },
+  {
+    icon: Sprout,
+    title: 'Room for your practice to grow',
+    copy:
+      'Offer the precision services patients are already searching for, deepen long-term relationships and stand apart from practices that stop at standard labs.',
+  },
+];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Provider application submitted:', formData);
-  };
+const STEPS = [
+  { icon: ClipboardCheck, title: 'Apply', copy: 'Share a few details about your practice and license.' },
+  { icon: GraduationCap, title: 'Onboard', copy: 'A guided walkthrough of ordering, reports and patient conversations.' },
+  { icon: PackageCheck, title: 'Order', copy: 'Collection kits and requisitions arrive ready for your team.' },
+  { icon: MessagesSquare, title: 'Guide', copy: 'Review results with your patient and build their personalized plan.' },
+];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+const PRACTICES = [
+  'Functional Medicine',
+  'Integrative Medicine',
+  'Primary Care',
+  'Longevity Clinics',
+  'Weight Management',
+  'Wellness Centers',
+  'Chiropractic',
+  'Pharmacy',
+];
 
-  const handleInterestChange = (interest: string) => {
-    setFormData(prev => ({
-      ...prev,
-      interests: prev.interests.includes(interest)
-        ? prev.interests.filter(i => i !== interest)
-        : [...prev.interests, interest]
-    }));
-  };
+const FAQS = [
+  {
+    q: 'Who can partner with HealthSpan360?',
+    a: 'Licensed practitioners including MDs, DOs, NPs, PAs, PharmDs, chiropractors and certified wellness providers. Every license is verified before an account is activated.',
+  },
+  {
+    q: 'Do I need special training to interpret results?',
+    a: 'No. Reports are organized into clear categories with plain-language explanations, and our clinical team is available to walk through any result with you.',
+  },
+  {
+    q: 'How do patients provide samples?',
+    a: 'Depending on the test, samples are collected in-office or with a simple kit. We provide the materials and instructions your staff needs.',
+  },
+  {
+    q: 'What does it cost to get started?',
+    a: 'There is no fee to apply. Our provider team will review pricing options for your practice during your onboarding call.',
+  },
+];
 
-  return (
-    <>
-      <SEO
-        title="For Providers - HealthSpan360"
-        description="Join our network of forward-thinking healthcare providers. Access cutting-edge diagnostics, genetic testing, and peptide research. Partner with HealthSpan360 for advanced patient care."
-        keywords="healthcare providers, medical practitioners, peptide therapy, genetic testing for providers, practice growth, precision medicine, functional medicine"
-      />
-      <div className="pt-20">
-        {/* Hero Section */}
-        <section className="bg-gradient-dark text-off-white py-24 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-10 w-64 h-64 bg-magenta-500 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
-          </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-4xl mx-auto text-center"
-            >
-              <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
-                Partner with <span className="bg-gradient-primary bg-clip-text text-transparent">HealthSpan360</span>
-              </h1>
-              <p className="text-xl lg:text-2xl text-cool-gray font-inter leading-relaxed mb-8">
-                Join our network of forward-thinking healthcare providers and unlock the 
-                power of personalized diagnostics for your practice
-              </p>
-              
-              {/* Licensed Practitioners Notice */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="bg-white/95 backdrop-blur-sm border border-gray-200 p-6 rounded-2xl max-w-3xl mx-auto shadow-lg"
-              >
-                <div className="flex items-center justify-start space-x-4 text-gray-800">
-                  <div className="bg-magenta-500 p-3 rounded-lg flex-shrink-0">
-                    <Shield className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <p className="font-poppins font-bold text-xl mb-2 text-gray-900">
-                      Licensed practitioners only:
-                    </p>
-                    <p className="font-inter text-lg text-gray-700">
-                      MD, DO, NP, PharmD, Chiropractors, and certified wellness providers welcome
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Provider Benefits Section */}
-        <section className="py-24 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-gray-900 mb-6">
-                Provider <span className="bg-gradient-primary bg-clip-text text-transparent">Benefits</span>
-              </h2>
-              <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
-                Enhance your practice with cutting-edge diagnostics and comprehensive support
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={benefit.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow group"
-                >
-                  <div className="bg-gradient-primary text-white p-4 rounded-xl mb-6 w-fit group-hover:scale-110 transition-transform">
-                    {benefit.icon}
-                  </div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">{benefit.title}</h3>
-                  <p className="text-gray-600 font-inter mb-6">{benefit.description}</p>
-                  <div className="space-y-3">
-                    {benefit.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700 font-inter">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Application Form Section */}
-        <section className="py-24 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-6">
-                Join Our <span className="bg-gradient-primary bg-clip-text text-transparent">Network</span>
-              </h2>
-              <p className="text-xl text-gray-600 font-inter">
-                Complete the application below to begin your partnership with HealthSpan360
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-8 lg:p-12 rounded-3xl shadow-lg"
-            >
-              <form onSubmit={handleSubmit} className="space-y-8" name="provider-application" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="provider-application" />
-                
-                {/* Basic Information */}
-                <div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Basic Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="practiceType" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Practice Type *
-                      </label>
-                      <select
-                        id="practiceType"
-                        name="practiceType"
-                        value={formData.practiceType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      >
-                        <option value="">Select practice type</option>
-                        <option value="primary-care">Primary Care</option>
-                        <option value="functional-medicine">Functional Medicine</option>
-                        <option value="integrative-medicine">Integrative Medicine</option>
-                        <option value="wellness-center">Wellness Center</option>
-                        <option value="anti-aging">Anti-Aging/Longevity</option>
-                        <option value="weight-management">Weight Management</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                {/* License Information */}
-                <div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">License Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="licenseType" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        License Type *
-                      </label>
-                      <select
-                        id="licenseType"
-                        name="licenseType"
-                        value={formData.licenseType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      >
-                        <option value="">Select license type</option>
-                        <option value="md">MD - Doctor of Medicine</option>
-                        <option value="do">DO - Doctor of Osteopathic Medicine</option>
-                        <option value="np">NP - Nurse Practitioner</option>
-                        <option value="pharmd">PharmD - Doctor of Pharmacy</option>
-                        <option value="dc">DC - Doctor of Chiropractic</option>
-                        <option value="nd">ND - Naturopathic Doctor</option>
-                        <option value="other">Other Licensed Practitioner</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="licenseNumber" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        License Number *
-                      </label>
-                      <input
-                        type="text"
-                        id="licenseNumber"
-                        name="licenseNumber"
-                        value={formData.licenseNumber}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Practice Information */}
-                <div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Practice Information</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="md:col-span-2">
-                      <label htmlFor="practiceAddress" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Practice Address *
-                      </label>
-                      <input
-                        type="text"
-                        id="practiceAddress"
-                        name="practiceAddress"
-                        value={formData.practiceAddress}
-                        onChange={handleChange}
-                        placeholder="Full practice address including city, state, zip"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="patientsPerMonth" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Patients Per Month
-                      </label>
-                      <select
-                        id="patientsPerMonth"
-                        name="patientsPerMonth"
-                        value={formData.patientsPerMonth}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                      >
-                        <option value="">Select range</option>
-                        <option value="1-50">1-50 patients</option>
-                        <option value="51-100">51-100 patients</option>
-                        <option value="101-200">101-200 patients</option>
-                        <option value="201-500">201-500 patients</option>
-                        <option value="500+">500+ patients</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="experience" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                        Years in Practice
-                      </label>
-                      <select
-                        id="experience"
-                        name="experience"
-                        value={formData.experience}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                      >
-                        <option value="">Select range</option>
-                        <option value="0-2">0-2 years</option>
-                        <option value="3-5">3-5 years</option>
-                        <option value="6-10">6-10 years</option>
-                        <option value="11-20">11-20 years</option>
-                        <option value="20+">20+ years</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Areas of Interest */}
-                <div>
-                  <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Areas of Interest</h3>
-                  <p className="text-gray-600 font-inter mb-4">Select all services you're interested in offering:</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {[
-                      'Genetic Testing',
-                      'Peptide Therapy',
-                      'Micronutrient Testing',
-                      'Clinical Lab Services'
-                    ].map((interest) => (
-                      <label key={interest} className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-gray-200 hover:border-magenta-300 transition-colors cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={formData.interests.includes(interest)}
-                          onChange={() => handleInterestChange(interest)}
-                          className="h-5 w-5 text-magenta-500 border-gray-300 rounded focus:ring-magenta-500"
-                        />
-                        <span className="text-gray-700 font-inter">{interest}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-poppins font-semibold text-gray-700 mb-2">
-                    Additional Information
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta-500 focus:border-transparent transition-colors bg-white"
-                    placeholder="Tell us about your practice goals, specific interests, or any questions you have..."
-                  ></textarea>
-                </div>
-
-                {/* Compliance Notice */}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                  <div className="flex items-start space-x-3">
-                    <Shield className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-                    <div className="text-blue-800">
-                      <h4 className="font-poppins font-semibold mb-2">Compliance & Verification</h4>
-                      <ul className="text-sm font-inter space-y-1">
-                        <li>• All applications are subject to license verification</li>
-                        <li>• Partnership agreements include compliance training</li>
-                        <li>• All products are for professional use under practitioner supervision</li>
-                        <li>• We maintain full regulatory compliance documentation</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-poppins font-semibold text-lg transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center"
-                >
-                  Submit Application
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </button>
-              </form>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Statistics Section */}
-        <section className="py-16 bg-gradient-primary text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <h2 className="text-3xl font-poppins font-bold mb-4">Join Our Growing Network</h2>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
-                {[
-                  { number: "500+", label: "Provider Partners" },
-                  { number: "171", label: "Genes Analyzed" },
-                  { number: "196", label: "Biomarkers Analyzed" },
-                  { number: "99.9%", label: "Accuracy Rate" }
-                ].map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-4xl font-poppins font-bold mb-2">{stat.number}</div>
-                    <div className="text-white/80 font-inter">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Next Steps Section */}
-        <section className="py-24 bg-white">
-          <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-6">What Happens Next?</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div className="text-center">
-                  <div className="bg-gradient-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-poppins font-bold mx-auto mb-4">1</div>
-                  <h3 className="text-lg font-poppins font-semibold text-gray-900 mb-2">Application Review</h3>
-                  <p className="text-gray-600 font-inter text-sm">We'll review your application and verify your credentials within 24-48 hours</p>
-                </div>
-                <div className="text-center">
-                  <div className="bg-gradient-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-poppins font-bold mx-auto mb-4">2</div>
-                  <h3 className="text-lg font-poppins font-semibold text-gray-900 mb-2">Partnership Setup</h3>
-                  <p className="text-gray-600 font-inter text-sm">Complete onboarding, training, and account setup to begin offering services</p>
-                </div>
-                <div className="text-center">
-                  <div className="bg-gradient-primary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-poppins font-bold mx-auto mb-4">3</div>
-                  <h3 className="text-lg font-poppins font-semibold text-gray-900 mb-2">Launch & Support</h3>
-                  <p className="text-gray-600 font-inter text-sm">Start serving patients with ongoing support and clinical guidance</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+const ReportPreview = () => (
+  <div className="relative mx-auto w-full max-w-md">
+    <div className="absolute -inset-6 bg-gradient-primary opacity-30 blur-3xl rounded-full" aria-hidden="true" />
+    <motion.div
+      initial={{ opacity: 0, y: 30, rotate: -2 }}
+      animate={{ opacity: 1, y: 0, rotate: -2 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="relative bg-white rounded-3xl shadow-2xl p-6 text-gray-900"
+    >
+      <div className="flex items-center justify-between mb-5">
+        <div>
+          <p className="text-xs font-inter uppercase tracking-wider text-gray-500">Patient insight</p>
+          <p className="font-poppins font-semibold">Personalized Wellness Plan</p>
+        </div>
+        <span className="bg-green-100 text-green-700 text-xs font-poppins font-semibold px-3 py-1 rounded-full">Ready</span>
       </div>
-      <CalendlySection />
-    </>
+      {[
+        { label: 'Energy & Metabolism', note: 'Focus on B-vitamin support', tone: 'bg-orange-500' },
+        { label: 'Inflammation', note: 'Anti-inflammatory nutrition plan', tone: 'bg-magenta-500' },
+        { label: 'Sleep & Recovery', note: 'Evening routine adjustments', tone: 'bg-blue-500' },
+      ].map((row, i) => (
+        <motion.div
+          key={row.label}
+          initial={{ opacity: 0, x: -16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.6 + i * 0.15 }}
+          className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 p-3 mb-3 last:mb-0"
+        >
+          <span className={`h-10 w-1.5 rounded-full ${row.tone}`} aria-hidden="true" />
+          <div>
+            <p className="font-poppins font-semibold text-sm">{row.label}</p>
+            <p className="font-inter text-sm text-gray-600">{row.note}</p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.1 }}
+      className="absolute -bottom-6 -left-4 sm:-left-10 bg-charcoal-500 text-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3"
+    >
+      <Sparkles className="h-5 w-5 text-gold-500" />
+      <p className="font-inter text-sm">Plan shared with patient</p>
+    </motion.div>
+  </div>
+);
+
+const FaqItem = ({ q, a }: { q: string; a: string }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-gray-200 last:border-0">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="w-full flex items-center justify-between gap-4 py-5 text-left group"
+      >
+        <span className="font-poppins font-semibold text-gray-900 group-hover:text-magenta-600 transition-colors">{q}</span>
+        <motion.span animate={{ rotate: open ? 45 : 0 }} className="flex-shrink-0 text-magenta-600">
+          <Plus className="h-5 w-5" />
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 font-inter text-gray-600 leading-relaxed">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
+
+const ForProviders = () => (
+  <>
+    <SEO
+      title="For Providers - Partner with HealthSpan360"
+      description="Offer your patients personalized genetic, micronutrient, allergy and clinical lab testing with a partner that supports your practice from onboarding to results."
+      keywords="healthcare providers, provider partnership, genetic testing for providers, micronutrient testing, functional medicine lab, precision medicine, practice growth"
+    />
+    <div className="pt-20">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-dark text-off-white">
+        <div className="absolute inset-0 opacity-20" aria-hidden="true">
+          <div className="absolute -top-20 left-0 w-96 h-96 bg-magenta-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-orange-500 rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm font-poppins font-semibold text-white mb-8">
+              <ShieldCheck className="h-4 w-4 text-gold-500" />
+              For licensed healthcare providers
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-bold leading-tight mb-6 text-white">
+              Give your patients answers they can{' '}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">act on.</span>
+            </h1>
+            <p className="text-lg lg:text-xl text-off-white/80 font-inter leading-relaxed mb-10 max-w-xl">
+              HealthSpan360 helps you move beyond "your labs look normal." Offer personalized testing that explains
+              how each patient's body works, and turn every result into a plan they are excited to follow.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="#apply"
+                className="group inline-flex items-center justify-center bg-gradient-primary text-white px-8 py-4 rounded-xl font-poppins font-semibold text-lg shadow-lg transition-all hover:shadow-xl hover:scale-[1.03]"
+              >
+                Become a Partner
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </a>
+              <Link
+                to="/services"
+                className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-xl font-poppins font-semibold text-lg transition-colors"
+              >
+                Explore Services
+              </Link>
+            </div>
+          </motion.div>
+          <div className="pb-8 lg:pb-0">
+            <ReportPreview />
+          </div>
+        </div>
+      </section>
+
+      {/* The shift */}
+      <section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div {...fadeUp}>
+            <p className="font-poppins font-semibold text-magenta-600 mb-4">Why it matters</p>
+            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-gray-900 leading-tight mb-6">
+              Your patients are looking for more than a diagnosis. They want to understand themselves.
+            </h2>
+            <p className="text-lg text-gray-600 font-inter leading-relaxed">
+              People come to you tired of guesswork and generic advice. With HealthSpan360 you can show them the
+              biology behind how they feel, and guide them with confidence. That is the kind of care patients
+              stay for, and tell their friends about.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What you can offer */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="max-w-2xl mb-14">
+            <p className="font-poppins font-semibold text-magenta-600 mb-4">What you can offer</p>
+            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-gray-900 leading-tight">
+              Precision services, ready for your practice
+            </h2>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {OFFERINGS.map(({ icon: Icon, title, pitch, link }, i) => (
+              <motion.div key={title} {...fadeUp} transition={{ duration: 0.6, delay: i * 0.08 }}>
+                <Link
+                  to={link}
+                  className="group flex h-full flex-col bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-primary text-white shadow-md group-hover:scale-110 transition-transform">
+                    <Icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="text-xl font-poppins font-bold text-gray-900 mb-3">{title}</h3>
+                  <p className="text-gray-600 font-inter leading-relaxed mb-6 flex-1">{pitch}</p>
+                  <span className="inline-flex items-center font-poppins font-semibold text-magenta-600">
+                    See the details
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why partner */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
+            <p className="font-poppins font-semibold text-magenta-600 mb-4">Why providers choose us</p>
+            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-gray-900 leading-tight">
+              Built around the way you care for patients
+            </h2>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-10">
+            {PILLARS.map(({ icon: Icon, title, copy }, i) => (
+              <motion.div key={title} {...fadeUp} transition={{ duration: 0.6, delay: i * 0.1 }}>
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-magenta-500/10 text-magenta-600">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-poppins font-bold text-gray-900 mb-3">{title}</h3>
+                <p className="text-gray-600 font-inter leading-relaxed">{copy}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quote band */}
+      <section className="py-20 bg-gradient-dark text-white">
+        <motion.div {...fadeUp} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Quote className="h-10 w-10 text-gold-500 mx-auto mb-6" />
+          <p className="text-2xl lg:text-3xl font-poppins font-semibold leading-snug">
+            We bridge cutting-edge science with practical, provider-driven solutions, so you can spend less time
+            explaining uncertainty and more time changing lives.
+          </p>
+          <p className="mt-6 font-inter text-off-white/70">The HealthSpan360 promise</p>
+        </motion.div>
+      </section>
+
+      {/* How it works */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto mb-16">
+            <p className="font-poppins font-semibold text-magenta-600 mb-4">How it works</p>
+            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-gray-900 leading-tight">
+              From application to your first patient
+            </h2>
+          </motion.div>
+          <div className="relative">
+          <div className="hidden lg:block absolute top-7 left-[12%] right-[12%] h-0.5 bg-gradient-primary opacity-30" aria-hidden="true" />
+          <ol className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {STEPS.map(({ icon: Icon, title, copy }, i) => (
+              <motion.li key={title} {...fadeUp} transition={{ duration: 0.6, delay: i * 0.1 }} className="relative text-center">
+                <div className="relative mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-primary text-white shadow-lg">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <p className="text-sm font-poppins font-semibold text-magenta-600 mb-1">Step {i + 1}</p>
+                <h3 className="text-lg font-poppins font-bold text-gray-900 mb-2">{title}</h3>
+                <p className="text-gray-600 font-inter leading-relaxed">{copy}</p>
+              </motion.li>
+            ))}
+          </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* Who we work with */}
+      <section className="py-20 bg-gray-50">
+        <motion.div {...fadeUp} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl lg:text-3xl font-poppins font-bold text-gray-900 mb-8">
+            Designed for forward-thinking practices of every kind
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {PRACTICES.map((p) => (
+              <span
+                key={p}
+                className="px-5 py-2.5 rounded-full bg-white border border-gray-200 font-inter text-gray-700 shadow-sm hover:border-magenta-500 hover:text-magenta-600 transition-colors"
+              >
+                {p}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Apply + FAQ */}
+      <section id="apply" className="py-24 bg-white scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-5 gap-12 lg:gap-16">
+          <motion.div {...fadeUp} className="lg:col-span-2">
+            <p className="font-poppins font-semibold text-magenta-600 mb-4">Become a partner</p>
+            <h2 className="text-3xl lg:text-4xl font-poppins font-bold text-gray-900 leading-tight mb-6">
+              Let's build something better for your patients
+            </h2>
+            <p className="text-gray-600 font-inter leading-relaxed mb-10">
+              Tell us about your practice. Our provider team will follow up personally to answer questions and get
+              you set up.
+            </p>
+            <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6">
+              {FAQS.map((f) => (
+                <FaqItem key={f.q} q={f.q} a={f.a} />
+              ))}
+            </div>
+          </motion.div>
+          <motion.div
+            {...fadeUp}
+            className="lg:col-span-3 bg-white rounded-3xl border border-gray-100 shadow-xl p-6 sm:p-10"
+          >
+            <ProviderApplicationForm />
+          </motion.div>
+        </div>
+      </section>
+    </div>
+    <CalendlySection />
+  </>
+);
 
 export default ForProviders;
