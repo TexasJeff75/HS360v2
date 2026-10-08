@@ -27,13 +27,6 @@ const Home = () => {
     }
   ];
 
-  const stats = [
-    { number: "171", label: "Genes Analyzed" },
-    { number: "196", label: "Biomarkers" },
-    { number: "500+", label: "Provider Partners" },
-    { number: "100%", label: "Actionable" }
-  ];
-
   // Animation variants for enhanced movement
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -365,50 +358,6 @@ const Home = () => {
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
                 </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-gradient-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.1,
-                  transition: { type: "spring", stiffness: 400 }
-                }}
-                className="text-center text-white"
-              >
-                <motion.div 
-                  className="text-4xl lg:text-5xl font-poppins font-bold mb-2"
-                  animate={{ 
-                    textShadow: [
-                      "0 0 5px rgba(255,255,255,0.5)",
-                      "0 0 20px rgba(255,255,255,0.8)",
-                      "0 0 5px rgba(255,255,255,0.5)"
-                    ]
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity,
-                    delay: index * 0.2
-                  }}
-                >
-                  {stat.number}
-                </motion.div>
-                <div className="text-white/80 text-sm lg:text-base font-inter">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
