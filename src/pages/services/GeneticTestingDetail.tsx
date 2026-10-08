@@ -3,9 +3,12 @@ import { motion } from 'framer-motion';
 import { Dna, Brain, Heart, Activity, Shield, CheckCircle, ArrowRight, X, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CalendlySection from '../../components/CalendlySection';
+import PgxPanelModal from '../../components/PgxPanelModal';
+import { PROXIGENE_FIGURES, PROXIGENE_PANEL_NAME, PROXIGENE_SECTIONS, PROXIGENE_CHAIN, PROXIGENE_TRACKS } from '../../data/proxigene';
 
 const GeneticTestingDetail = () => {
   const [isProxiGeneModalOpen, setIsProxiGeneModalOpen] = useState(false);
+  const [isPgxModalOpen, setIsPgxModalOpen] = useState(false);
 
   const testingPanels = [
     {
@@ -22,23 +25,23 @@ const GeneticTestingDetail = () => {
               <stop offset="1" stopColor="#fdcd08"/>
             </linearGradient>
           </defs>
-          <path fill="url(#grad1)" d="M283.54,326.93c-18.79,0-21.16-1.14-28.98-9.05-9.53-9.64-28.67-38.18-34.34-47.4-3.04-4.94-3.41-12.35-1.13-22.64.22-1.01,1.19-3.51,2.13-5.92.56-1.44,1.18-3.03,1.82-4.77-7.16-.19-14.99-.67-18.91-.94-1.23,3.19-2.14,5.58-2.62,7.76-3.33,15.08-2.22,26.84,3.38,35.95,4.77,7.77,25.3,38.93,36.88,50.63,12.37,12.5,20.44,14.39,41.78,14.39h63.14l-14.26-18h-48.89Z"/>
-          <path fill="url(#grad2)" d="M357.49,330.58c-.56-.76-56.34-76.33-70.21-95.87-15.19-21.39-37.52-23.68-56.91-24.01l-18.2-.51c-5.35-.42-10.79-1.18-16.19-2.53l18.09-22.71c.26,6.35-.04,12.23-.7,17.64h18.11c.74-7.01.96-14.68.31-22.98-.35-4.52-1.08-9.24-2.35-13.95l.68-.86-1.2-.95c-5.31-17.64-18.65-34.77-49.15-40.28l-1.25-.99-.55.69c-2.29-.37-4.65-.69-7.13-.93-3.32-.32-6.61-.5-9.87-.6l-19.4-.27c-15.54-.39-29.34-2.36-42.08-14.67-16.69-16.13-49.95-64.64-66.11-88.75h52.42c15.23,0,24.21,3.54,31,12.21,9.26,11.83,20,26.21,28.03,37.53,5.07,7.13,5.88,26.68.53,43.97h18.67c4.79-19.17,4.56-41.61-4.52-54.4-8.18-11.52-19.12-26.16-28.53-38.19C120.63,5.95,106.69.06,85.79.06H0l9.07,13.91c2.19,3.37,54.01,82.69,77.91,105.78,15.4,14.88,32.28,18.52,48.33,19.47l18.58.39c3.59.04,7.22.11,10.8.32l-13.81,17.34c.06-3.48.47-7.08,1.24-10.81h-18.31c-3.4,20.8,1.87,39.19,15.7,54.07,17.64,18.97,38.73,25.31,57.77,27.29,0,0,10.76.66,18.7.84,21.32.2,36.21,1.82,46.62,16.48,10.21,14.38,42.81,58.68,59.83,81.79l14.26,18h21.39l-10.59-14.34Z"/>
+          <path fill="url(#grad1)" d="M283.54,326.93c-18.79,0-21.16-1.14-28.98-9.050-9.53-9.64-28.67-38.18-34.34-47.4-3.04-4.94-3.410-12.35-1.13-22.64.22-1.01,1.19-3.51,2.13-5.92.56-1.44,1.18-3.03,1.82-4.770-7.16-.19-14.99-.67-18.91-.94-1.23,3.19-2.14,5.58-2.62,7.76-3.33,15.08-2.22,26.84,3.38,35.95,4.77,7.77,25.3,38.93,36.88,50.63,12.37,12.5,20.44,14.39,41.78,14.39h63.14l-14.26-18h-48.89Z"/>
+          <path fill="url(#grad2)" d="M357.49,330.58c-.56-.76-56.34-76.33-70.21-95.87-15.19-21.39-37.52-23.68-56.91-24.01l-18.2-.51c-5.35-.42-10.79-1.18-16.19-2.53l18.09-22.71c.26,6.35-.04,12.23-.7,17.64h18.11c.74-7.01.96-14.68.31-22.98-.35-4.52-1.08-9.24-2.35-13.95l.68-.86-1.2-.95c-5.31-17.64-18.65-34.77-49.15-40.28l-1.25-.99-.55.69c-2.29-.37-4.65-.69-7.13-.93-3.32-.32-6.61-.5-9.87-.6l-19.4-.27c-15.54-.39-29.34-2.36-42.08-14.67-16.69-16.13-49.95-64.64-66.11-88.75h52.42c15.230,0,24.21,3.54,31,12.21,9.26,11.83,20,26.21,28.03,37.53,5.07,7.13,5.88,26.68.53,43.97h18.67c4.79-19.17,4.56-41.61-4.52-54.4-8.18-11.52-19.12-26.16-28.53-38.19C120.63,5.95,106.69.06,85.79.06H0l9.07,13.91c2.19,3.37,54.01,82.69,77.91,105.78,15.4,14.88,32.28,18.52,48.33,19.47l18.58.39c3.59.04,7.22.11,10.8.32l-13.81,17.34c.06-3.48.47-7.08,1.24-10.81h-18.31c-3.4,20.8,1.87,39.19,15.7,54.07,17.64,18.97,38.73,25.31,57.77,27.29,0,0,10.76.66,18.7.84,21.32.2,36.21,1.82,46.62,16.48,10.21,14.38,42.81,58.68,59.83,81.79l14.26,18h21.39l-10.59-14.34Z"/>
           <path fill="#f99e1c" d="M376.54,0h-92.78c-14.09,0-26.26,0-36.69,14.7l-73.28,98.46c3.97.39,11.32,1.5,19.02,4.59l68.76-92.39.13-.18c4.66-6.6,7.85-7.18,22.06-7.18h56.63c-19.16,25.38-60.89,80.64-103.44,136.94,1.66,4.42,4.79,13.37,6.25,21.58,58.3-77.14,117.66-155.77,122.44-162.1l10.89-14.42Z"/>
           <path fill="#c255a0" d="M113.3,318.25c-5.1,6.37-8.84,9.97-26.61,9.97h-50.53l98.79-132.73c-3.45-5.06-7.29-12.71-9.52-17.35L.33,346.23h86.37c20.39,0,30.65-4.22,40.66-16.73,2.66-3.32,32.67-42.95,70.58-93.07-8.67-.62-14.96-3.27-18.57-5.29-35.79,47.33-63.6,84.04-66.06,87.11Z"/>
         </svg>
       ),
-      title: "ProxiGene",
+      title: "Biosynthetix Panel",
       description: "Genetic factors affecting peptide efficacy and safety",
-      markers: "140+ genetic variants",
-      applications: ["Peptide selection", "Supplement selection", "Lifestyle and Nutritional Insights"]
+      markers: "198 SNP variants across 171 genes",
+      applications: ["Peptide & supplement associations", "Lifestyle and nutritional insights", "Provider-reviewed, not prescribed"]
     },
     {
       icon: <Brain className="h-8 w-8" />,
       title: "Pharmacogenomics Panel",
-      description: "Analyze how genetic variations affect medication metabolism and response",
-      markers: "45+ genetic variants",
-      applications: ["Medication selection", "Dosing optimization", "Adverse reaction prediction"]
+      description: "Genotype-guided prescribing intelligence, delivered as clinical action — not raw data",
+      markers: "34 genes, HLA & PD markers across 14 therapeutic areas",
+      applications: ["Drug and dose selection", "HLA-linked hypersensitivity risk", "CPIC-aligned alternatives"]
     },
     {
       icon: <Heart className="h-8 w-8" />,
@@ -81,6 +84,15 @@ const GeneticTestingDetail = () => {
               transition={{ duration: 0.8 }}
               className="max-w-4xl mx-auto text-center"
             >
+              <div className="inline-block bg-white rounded-2xl px-6 py-4 sm:px-8 sm:py-5 shadow-xl mb-10">
+                <img
+                  src="/Proxigene_Genomics_Division.png"
+                  alt="ProxiGene, Genomics Division of HealthSpan360"
+                  width={2096}
+                  height={390}
+                  className="h-12 sm:h-16 w-auto"
+                />
+              </div>
               <h1 className="text-5xl lg:text-6xl font-poppins font-bold mb-6">
                 Genetic <span className="bg-gradient-primary bg-clip-text text-transparent">Testing</span>
               </h1>
@@ -139,10 +151,10 @@ const GeneticTestingDetail = () => {
                         ))}
                       </ul>
                     </div>
-                    {panel.title === 'ProxiGene' && (
+                    {(panel.title === 'Biosynthetix Panel' || panel.title === 'Pharmacogenomics Panel') && (
                       <div className="mt-6">
                         <button
-                          onClick={() => setIsProxiGeneModalOpen(true)}
+                          onClick={() => (panel.title === 'Biosynthetix Panel' ? setIsProxiGeneModalOpen(true) : setIsPgxModalOpen(true))}
                           className="inline-flex items-center bg-gradient-primary hover:from-magenta-600 hover:to-orange-600 text-white px-4 py-2 rounded-lg font-poppins font-semibold text-sm transition-all"
                         >
                           Learn More
@@ -284,7 +296,10 @@ const GeneticTestingDetail = () => {
             className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl"
           >
             <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center rounded-t-2xl">
-              <h2 className="text-3xl font-poppins font-bold text-gray-900">ProxiGene</h2>
+              <div>
+                <h2 className="text-3xl font-poppins font-bold text-gray-900">Biosynthetix Panel</h2>
+                <p className="text-magenta-600 font-poppins font-semibold">{PROXIGENE_PANEL_NAME}</p>
+              </div>
               <button
                 onClick={() => setIsProxiGeneModalOpen(false)}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -297,91 +312,82 @@ const GeneticTestingDetail = () => {
               {/* Overview */}
               <div className="bg-gradient-to-br from-magenta-50 to-orange-50/20 p-6 rounded-xl">
                 <p className="text-gray-700 font-inter leading-relaxed">
-                  The ProxiGene panel is a one-time genetic assessment analyzing <strong>140+ SNPs</strong> to reveal predispositions across metabolism, cognition, emotional resilience, inflammation, nutrient absorption, aging, and food sensitivities. It provides personalized, actionable guidance on nutrition, lifestyle, labs, and supplementation for long-term health optimization.
+                  The ProxiGene panel is a one-time genetic assessment analyzing <strong>198 unique SNP/rsID variants across 171 genes</strong> to reveal predispositions across metabolism, cognition, emotional resilience, inflammation, nutrient absorption, aging, and food sensitivities. It provides personalized, actionable guidance on nutrition, lifestyle, labs, and supplementation for long-term health optimization.
                 </p>
               </div>
 
+              <dl className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {PROXIGENE_FIGURES.map((figure) => (
+                  <div key={figure.label} className="border border-gray-200 rounded-xl p-4">
+                    <dt className="sr-only">{figure.label}</dt>
+                    <dd className="text-2xl font-poppins font-bold bg-gradient-primary bg-clip-text text-transparent">{figure.value}</dd>
+                    <dd className="text-gray-600 font-inter text-sm" aria-hidden="true">{figure.label}</dd>
+                  </div>
+                ))}
+              </dl>
+
               {/* Key Categories */}
               <div>
-                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Key Categories Assessed</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  
-                  {/* Cognitive Degeneration */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6">
-                    <h4 className="text-lg font-poppins font-bold text-magenta-600 mb-3">Cognitive Degeneration</h4>
-                    <p className="text-gray-600 font-inter text-sm">Cognitive Decline: memory, neuroinflammation, age-related deterioration</p>
-                  </div>
-
-                  {/* Longevity */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6">
-                    <h4 className="text-lg font-poppins font-bold text-orange-600 mb-3">Longevity</h4>
-                    <div className="space-y-2 text-gray-600 font-inter text-sm">
-                      <p>• Inflammatory Response Regulation</p>
-                      <p>• Telomerase Gene Susceptibility (cellular aging)</p>
-                      <p>• Cellular Longevity (repair, mitochondrial health, lifespan regulation)</p>
+                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-2">Key Categories Assessed</h3>
+                <p className="text-gray-600 font-inter mb-6">10 health sections, 44 subcategories.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {PROXIGENE_SECTIONS.map((section) => (
+                    <div key={section.name} className="bg-white border border-gray-200 rounded-xl p-5 hover:border-magenta-200 hover:shadow-md transition-all">
+                      <div className="flex items-baseline justify-between gap-3 mb-3">
+                        <h4 className={`text-lg font-poppins font-bold ${section.accent}`}>{section.name}</h4>
+                        <span className="text-xs font-inter text-gray-500 flex-shrink-0">{section.subcategories.length} subcategories</span>
+                      </div>
+                      <ul className="space-y-1.5 text-gray-600 font-inter text-sm">
+                        {section.subcategories.map((sub) => (
+                          <li key={sub} className="flex items-start gap-2">
+                            <span className="mt-2 h-1 w-1 rounded-full bg-gray-400 flex-shrink-0" />
+                            {sub}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-
-                  {/* Psychological Resilience */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6">
-                    <h4 className="text-lg font-poppins font-bold text-purple-600 mb-3">Psychological Resilience</h4>
-                    <div className="space-y-2 text-gray-600 font-inter text-sm">
-                      <p>• Brain Fog (neurotransmitter regulation, fatigue)</p>
-                      <p>• Optimism (dopamine, serotonin pathways)</p>
-                      <p>• Generalized Anxiety Disorder (stress response, regulation)</p>
-                      <p>• Stress Sensitivity Profile (cortisol, environmental reactivity)</p>
-                    </div>
-                  </div>
-
-                  {/* Micronutrient Metabolism */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6">
-                    <h4 className="text-lg font-poppins font-bold text-green-600 mb-3">Micronutrient Metabolism</h4>
-                    <div className="space-y-2 text-gray-600 font-inter text-sm">
-                      <p>• Vitamin B9 (Folate) Deficiency Susceptibility</p>
-                      <p>• Vitamin B12 Deficiency Susceptibility</p>
-                    </div>
-                  </div>
-
-                  {/* Metabolism & Energy */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6">
-                    <h4 className="text-lg font-poppins font-bold text-blue-600 mb-3">Metabolism & Energy</h4>
-                    <div className="space-y-2 text-gray-600 font-inter text-sm">
-                      <p>• LDL & HDL Cholesterol Regulation</p>
-                      <p>• Triglyceride Metabolism</p>
-                      <p>• Blood Glucose Regulation</p>
-                    </div>
-                  </div>
-
-                  {/* Food Sensitivity Response */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6">
-                    <h4 className="text-lg font-poppins font-bold text-red-600 mb-3">Food Sensitivity Response</h4>
-                    <div className="space-y-2 text-gray-600 font-inter text-sm">
-                      <p>• Lactose Intolerance</p>
-                      <p>• Gluten Sensitivity</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Report Components */}
+              {/* How It Works */}
               <div>
-                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-6">Report Components</h3>
-                <div className="bg-gradient-to-br from-gray-50 to-orange-50/20 p-6 rounded-xl">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {[
-                      "Gene & SNP Information (with rsIDs and allele impact)",
-                      "Risk & Propensity Scores (High, Medium, Low)",
-                      "Nutritional & Lifestyle Insights (science-based recommendations)",
-                      "Peptides & Supplements (physician-guided suggestions)",
-                      "Labs to Consider (follow-up testing for validation)"
-                    ].map((component, idx) => (
-                      <div key={idx} className="flex items-start space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700 font-inter text-sm">{component}</span>
+                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-2">How It Works</h3>
+                <p className="text-gray-600 font-inter mb-6">Every finding is a connected chain, from genotype to pathway to associated agents.</p>
+                <ol className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {PROXIGENE_CHAIN.map((link, idx) => (
+                    <li key={link.step} className="relative border-t-4 border-magenta-500 bg-gray-50 rounded-b-xl p-5">
+                      <span className="text-xs font-mono text-magenta-600">0{idx + 1}</span>
+                      <h4 className="font-poppins font-semibold text-gray-900 mt-1 mb-2">{link.step}</h4>
+                      <p className="text-gray-600 font-inter text-sm leading-relaxed">{link.description}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Suggestion Tracks */}
+              <div>
+                <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-2">What Every Category Includes</h3>
+                <p className="text-gray-600 font-inter mb-6">Five suggestion tracks, each scaled to the risk band.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {PROXIGENE_TRACKS.map((track) => (
+                    <div key={track.title} className="flex items-start space-x-3">
+                      <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-poppins font-semibold text-gray-900">{track.title}</h4>
+                        <p className="text-gray-600 font-inter text-sm leading-relaxed">{track.description}</p>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
+              </div>
+
+              {/* Responsible Use */}
+              <div className="bg-gradient-dark text-white rounded-xl p-6">
+                <h3 className="font-poppins font-semibold mb-2">Inform, don&apos;t prescribe</h3>
+                <p className="text-white/80 font-inter text-sm leading-relaxed">
+                  Provider-ordered and informational. Every recommendation carries interaction and biomarker monitoring context. Performed in a CLIA-certified laboratory as a laboratory-developed test; not FDA-cleared. It does not diagnose, treat, cure, or prevent disease, and decisions stay with the provider.
+                </p>
               </div>
 
               {/* Close Button */}
@@ -397,6 +403,7 @@ const GeneticTestingDetail = () => {
           </motion.div>
         </div>
       )}
+      {isPgxModalOpen && <PgxPanelModal onClose={() => setIsPgxModalOpen(false)} />}
       <CalendlySection />
     </>
   );
