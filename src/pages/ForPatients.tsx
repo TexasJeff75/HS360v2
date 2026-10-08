@@ -33,8 +33,8 @@ const ForPatients = () => {
   ];
 
   const testingOptions = [
-    { name: "Comprehensive Genetic Panel", markers: "170+ genetic markers", focus: "Complete health overview" },
-    { name: "Pharmacogenomics Testing", markers: "45+ drug-response genes", focus: "Medication optimization" },
+    { name: "Comprehensive Genetic Panel", markers: "198 SNPs across 171 genes", focus: "Complete health overview" },
+    { name: "Pharmacogenomics Testing", markers: "34 genes, HLA & PD markers", focus: "Medication optimization" },
     { name: "Nutrigenomics Panel", markers: "60+ nutrition genes", focus: "Personalized nutrition" },
     { name: "Micronutrient Analysis", markers: "196 biomarkers", focus: "Nutritional deficiencies" }
   ];
