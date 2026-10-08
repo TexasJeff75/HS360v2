@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Dna, TestTube, Activity, Users, ChevronRight, Shield, Award, Microscope, ArrowRight, CheckCircle, TestTube2 } from 'lucide-react';
+import { Dna, TestTube, Users, ChevronRight, Shield, Award, Microscope, ArrowRight, CheckCircle, TestTube2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CalendlySection from '../components/CalendlySection';
 import SEO from '../components/SEO';
@@ -8,33 +8,17 @@ import SEO from '../components/SEO';
 const Services = () => {
   const services = [
     {
-      icon: <Activity className="h-12 w-12" />,
-      title: "Peptides",
-      subtitle: "Research-Use Products",
-      description: "High-quality peptides for research purposes, available exclusively to licensed healthcare practitioners with full compliance support.",
-      keyFeatures: [
-        "Research-grade synthesis",
-        "Purity testing & certificates", 
-        "Compliance documentation",
-        "Storage guidance"
-      ],
-      badge: "Research Only",
-      badgeColor: "bg-red-500",
-      link: "/services/peptides",
-      gradient: "from-red-500 to-pink-500"
-    },
-    {
       icon: <Dna className="h-12 w-12" />,
       title: "Genetic Testing",
       subtitle: "Personalized SNP Analysis",
       description: "Comprehensive genetic analysis to understand individual responses to peptides, nutrients, and therapeutic interventions.",
       keyFeatures: [
-        "170+ genetic markers",
+        "198 SNPs across 171 genes",
         "Pharmacogenomics panels",
         "Personalized recommendations",
         "Provider interpretation"
       ],
-      badge: "170 Markers",
+      badge: "171 Genes",
       badgeColor: "bg-blue-500",
       link: "/services/genetic-testing",
       gradient: "from-blue-500 to-cyan-500"
@@ -275,20 +259,6 @@ const Services = () => {
                     </Link>
                   </motion.div>
                 </div>
-
-                {/* Special Notice for Peptides */}
-                {service.title === 'Peptides' && (
-                  <div className="px-8 pb-8">
-                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                      <div className="flex items-start space-x-3">
-                        <Shield className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                        <div className="text-sm text-amber-800">
-                          <strong>Research Use Only:</strong> Available exclusively to licensed healthcare practitioners. Not intended for human consumption.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </motion.div>
             ))}
           </div>
