@@ -25,7 +25,7 @@ const ForProviders = () => {
       icon: <Award className="h-8 w-8" />,
       title: "Advanced Diagnostics",
       description: "Access to cutting-edge genetic testing, micronutrient analysis, and peptide research",
-      features: ["170+ genetic markers", "196 biomarkers analyzed", "Research-grade peptides", "CLIA-certified labs"]
+      features: ["198 SNPs across 171 genes", "196 biomarkers analyzed", "Research-grade peptides", "CLIA-certified labs"]
     },
     {
       icon: <Users className="h-8 w-8" />,
@@ -455,7 +455,7 @@ const ForProviders = () => {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
                 {[
                   { number: "500+", label: "Provider Partners" },
-                  { number: "170", label: "Genetic Markers" },
+                  { number: "171", label: "Genes Analyzed" },
                   { number: "196", label: "Biomarkers Analyzed" },
                   { number: "99.9%", label: "Accuracy Rate" }
                 ].map((stat, index) => (
