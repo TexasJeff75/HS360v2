@@ -130,8 +130,8 @@ const About = () => {
                   <div className="text-gray-600 font-inter text-sm">Trusting our diagnostic solutions</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-sm">
-                  <div className="text-3xl font-poppins font-bold text-orange-500 mb-2">170</div>
-                  <div className="text-gray-900 font-poppins font-semibold mb-1">Genetic Markers</div>
+                  <div className="text-3xl font-poppins font-bold text-orange-500 mb-2">171</div>
+                  <div className="text-gray-900 font-poppins font-semibold mb-1">Genes Analyzed</div>
                   <div className="text-gray-600 font-inter text-sm">Analyzed for personalized insights</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-sm">
